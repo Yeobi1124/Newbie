@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e1a144ddc0e9c7e4abe8af8c15da8740
+timeCreated: 1540629346
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 87079
+  packageName: Space Shooter Sprite Kit 2 - Side Scrolling
+  packageVersion: 1.0
+  assetPath: Assets/Space 2/vector/svg/ship.svg
+  uploadId: 275153

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e2cf4cc916d5d6a4397f900f5d42dfdd
+timeCreated: 1540629346
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 87079
+  packageName: Space Shooter Sprite Kit 2 - Side Scrolling
+  packageVersion: 1.0
+  assetPath: Assets/Space 2/vector/ai/components.ai
+  uploadId: 275153
