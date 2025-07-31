@@ -6,7 +6,14 @@ public class ObjectManager : MonoBehaviour
     private static ObjectManager instance;
 
     GameObject BulletPlayerPrefab;
+    GameObject BulletEnemyPrefab;
+    GameObject DroneShooterPrefab;
+    GameObject DroneChargerPrefab;
+
     GameObject[] BulletPlayer;
+    GameObject[] BulletEnemy;
+    GameObject[] DroneShooter;
+    GameObject[] DroneCharger;
 
     GameObject[] TargetPool;
 
@@ -19,17 +26,35 @@ public class ObjectManager : MonoBehaviour
         }
         else Destroy(gameObject);
 
-            BulletPlayer = new GameObject[100];
+        BulletPlayer = new GameObject[100];
+        BulletEnemy = new GameObject[100];
+        DroneShooter = new GameObject[20];
+        DroneCharger = new GameObject[20];
 
         Generate();
     }
 
     void Generate()
     {
+        for (int index = 0; index < BulletEnemy.Length; index++)
+        {
+            BulletEnemy[index] = Instantiate(BulletPlayerPrefab);
+            BulletEnemy[index].SetActive(false);
+        }
         for (int index = 0; index < BulletPlayer.Length; index++)
         {
-            BulletPlayer[index] = Instantiate(BulletPlayerPrefab);
+            BulletPlayer[index] = Instantiate(BulletEnemyPrefab);
             BulletPlayer[index].SetActive(false);
+        }
+        for (int index = 0; index < DroneShooter.Length; index++)
+        {
+            DroneShooter[index] = Instantiate(DroneShooterPrefab);
+            DroneShooter[index].SetActive(false);
+        }
+        for (int index = 0; index < DroneCharger.Length; index++)
+        {
+            DroneCharger[index] = Instantiate(DroneChargerPrefab);
+            DroneCharger[index].SetActive(false);
         }
     }
 
@@ -39,6 +64,15 @@ public class ObjectManager : MonoBehaviour
         {
             case "BulletPlayer":
                 TargetPool = BulletPlayer;
+                break;
+            case "BulletEnemy":
+                TargetPool = BulletEnemy;
+                break;
+            case "DroneShooter":
+                TargetPool = DroneShooter;
+                break;
+            case "DroneCharger":
+                TargetPool = DroneCharger;
                 break;
             default:
                 break;
@@ -53,6 +87,7 @@ public class ObjectManager : MonoBehaviour
             }
         }
 
+        Debug.Log(type + " 풀에 남아있는 오브젝트가 없습니다!");
         return null;
     }
 }
