@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
+    private static ObjectManager instance;
+
     GameObject BulletPlayerPrefab;
     GameObject[] BulletPlayer;
 
@@ -10,7 +12,14 @@ public class ObjectManager : MonoBehaviour
 
     private void Awake()
     {
-        BulletPlayer = new GameObject[100];
+        if (null == instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+
+            BulletPlayer = new GameObject[100];
 
         Generate();
     }
