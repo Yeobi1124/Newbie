@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,52 +7,63 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float Speed;
-    public float AttackPower;
-    private Vector2 InputVector;
+    [SerializeField] private SpaceShip spaceShip;
+    [SerializeField] private Skill heavyAttack;
+    [SerializeField] private Skill specialAttack;
+    [SerializeField] private Skill parrying;
+    [SerializeField] private Skill heal;
+    
+    private PlayerInput playerInput;
 
-    public GameObject Bullet;
-
-    public Slider HP_bar;
-    private int HP;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        HP = 100;
+        playerInput = GetComponent<PlayerInput>();
+        
+        // Initialize
+        InputActionMap inputs = playerInput.actions.FindActionMap("Player");
+        inputs.FindAction("Move").performed += Move;
+        inputs.FindAction("Parry").performed += Parry;
+        inputs.FindAction("Heal").performed += Heal;
+        inputs.FindAction("Heavy Attack").performed += HeavyAttack;
+        inputs.FindAction("Special Attack").performed += SpecialAttack;
+        
+        inputs.Enable();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        Move();
-        Fire();
-
-        HP = Mathf.Clamp(HP, 0, 100);
-        HP_bar.value = HP;
+        InputActionMap inputs = playerInput.actions.FindActionMap("Player");
+        inputs.FindAction("Move").performed -= Move;
+        inputs.FindAction("Parry").performed -= Parry;
+        inputs.FindAction("Heal").performed -= Heal;
+        inputs.FindAction("Heavy Attack").performed -= HeavyAttack;
+        inputs.FindAction("Special Attack").performed -= SpecialAttack;
+        
+        inputs.Disable();
     }
 
-    void Move()
+    private void Move(InputAction.CallbackContext context)
     {
-        transform.Translate(InputVector * Speed * Time.deltaTime);
+        Debug.Log("Move");
     }
 
-    void Fire()
+    private void Parry(InputAction.CallbackContext context)
     {
-
+        Debug.Log("Parry");
     }
 
-    void OnMove(InputValue value)
+    private void Heal(InputAction.CallbackContext context)
     {
-        InputVector = value.Get<Vector2>();
+        Debug.Log("Heal");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void HeavyAttack(InputAction.CallbackContext context)
     {
-        if (collision.gameObject.tag == "BulletEnemy")
-        {
-            HP -= 20;
-            collision.gameObject.SetActive(false);
-        }
+        Debug.Log("Heavy Attack");
+    }
+
+    private void SpecialAttack(InputAction.CallbackContext context)
+    {
+        Debug.Log("Special Attack");
     }
 }
