@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
-    private static ObjectManager instance;
+    public static ObjectManager instance;
 
     GameObject BulletPlayerPrefab;
     GameObject BulletEnemyPrefab;
