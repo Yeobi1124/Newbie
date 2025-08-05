@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
         // Initialize
         InputActionMap inputs = playerInput.actions.FindActionMap("Player");
         inputs.FindAction("Move").performed += Move;
+        inputs.FindAction("Move").canceled += Move;
+
         inputs.FindAction("Parry").performed += Parry;
         inputs.FindAction("Heal").performed += Heal;
         inputs.FindAction("Heavy Attack").performed += HeavyAttack;
@@ -34,6 +36,8 @@ public class PlayerController : MonoBehaviour
     {
         InputActionMap inputs = playerInput.actions.FindActionMap("Player");
         inputs.FindAction("Move").performed -= Move;
+        inputs.FindAction("Move").canceled -= Move;
+        
         inputs.FindAction("Parry").performed -= Parry;
         inputs.FindAction("Heal").performed -= Heal;
         inputs.FindAction("Heavy Attack").performed -= HeavyAttack;
@@ -44,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move(InputAction.CallbackContext context)
     {
-        Debug.Log("Move");
+        spaceShip.Move(context.ReadValue<Vector2>());
     }
 
     private void Parry(InputAction.CallbackContext context)
