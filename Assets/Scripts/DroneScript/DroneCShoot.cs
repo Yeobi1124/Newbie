@@ -26,23 +26,27 @@ public class DroneCShoot : MonoBehaviour
     void Update()
     {
 
-        if (ShootCounter >= ShootDelay)
+        if (gameObject.GetComponent<DroneInfo>().Shootable)
         {
-            Shoot();
-            ShootCounter = 0;
-        }
+            if (ShootCounter >= ShootDelay)
+            {
+                Shoot();
+                ShootCounter = 0;
+            }
 
-        ShootCounter += Time.deltaTime;
+            ShootCounter += Time.deltaTime;
+        }
     }
 
     public void Shoot()
     {
         GameObject bullet = DroneObjectManager.Instance.PullObject("BulletEnemyBig");
         bullet.transform.position = transform.position;
-        bullet.transform.Translate(0.8f,-0.3f,0);
+        bullet.transform.Translate(0.8f, -0.3f, 0);
 
         originalPosition = transform.localPosition;
         if (!isRecoiling) StartCoroutine(DoRecoil());
+        gameObject.GetComponent<DroneInfo>().ShootNum++;
 
     }
 

@@ -7,7 +7,6 @@ public class DroneBShoot : MonoBehaviour
     private float ShootCounter = 0;
     public int ShootNum = 0;
     private GameObject EnemyBullet;
-    public bool Shootable = false;
     public float ShootDelay;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,14 +16,13 @@ public class DroneBShoot : MonoBehaviour
 
     void OnEnable()
     {
-        Shootable = false;
         ShootCounter = 0;
         ShootNum = 0;
     }
     // Update is called once per frame
     void Update()
     {
-        if (Shootable)
+        if (gameObject.GetComponent<DroneInfo>().Shootable)
         {
             if (ShootCounter >= ShootDelay)
             {
@@ -45,6 +43,6 @@ public class DroneBShoot : MonoBehaviour
         GameObject bulletB = DroneObjectManager.Instance.PullObject("BulletEnemy");
         bulletB.transform.position = transform.position;
         bulletB.transform.Translate(1.0f, -0.55f, 0);
-        ShootNum++;
+        gameObject.GetComponent<DroneInfo>().ShootNum++;
     }
 }

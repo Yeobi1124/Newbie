@@ -150,8 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9f4db7322d9ca47b556e21e1ba0796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OriginalHealth: 3
   Health: 3
   DroneSpeed: 1
+  ShootNum: 0
+  Shootable: 1
 --- !u!114 &6041300648352374786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449227c3ff7dd284ba9718448fbabe16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xCenter: 0
   yOffset: 0
   Amplitude: 1
   Frequency: 1

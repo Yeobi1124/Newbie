@@ -1,18 +1,24 @@
 using System.Threading;
 using Unity.Collections;
 using UnityEngine;
+using DG.Tweening;
+using System.Xml.Serialization;
 
 public class DroneMove : MonoBehaviour
 {
     public float xCenter;
+    public float xOffset;
     public float yOffset;
     public float Amplitude = 1f;
     public float Frequency = 1f;
 
+
+    private float startangle = 120;
+    private float startanglerev = 240;
     private float DroneSpeed;
     public enum Pattern
     {
-        direct, wavy, stay, not, circle
+        direct, wavy, stay, not, circle, test, arc, arcrev, up2down, down2up
     };
 
     public Pattern pattern;
@@ -22,7 +28,8 @@ public class DroneMove : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        DOTween.Init();
+        startangle = Mathf.Deg2Rad * startangle;
     }
 
     void OnEnable()
@@ -56,6 +63,21 @@ public class DroneMove : MonoBehaviour
             case Pattern.circle:
                 CircleMove();
                 break;
+            case Pattern.test:
+                TestMove();
+                break;
+            case Pattern.arc:
+                ArcMove();
+                break;
+            case Pattern.arcrev:
+                ArcRevMove();
+                break;
+            case Pattern.up2down:
+                Up2DownMove();
+                break;
+            case Pattern.down2up:
+                Down2UpMove();
+                break;
             default:
                 Debug.Log("Error! None Pattern!");
                 break;
@@ -79,14 +101,18 @@ public class DroneMove : MonoBehaviour
     //대기 후 퇴장
     private void StayMove()
     {
-        if (gameObject.GetComponent<DroneBShoot>().ShootNum < 5)
+        if (gameObject.GetComponent<DroneInfo>().ShootNum < 5)
         {
-            if (transform.position.x > 6.5) transform.Translate(DroneSpeed * Time.deltaTime, 0, 0);
-            else gameObject.GetComponent<DroneBShoot>().Shootable = true;
+            if (transform.position.x > 6.5)
+            {
+                gameObject.GetComponent<DroneInfo>().Shootable = false;
+                transform.Translate(DroneSpeed * Time.deltaTime, 0, 0);
+            }
+            else gameObject.GetComponent<DroneInfo>().Shootable = true;
         }
         else
         {
-            gameObject.GetComponent<DroneBShoot>().Shootable = false;
+            gameObject.GetComponent<DroneInfo>().Shootable = false;
             transform.Translate(-DroneSpeed * Time.deltaTime, 0, 0);
         }
 
@@ -101,9 +127,9 @@ public class DroneMove : MonoBehaviour
     //회전이동
     private void CircleMove()
     {
-        
-        float radius = 1f;               
-        float angularSpeed = 2f;       
+
+        float radius = 1f;
+        float angularSpeed = 2f;
         Vector3 circleCenter = new Vector3(xCenter, yOffset, 0);
 
         float angle = timer * angularSpeed; // 시간에 따라 증가하는 각도 (라디안)
@@ -114,4 +140,59 @@ public class DroneMove : MonoBehaviour
         transform.position = circleCenter + new Vector3(x, y, 0);
         xCenter -= Time.deltaTime * DroneSpeed;
     }
+
+    //DOTween test
+    private void TestMove()
+    {
+        Vector3 targetPos = new Vector3(8, 6, 0);
+        gameObject.transform.DOLocalMove(targetPos, 10f).SetEase(Ease.OutQuart);
+        //transform.DOMove()
+    }
+
+    //호선이동
+    private void ArcMove()
+    {
+        float radius = 7f;
+        float angularSpeed = DroneSpeed;
+        Vector3 circleCenter = new Vector3(13, 0, 0);
+        startangle += Time.deltaTime * angularSpeed; // 시간에 따라 증가하는 각도 (라디안)
+
+        float x = Mathf.Cos(startangle) * radius;
+        float y = Mathf.Sin(startangle) * radius;
+
+        transform.position = circleCenter + new Vector3(x, y, 0);
+    }
+
+    //반대호선
+    private void ArcRevMove()
+    {
+        float radius = 7f;
+        float angularSpeed = DroneSpeed;
+        Vector3 circleCenter = new Vector3(13, 0, 0);
+        startanglerev -= Time.deltaTime * angularSpeed; // 시간에 따라 감소하는 각도 (라디안)
+
+        float x = -Mathf.Cos(startanglerev) * radius;
+        float y = -Mathf.Sin(startanglerev) * radius;
+
+        transform.position = circleCenter + new Vector3(x, y, 0);
+    }
+
+    //위에서 아래로
+    private void Up2DownMove()
+    {
+        Frequency = 3;
+        float x = xOffset + Mathf.Sin(timer * Frequency) * Amplitude;
+        float y = transform.position.y - DroneSpeed * Time.deltaTime;
+        transform.position = new Vector3(x, y, transform.position.z);
+    }
+
+    //아래에서 위로
+    private void Down2UpMove()
+    {
+        Frequency = 3;
+        float x = xOffset + Mathf.Sin(timer * Frequency) * Amplitude;
+        float y = transform.position.y + DroneSpeed * Time.deltaTime;
+        transform.position = new Vector3(x, y, transform.position.z);
+    }
+
 }

@@ -149,8 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9f4db7322d9ca47b556e21e1ba0796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OriginalHealth: 3
   Health: 3
   DroneSpeed: 3
+  ShootNum: 0
+  Shootable: 1
 --- !u!114 &813945832353916194
 MonoBehaviour:
   m_ObjectHideFlags: 0
