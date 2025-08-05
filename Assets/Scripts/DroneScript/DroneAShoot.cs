@@ -14,19 +14,23 @@ public class DroneAShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ShootCounter >= ShootDelay)
+        if (gameObject.GetComponent<DroneInfo>().Shootable)
         {
-            Shoot();
-            ShootCounter = 0;
-        }
+            if (ShootCounter >= ShootDelay)
+            {
+                Shoot();
+                ShootCounter = 0;
+            }
 
-        ShootCounter += Time.deltaTime;
+            ShootCounter += Time.deltaTime;
+        }
     }
 
     public void Shoot()
     {
         GameObject bullet = DroneObjectManager.Instance.PullObject("BulletEnemy");
         bullet.transform.position = transform.position;
+        gameObject.GetComponent<DroneInfo>().ShootNum++;
     }
 
 }

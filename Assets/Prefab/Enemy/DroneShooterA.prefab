@@ -149,8 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9f4db7322d9ca47b556e21e1ba0796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OriginalHealth: 3
   Health: 3
   DroneSpeed: 1
+  ShootNum: 0
+  Shootable: 1
 --- !u!114 &6534847393337578669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449227c3ff7dd284ba9718448fbabe16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xCenter: 0
   yOffset: 0
   Amplitude: 1
   Frequency: 1
@@ -180,4 +184,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyBullet: {fileID: 1601997350750905400, guid: f874c5ec760a8ae40bfc6f3fca7fdac8, type: 3}
-  ShootDelay: 3
+  ShootDelay: 2
