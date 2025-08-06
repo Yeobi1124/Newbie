@@ -12,7 +12,7 @@ public class DroneInfo : Attack, IHittable
     public float OriginalSpeed = 1;
     public float DroneSpeed;
     public int ShootNum = 0;
-    public bool Shootable = true;
+    public bool Shootable = false;
     public bool isFriendly = false;
     public bool isDestroyed = false;
     public float chargeDamage = 20;
@@ -62,10 +62,9 @@ public class DroneInfo : Attack, IHittable
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                hittable.Hit(chargeDamage);
                 Destroyed();
+                hittable.Hit(chargeDamage);
                 DroneSpeed = 0;
-                return;
             }
         }
         if (col.gameObject.CompareTag("Border"))
@@ -78,8 +77,9 @@ public class DroneInfo : Attack, IHittable
     {
         isDestroyed = true;
         Shootable = false;
+        Debug.Log($"NONE Shootable: {gameObject.GetComponent<DroneInfo>().Shootable}");
         gameObject.GetComponent<DroneAnimation>().OnDead();
-        GameObject shard = DroneObjectManager.Instance.PullObject("EnergyShard");
+        //GameObject shard = DroneObjectManager.Instance.PullObject("EnergyShard");
     }
 
 }
