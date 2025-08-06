@@ -14,7 +14,11 @@ GameObject:
   - component: {fileID: 7140941016204671754}
   - component: {fileID: 6089297721600177469}
   - component: {fileID: 5864314261043753708}
+<<<<<<< Updated upstream
   - component: {fileID: 1522477837922078403}
+=======
+  - component: {fileID: 6745798068510402861}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: DroneShooterE
   m_TagString: Untagged
@@ -150,11 +154,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9f4db7322d9ca47b556e21e1ba0796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OriginalHealth: 3
+  OriginalHealth: 50
   Health: 3
-  DroneSpeed: 0.5
+  DroneSpeed: 1
   ShootNum: 0
   Shootable: 1
+  animator: {fileID: 0}
+  check: 0
 --- !u!114 &6089297721600177469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5859266561205844532}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 449227c3ff7dd284ba9718448fbabe16, type: 3}
   m_Name: 
@@ -187,7 +193,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyBullet: {fileID: 1601997350750905400, guid: f874c5ec760a8ae40bfc6f3fca7fdac8, type: 3}
   ShootDelay: 0
+<<<<<<< Updated upstream
 --- !u!114 &1522477837922078403
+=======
+--- !u!114 &6745798068510402861
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,12 +206,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5859266561205844532}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: 6a5ef249da43b4744b833d180b464e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
   moveDuration: 2
   stopDuration: 2
+=======
+  m_Script: {fileID: 11500000, guid: 8902ad46f0ac23f4fb37e639cbc03748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  moveDuration: 1
+>>>>>>> Stashed changes
   minBounds: {x: 0, y: -5}
   maxBounds: {x: 9, y: 5}
   droneSpeed: 1

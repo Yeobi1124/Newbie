@@ -2,6 +2,7 @@ using System;
 using UnityEditor.Rendering;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Scripting.APIUpdating;
 
 public class DroneInfo : MonoBehaviour
@@ -11,7 +12,8 @@ public class DroneInfo : MonoBehaviour
     public float DroneSpeed = 1;
     public int ShootNum = 0;
     public bool Shootable = true;
-
+    public Animator animator;
+    public int check = 0;
     void Start()
     {
         Shootable = true;
@@ -36,19 +38,21 @@ public class DroneInfo : MonoBehaviour
 
         if (Health <= 0)
         {
+            check++;
             Destroyed();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "border") gameObject.SetActive(false);
+        Health -= 1;
     }
 
     
     //파괴시 가동
     private void Destroyed()
     {
+        //animator.Play("DroneExplosion");
         gameObject.SetActive(false);
     }
 }
