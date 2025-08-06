@@ -861,11 +861,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2c63934ee69b44185297e8d387840e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP_bar: {fileID: 1767309159}
-  MP_bar: {fileID: 682622332}
+  HP_bar: {fileID: 0}
+  SP_bar: {fileID: 0}
   Menu: {fileID: 865581091}
   BGM_Volume: {fileID: 0}
   SE_Volume: {fileID: 0}
+  ResumeButton: {fileID: 0}
   QuitButton: {fileID: 2066338751}
 --- !u!1 &682622330
 GameObject:
@@ -2039,10 +2040,6 @@ PrefabInstance:
     - target: {fileID: 7303974074018659497, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7303974074018659497, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9103409048517855142, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
       propertyPath: m_LocalPosition.x
