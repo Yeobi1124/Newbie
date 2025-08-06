@@ -13,11 +13,12 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(BulletSpeed * Time.deltaTime, 0, 0);
+        // transform.Translate(BulletSpeed * Time.deltaTime, 0, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "Border") Destroy(gameObject);
+        // if(col.gameObject.tag == "Border") Destroy(gameObject);
+        if(col.gameObject.tag == "Border") gameObject.SetActive(false);
     }
 }
