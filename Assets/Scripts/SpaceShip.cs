@@ -119,7 +119,7 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
 
     public bool IsValidTarget(bool isFriendlyToPlayer) => isFriendlyToPlayer != this.isFriendlyToPlayer;
 
-    public void Hit(float damage)
+    public void Hit(float damage, bool parryable = true)
     {
         health -= damage;
 

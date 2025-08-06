@@ -8,13 +8,19 @@ public class ChragerInfo : Attack, IHittable
     public float DroneSpeed = 1;
     public int check = 0;
     public bool detect = false;
-
+    public float chargeDamage= 20;
     private bool isEnemy = true; // true: 적, false: 플레이어 편
     private bool isDestroyed = false;
-
+    void Awake()
+    {
+        gameObject.GetComponent<DroneAnimation>().Anim.enabled = false;
+    }
     void Start()
     {
+        isDestroyed = false;
         ResetCharger();
+        Health = OriginalHealth;
+        gameObject.GetComponent<DroneAnimation>().Anim.enabled = false;
     }
 
     void Update()
@@ -29,6 +35,7 @@ public class ChragerInfo : Attack, IHittable
         // 체력이 0 이하일 때 한 번만 파괴 처리
         if (Health <= 0 && !isDestroyed)
         {
+            Debug.Log("Dead?");
             isDestroyed = true;
             check++;
             Destroyed();
@@ -42,18 +49,20 @@ public class ChragerInfo : Attack, IHittable
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                hittable.Hit(damage);
-                gameObject.SetActive(false);
+                hittable.Hit(chargeDamage);
+                Destroyed();
+                gameObject.GetComponent<ChargerAMove>().chargeSpeed = 0;
+                gameObject.GetComponent<ChargerAMove>().droneSpeed = 0;
                 return;
             }
         }
         if (col.gameObject.CompareTag("Border"))
         {
-            gameObject.SetActive(false);
+            gameObject.GetComponent<DroneAnimation>().OnDead();
         }
     }
 
-    public void Hit(float damage)
+    public void Hit(float damage, bool parryable = true)
     {
         Health -= damage;
     }
@@ -65,7 +74,8 @@ public class ChragerInfo : Attack, IHittable
 
     private void Destroyed()
     {
-        gameObject.SetActive(false);
+        gameObject.GetComponent<DroneAnimation>().OnDead();
+        
     }
 
     public void ResetCharger()

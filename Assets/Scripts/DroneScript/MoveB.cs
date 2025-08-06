@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
@@ -18,8 +19,17 @@ public class MoveB : MonoBehaviour
     private bool summon = true;
     //TODO - RandomMove
 
+    void OnEnable()
+    {
+        moveSpeed = 3;
+        droneSpeed = 1f;
+        summon = true;
+        gameObject.GetComponent<DroneInfo>().Shootable = false;
+    }
     void Start()
     {
+        moveSpeed = 3;
+        droneSpeed = 1f;
         summon = true;
         gameObject.GetComponent<DroneInfo>().Shootable = false;
     }
@@ -37,6 +47,13 @@ public class MoveB : MonoBehaviour
             gameObject.GetComponent<DroneInfo>().Shootable = true;
             RandomMove();
         }
+
+        if (gameObject.GetComponent<DroneInfo>().isDestroyed)
+        {
+            droneSpeed = 0;
+            moveSpeed = 0;
+        }
+
     }
     private void RandomMove()
     {
