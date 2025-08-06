@@ -1,54 +1,57 @@
-using System;
-using UnityEditor.Rendering;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
 
-public class DroneInfo : MonoBehaviour
+public class DroneInfo : MonoBehaviour, IHittable
 {
     public float OriginalHealth;
     public float Health;
     public float DroneSpeed = 1;
     public int ShootNum = 0;
     public bool Shootable = true;
+    public bool isFriendly = false; // true: 플레이어 편, false: 적군
+    private bool isDestroyed = false;
 
     void Start()
     {
-        Shootable = true;
-        Health = OriginalHealth;
-        ShootNum = 0;
+        ResetDrone();
     }
 
-    void Onable()
-    {
-        Shootable = true;
-        Health = OriginalHealth;
-        ShootNum = 0;        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (gameObject.transform.position.x < -16 || gameObject.transform.position.x > 16 || gameObject.transform.position.y < -10 || gameObject.transform.position.y > 10)
+        // 화면 밖으로 나가면 비활성화
+        if (transform.position.x < -16 || transform.position.x > 16 ||
+            transform.position.y < -10 || transform.position.y > 10)
         {
             gameObject.SetActive(false);
         }
 
-        if (Health <= 0)
+        // 체력이 0 이하면 비활성화
+        if (Health <= 0 && !isDestroyed)
         {
+            isDestroyed = true;
             Destroyed();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    public void Hit(float damage)
     {
-        if (collider.gameObject.tag == "border") gameObject.SetActive(false);
+        Health -= damage;
+    }
+    
+    public bool IsValidTarget(bool isFriendlyToAttacker)
+    {
+        return isFriendly != isFriendlyToAttacker;
     }
 
-    
-    //파괴시 가동
     private void Destroyed()
     {
         gameObject.SetActive(false);
+    }
+
+    public void ResetDrone()
+    {
+        Shootable = true;
+        Health = OriginalHealth;
+        ShootNum = 0;
+        isDestroyed = false;
     }
 }

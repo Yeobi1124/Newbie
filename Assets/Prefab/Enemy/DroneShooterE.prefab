@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7140941016204671754}
   - component: {fileID: 6089297721600177469}
   - component: {fileID: 5864314261043753708}
+  - component: {fileID: 5984293867004770254}
   m_Layer: 0
   m_Name: DroneShooterE
   m_TagString: Untagged
@@ -149,11 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9f4db7322d9ca47b556e21e1ba0796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OriginalHealth: 3
-  Health: 3
-  DroneSpeed: 0.5
+  OriginalHealth: 100
+  Health: 100
+  DroneSpeed: 1
   ShootNum: 0
   Shootable: 1
+  isFriendly: 0
 --- !u!114 &6089297721600177469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,12 +163,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5859266561205844532}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 449227c3ff7dd284ba9718448fbabe16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   xCenter: 0
+  xOffset: 0
   yOffset: 0
   Amplitude: 1
   Frequency: 1
@@ -185,3 +188,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyBullet: {fileID: 1601997350750905400, guid: f874c5ec760a8ae40bfc6f3fca7fdac8, type: 3}
   ShootDelay: 0
+--- !u!114 &5984293867004770254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859266561205844532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872236244a017cb4cba714e05f943e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  moveDuration: 1
+  minBounds: {x: 0, y: -5}
+  maxBounds: {x: 9, y: 5}
+  droneSpeed: 1
