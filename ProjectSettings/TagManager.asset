@@ -7,14 +7,15 @@ TagManager:
   - Border
   - BulletPlayer
   - BulletEnemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Border
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
