@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     public Slider SE_Volume;
     public Button QuitButton;
 
-    public PlayerInput playerInput;
+    private PlayerInput playerInput;
 
     private void Awake()
     {
@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
 
         Menu.SetActive(false);
 
+        playerInput = GetComponent<PlayerInput>();
         InputActionMap inputs = playerInput.actions.FindActionMap("UI");
         inputs.FindAction("ESC").performed += ToggleMenu;
 
