@@ -12,12 +12,13 @@ public class SpecialAttack : Skill
 
     private bool isLocked = false;
     
-    public override void Use()
+    public override bool Use()
     {
-        if (isLocked == true || _energy.Energy < _energyConsumption) return;
+        if (isLocked == true || _energy.Energy < _energyConsumption) return false;
         _energy.Energy -= _energyConsumption;
 
         StartCoroutine(Activate());
+        return true;
     }
 
     private IEnumerator Activate()
