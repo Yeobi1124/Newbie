@@ -2,28 +2,35 @@ using UnityEngine;
 
 public class SpecialBullet : Attack
 {
-    public GameObject muzzleEffect;
     public float BulletSpeed;
     public Vector3 moveDirection;
     public bool charging;
-
+    public GameObject muzzle;
+    public MuzzleFlashAnimation muzzleAnim;
+    public float timer;
+    public float duration;
     void OnEnable()
     {
+        timer = 0;
         charging = true;
-        gameObject.GetComponent<MuzzleFlashAnimation>().ChargeStart();
+        muzzleAnim = muzzle.GetComponent<MuzzleFlashAnimation>();
     }
     void Update()
-    {   
-        charging = gameObject.GetComponent<MuzzleFlashAnimation>().charging;
+    {
         if (!charging)
         {
-            gameObject.GetComponent<MuzzleFlashAnimation>().Shoot();
             if (moveDirection == new Vector3(0, 0, 0)) moveDirection = new Vector3(-1, 0, 0);
             transform.position += moveDirection * BulletSpeed * Time.deltaTime;
+            charging = true;
         }
         if (transform.position.x < -10)
         {
             gameObject.SetActive(false);
+        }
+
+        if (timer >= duration)
+        {
+            charging = false;
         }
     }
 
