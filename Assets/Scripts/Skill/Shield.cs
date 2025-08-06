@@ -6,7 +6,7 @@ public class Shield : MonoBehaviour, IHittable
     [SerializeField] private Parry parry;
     [SerializeField] private bool isFriendlyToPlayer = true;
     
-    public void Hit(float damage)
+    public void Hit(float damage, bool parryable = true)
     {
         parry.ParrySuccess(damage);
     }

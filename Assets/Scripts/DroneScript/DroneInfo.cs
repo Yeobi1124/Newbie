@@ -34,7 +34,7 @@ public class DroneInfo : MonoBehaviour, IHittable
         }
     }
 
-    public void Hit(float damage)
+    public void Hit(float damage, bool parryable = true)
     {
         Health -= damage;
     }
