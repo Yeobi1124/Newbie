@@ -48,8 +48,8 @@ public class Parry : Skill
 
     private void ParrySuccess(Collider2D other)
     {
-        // Temp Code
-        if (other.CompareTag("BulletEnemy") == false) return;
+        // Attack Check
+        if (TryGetComponent(out Attack attack) == false) return;
         
         // Fill Energy
         _energy.Energy = _energy.Energy + fillEnergyWhenSuccess > _energy.MaxEnergy ? _energy.MaxEnergy : _energy.Energy + fillEnergyWhenSuccess;
@@ -62,6 +62,7 @@ public class Parry : Skill
         isLocked = false;
         StopCoroutine(coroutine);
         
-        // Todo : Remove Bullet
+        // Remove Bullet
+        other.gameObject.SetActive(false);
     }
 }
