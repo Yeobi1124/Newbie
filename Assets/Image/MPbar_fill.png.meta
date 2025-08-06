@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 982afe066e12ae6408c911fae88e8f77
+guid: adc95753582238e429df73fe4b4078e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8652090109655752871
-    second: Bar_BackGround_0
+      213: 6305055426273938608
+    second: MPbar_fill_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bar_BackGround_0
+      name: MPbar_fill_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 550
-        height: 50
+        width: 380
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a0a3be2d16621870800000000000000
-      internalID: 8652090109655752871
+      spriteID: 0bc053c218e008750800000000000000
+      internalID: 6305055426273938608
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ef4d8c81ca8cfbc409041b7693a67207
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bar_BackGround_0: 8652090109655752871
+      MPbar_fill_0: 6305055426273938608
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
