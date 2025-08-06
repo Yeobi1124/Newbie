@@ -3,10 +3,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
+using TMPro;
+using System;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+
+    public TMP_Text time;
 
     [Header("PlayerInfo")]
     public Image HP_bar;
@@ -46,6 +50,11 @@ public class UIManager : MonoBehaviour
         SP_bar.fillAmount = 1;
     }
 
+    private void Update()
+    {
+        time.text = DateTime.Now.ToString("HH:mm:ss");
+    }
+
     public void ToggleMenu(InputAction.CallbackContext context)
     {
         Menu.SetActive(Menu.activeSelf ? false : true);
@@ -58,7 +67,7 @@ public class UIManager : MonoBehaviour
 
     public void QuitGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("StartScene");
     }
 
     public void ChangeStatusValue(string type, float val)
