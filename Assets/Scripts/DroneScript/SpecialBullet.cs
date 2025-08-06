@@ -2,28 +2,25 @@ using UnityEngine;
 
 public class SpecialBullet : Attack
 {
-    //ToDo - Animation check
-    public bool isAnimationIsOver;
+    public GameObject muzzleEffect;
     public float BulletSpeed;
+    public Vector3 moveDirection;
+    public bool charging;
 
-
-    void Start()
+    void OnEnable()
     {
-        isAnimationIsOver = false;
+        charging = true;
+        gameObject.GetComponent<MuzzleFlashAnimation>().ChargeStart();
     }
     void Update()
-    {
-        if (isAnimationIsOver)
+    {   
+        charging = gameObject.GetComponent<MuzzleFlashAnimation>().charging;
+        if (!charging)
         {
-            Shooting();
+            gameObject.GetComponent<MuzzleFlashAnimation>().Shoot();
+            if (moveDirection == new Vector3(0, 0, 0)) moveDirection = new Vector3(-1, 0, 0);
+            transform.position += moveDirection * BulletSpeed * Time.deltaTime;
         }
-    }
-
-
-    private void Shooting()
-    {
-        transform.Translate(BulletSpeed * Time.deltaTime, 0, 0);
-
         if (transform.position.x < -10)
         {
             gameObject.SetActive(false);
@@ -32,12 +29,15 @@ public class SpecialBullet : Attack
 
     protected override void OnTriggerEnter2D(Collider2D col)
     {
+        //Debug.Log("Trigger called?");
         if (col.TryGetComponent(out IHittable hittable))
         {
+            //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
                 hittable.Hit(damage);
                 gameObject.SetActive(false);
+                moveDirection = new Vector3(0, 0, 0);
                 return;
             }
         }
