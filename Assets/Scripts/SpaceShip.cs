@@ -137,9 +137,10 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
     {
         if (other.CompareTag("Shard"))
         {
-            EnergyShard energyShard = GetComponent<EnergyShard>();
+            EnergyShard energyShard = other.GetComponent<EnergyShard>();
             
-            // Get Energy Shard Info, fill energy
+            Energy += energyShard.energyFillAmount;
+            other.gameObject.SetActive(false);
         }
     }
 }
