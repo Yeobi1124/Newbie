@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
-    public static ObjectManager instance;
-    
-    // private라 Inspector에서 접근이 불가능해서 public으로 둠...
-    public GameObject BulletPlayerPrefab;
-    public GameObject BulletEnemyPrefab;
-    public GameObject DroneShooterPrefab;
-    public GameObject DroneChargerPrefab;
+    private static ObjectManager instance;
+
+    GameObject BulletPlayerPrefab;
+    GameObject BulletEnemyPrefab;
+    GameObject DroneShooterPrefab;
+    GameObject DroneChargerPrefab;
 
     GameObject[] BulletPlayer;
     GameObject[] BulletEnemy;
