@@ -14,7 +14,7 @@ public class MoveB : MonoBehaviour
     private float moveTimer = 0f;
     private float stopTimer = 0f;
     private bool isMoving = true;
-
+    public bool charging;
     public float droneSpeed = 1f;
     private bool summon = true;
     //TODO - RandomMove

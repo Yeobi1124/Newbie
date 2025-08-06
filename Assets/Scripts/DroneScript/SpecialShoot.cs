@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpecialShoot : MonoBehaviour
 {
-    public GameObject specialBullet;
+    
     private float ShootCounter = 0;
     public float ShootDelay;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,7 +28,7 @@ public class SpecialShoot : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log("Special shooting");
+        //Debug.Log("Special shooting");
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletEnemyBig");
         bulletA.transform.position = transform.position;
         gameObject.GetComponent<DroneInfo>().ShootNum++;
