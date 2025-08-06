@@ -14,10 +14,12 @@ public partial class PlayerTargetBulletAttackAction : Action
     [SerializeReference] public BlackboardVariable<float> Duration;
     private float curDuration;
     private int bulletCnt;
+    private float bulletSpeed;
     protected override Status OnStart()
     {
         ResetDuration();
         bulletCnt = 0;
+        bulletSpeed = 10;
         return Status.Running;
     }
 
@@ -45,12 +47,13 @@ public partial class PlayerTargetBulletAttackAction : Action
     {
         GameObject bulletObj = ObjectManager.instance.PullObject("BulletEnemy");
         bulletObj.transform.position = Self.Value.transform.position;
-        
 
         Vector2 bulletDir = CalculateBulletDir(Self.Value.transform.position, Target.Value.transform.position);
-        Debug.Log(bulletDir + ","+ (Self.Value.transform.position - Target.Value.transform.position));
-        BulletController bulletController = bulletObj.GetComponent<BulletController>();
-        bulletController.Init(bulletDir);
+        Rigidbody2D bulletRb = bulletObj.GetComponent<Rigidbody2D>();
+        bulletRb.linearVelocity = bulletDir * bulletSpeed;
+
+        float angle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
+        bulletObj.transform.rotation = Quaternion.Euler(0,0, angle);
     }
 
     private Vector2 CalculateBulletDir(Vector2 bossPosition, Vector2 targetPosition) => (targetPosition-bossPosition).normalized;
