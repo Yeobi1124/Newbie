@@ -171,8 +171,7 @@ MonoBehaviour:
   DroneSpeed: 1
   ShootNum: 0
   Shootable: 1
-  animator: {fileID: 0}
-  check: 0
+  isFriendly: 0
 --- !u!114 &8764590483362675033
 MonoBehaviour:
   m_ObjectHideFlags: 0

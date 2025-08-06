@@ -15,8 +15,10 @@ public class DroneBullet : Attack
 
     protected override void OnTriggerEnter2D(Collider2D col)
     {
+        Debug.Log("Trigger called?");
         if (col.TryGetComponent(out IHittable hittable))
         {
+            Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
                 hittable.Hit(damage);
