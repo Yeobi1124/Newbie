@@ -11,16 +11,12 @@ public class ChragerInfo : Attack, IHittable
     public float chargeDamage= 20;
     private bool isEnemy = true; // true: 적, false: 플레이어 편
     private bool isDestroyed = false;
-    void Awake()
-    {
-        gameObject.GetComponent<DroneAnimation>().Anim.enabled = false;
-    }
+
     void Start()
     {
         isDestroyed = false;
         ResetCharger();
         Health = OriginalHealth;
-        gameObject.GetComponent<DroneAnimation>().Anim.enabled = false;
     }
 
     void Update()

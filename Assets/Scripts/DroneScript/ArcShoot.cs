@@ -28,11 +28,13 @@ public class ArcShoot : MonoBehaviour
 
     public void Shoot()
     {
+        Debug.Log("Arc Shooting");
         float angleStep = 30f; // 총알 간의 각도 차이
         float startAngle = -angleStep; // 왼쪽에서 시작 (총 3발)
 
         for (int i = 0; i < 3; i++)
         {
+            if (!gameObject.GetComponent<DroneInfo>().Shootable) return;
             float angle = startAngle + angleStep * i;
             Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.right;
             GameObject bullet = DroneObjectManager.Instance.PullObject("BulletEnemy");

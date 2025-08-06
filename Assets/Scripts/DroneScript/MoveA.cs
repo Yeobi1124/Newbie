@@ -9,7 +9,7 @@ public class MoveA : MonoBehaviour
 
     private Vector3 moveDirection;     // 현재 이동 방향
     private float moveTimer = 0f;
-
+    private bool shootable;
 
     public float droneSpeed = 1f;
     private bool summon = true;
@@ -26,6 +26,7 @@ public class MoveA : MonoBehaviour
 
     void Update()
     {
+        shootable = gameObject.GetComponent<DroneInfo>().Shootable;
         if (summon)
         {
             gameObject.GetComponent<DroneInfo>().Shootable = false;
@@ -39,6 +40,7 @@ public class MoveA : MonoBehaviour
 
         if (gameObject.GetComponent<DroneInfo>().isDestroyed)
         {
+            gameObject.GetComponent<DroneInfo>().Shootable = false;
             droneSpeed = 0;
             moveSpeed = 0;
         }
