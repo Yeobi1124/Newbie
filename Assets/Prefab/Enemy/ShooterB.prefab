@@ -17,8 +17,6 @@ GameObject:
   - component: {fileID: 5976276577814656568}
   - component: {fileID: -8199420878319376054}
   - component: {fileID: 1703728659678306361}
-  - component: {fileID: 7942273850819940984}
-  - component: {fileID: 242291376819412762}
   m_Layer: 0
   m_Name: ShooterB
   m_TagString: Untagged
@@ -225,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Anim: {fileID: 0}
-  OriginSprite: {fileID: 21300000, guid: 828d35d63f9661242a55544f3b25703f, type: 3}
+  OriginSprite: {fileID: 0}
 --- !u!95 &1703728659678306361
 Animator:
   serializedVersion: 7
@@ -248,34 +246,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7942273850819940984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056394675418078706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430d1fc78fac8e24398f7c1387266f44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 30
-  isFriendlyToPlayer: 0
-  muzzleEffect: {fileID: 7174201092683887729, guid: e534547c8e2b4824dbcfc307d3ef5861, type: 3}
-  BulletSpeed: 5
-  moveDirection: {x: 0, y: 0, z: 0}
-  charging: 0
---- !u!114 &242291376819412762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056394675418078706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aff99983bd8101469750e34148ac8b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShootDelay: 5

@@ -32,6 +32,8 @@ public class DroneInfo : Attack, IHittable
         if (Health <= 0 && !isDestroyed)
         {
             Destroyed();
+            GameObject shard = DroneObjectManager.Instance.PullObject("Shard");
+            shard.transform.position = gameObject.transform.position;
         }
     }
 
@@ -77,7 +79,7 @@ public class DroneInfo : Attack, IHittable
     {
         isDestroyed = true;
         Shootable = false;
-        Debug.Log($"NONE Shootable: {gameObject.GetComponent<DroneInfo>().Shootable}");
+        //Debug.Log($"NONE Shootable: {gameObject.GetComponent<DroneInfo>().Shootable}");
         gameObject.GetComponent<DroneAnimation>().OnDead();
         //GameObject shard = DroneObjectManager.Instance.PullObject("EnergyShard");
     }
