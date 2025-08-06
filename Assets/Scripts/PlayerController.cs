@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using Unity.VisualScripting.InputSystem;
 using UnityEngine;
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Status")]
     [SerializeField] private float basicAttackInterval = 0.3f;
+
+    [SerializeField] private bool autoFireLock = false;
+    [SerializeField] private float autoFireLockTime = 8f;
 
     [SerializeField] private float targetEnergyAmount = 1f;
     [SerializeField] private float fillEnergyPerSecond = 0.2f;
@@ -66,6 +70,8 @@ public class PlayerController : MonoBehaviour
         }
         
         // Basic Attack
+        if (autoFireLock) return;
+        
         _time += Time.deltaTime;
         
         if (_time >= basicAttackInterval)
@@ -79,5 +85,17 @@ public class PlayerController : MonoBehaviour
     private void Parry(InputAction.CallbackContext context) => parrying.Use();
     private void Heal(InputAction.CallbackContext context) => heal.Use();
     private void HeavyAttack(InputAction.CallbackContext context) => heavyAttack.Use();
-    private void SpecialAttack(InputAction.CallbackContext context) => specialAttack.Use();
+
+    private void SpecialAttack(InputAction.CallbackContext context)
+    {
+        if (specialAttack.Use() == false) return;
+        autoFireLock = true;
+        StartCoroutine(UnlockAutoFire());
+    }
+
+    IEnumerator UnlockAutoFire()
+    {
+        yield return new WaitForSeconds(autoFireLockTime);
+        autoFireLock = false;
+    }
 }

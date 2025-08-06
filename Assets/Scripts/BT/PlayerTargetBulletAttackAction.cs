@@ -15,12 +15,15 @@ public partial class PlayerTargetBulletAttackAction : Action
     private float curDuration;
     private int bulletCnt;
     private float bulletSpeed;
-    protected override Status OnStart()
+    private Vector2 bulletDir;
+
+	protected override Status OnStart()
     {
         ResetDuration();
         bulletCnt = 0;
         bulletSpeed = 10;
-        return Status.Running;
+		bulletDir = CalculateBulletDir(Self.Value.transform.position, Target.Value.transform.position);
+		return Status.Running;
     }
 
     protected override Status OnUpdate()
@@ -34,7 +37,7 @@ public partial class PlayerTargetBulletAttackAction : Action
 
         if (curDuration >= Duration.Value)
         {
-            BulletMake();
+            BulletMake(bulletDir);
             curDuration = 0f;
             bulletCnt++;
         }
@@ -43,12 +46,12 @@ public partial class PlayerTargetBulletAttackAction : Action
     }
 
 
-    private void BulletMake()
+    private void BulletMake(Vector2 bulletDir)
     {
         GameObject bulletObj = ObjectManager.instance.PullObject("BulletEnemy");
         bulletObj.transform.position = Self.Value.transform.position;
 
-        Vector2 bulletDir = CalculateBulletDir(Self.Value.transform.position, Target.Value.transform.position);
+        
         Rigidbody2D bulletRb = bulletObj.GetComponent<Rigidbody2D>();
         bulletRb.linearVelocity = bulletDir * bulletSpeed;
 
