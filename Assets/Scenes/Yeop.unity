@@ -301,8 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979314c6587ef6a45b70c6d065d2c02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPlayerPrefab: {fileID: 8448464791600821242, guid: fc7788f304fdaa44bbcb21daf0138cc0, type: 3}
-  BulletEnemyPrefab: {fileID: 8448464791600821242, guid: 6d4ce8da327abdb498c429d37cf2473f, type: 3}
+  BulletPlayerPrefab: {fileID: 8448464791600821242, guid: 6d4ce8da327abdb498c429d37cf2473f, type: 3}
+  BulletEnemyPrefab: {fileID: 8448464791600821242, guid: fc7788f304fdaa44bbcb21daf0138cc0, type: 3}
   DroneShooterPrefab: {fileID: 3418525428437749199, guid: 219414169c486a4469052834de44b05b, type: 3}
   DroneChargerPrefab: {fileID: 8448464791600821242, guid: 6d4ce8da327abdb498c429d37cf2473f, type: 3}
 --- !u!114 &597566297

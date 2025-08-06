@@ -38,13 +38,13 @@ public class ObjectManager : MonoBehaviour
     {
         for (int index = 0; index < BulletEnemy.Length; index++)
         {
-            BulletEnemy[index] = Instantiate(BulletPlayerPrefab);
-            BulletEnemy[index].SetActive(false);
+            BulletPlayer[index] = Instantiate(BulletPlayerPrefab);
+            BulletPlayer[index].SetActive(false);
         }
         for (int index = 0; index < BulletPlayer.Length; index++)
         {
-            BulletPlayer[index] = Instantiate(BulletEnemyPrefab);
-            BulletPlayer[index].SetActive(false);
+            BulletEnemy[index] = Instantiate(BulletEnemyPrefab);
+            BulletEnemy[index].SetActive(false);
         }
         for (int index = 0; index < DroneShooter.Length; index++)
         {
