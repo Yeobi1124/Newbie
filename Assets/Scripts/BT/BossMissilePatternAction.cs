@@ -27,7 +27,11 @@ public partial class BossMissilePatternAction : Action
         Attack missileAtk = missileObj.GetComponent<Attack>();
         missileAtk.isFriendlyToPlayer = false;
 
-        MissileController missileController = missileObj.AddComponent<MissileController>();
+        MissileController missileController = missileObj.GetComponent<MissileController>();
+        if(missileController == null)
+        {
+			missileController = missileObj.AddComponent<MissileController>();
+		}
         missileController.Initialize(mover);
     }
 
