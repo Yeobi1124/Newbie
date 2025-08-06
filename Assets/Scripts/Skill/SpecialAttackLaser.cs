@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -12,6 +13,9 @@ public class SpecialAttackLaser : MonoBehaviour
     [SerializeField]
     private bool _active = false;
     private float _progress; // 0 to 1
+    
+    [SerializeField] private float _lineMaxWidth;
+    [SerializeField] private float _disappearTime = 0.5f;
     
     private LineRenderer _lineRenderer;
     private BoxCollider2D _collider;
@@ -56,9 +60,26 @@ public class SpecialAttackLaser : MonoBehaviour
         _lineRenderer.positionCount = 2;
         _lineRenderer.SetPosition(0, transform.position);
         _lineRenderer.SetPosition(1, transform.position);
+        _lineRenderer.widthCurve = new AnimationCurve(new Keyframe(0, _lineMaxWidth));
         
         _collider.enabled = true;
         
         _active = true;
+    }
+
+    public void Stop() => StartCoroutine(Disappear());
+
+    private IEnumerator Disappear()
+    {
+        float time = 0;
+
+        while (time < _disappearTime)
+        {
+            time += Time.deltaTime;
+            _lineRenderer.widthCurve = new AnimationCurve(new Keyframe(0, _lineMaxWidth * (1 - time/_disappearTime)));
+            yield return new WaitForEndOfFrame();
+        }
+
+        Init();
     }
 }
