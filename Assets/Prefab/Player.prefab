@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2228782486840905101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4892884304223963461}
+  m_Layer: 0
+  m_Name: BasicAttackCreatePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4892884304223963461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2228782486840905101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.59, y: -0.57, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9103409048517855142}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5631795331236414029
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +222,7 @@ GameObject:
   - component: {fileID: 5194357867336490167}
   - component: {fileID: 5481573209372843892}
   - component: {fileID: 507888460091864005}
+  - component: {fileID: 8347748346861011963}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -212,6 +244,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 210074720143612891}
+  - {fileID: 4892884304223963461}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4019706263177757160
@@ -465,8 +498,10 @@ MonoBehaviour:
   heavyAttack: {fileID: 0}
   specialAttack: {fileID: 0}
   parrying: {fileID: 5481573209372843892}
-  heal: {fileID: 0}
+  heal: {fileID: 8347748346861011963}
   basicAttackInterval: 0.3
+  targetEnergyAmount: 1
+  fillEnergyPerSecond: 0.2
 --- !u!114 &5194357867336490167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,11 +696,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5870a515750461891183425903c2d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _energyConsumption: 0
+  _energyConsumption: 1
   _damage: 0
   shield: {fileID: 2649229375562097409}
-  duration: 1
+  duration: 0.5
   fillEnergyWhenSuccess: 2
+  isLocked: 0
 --- !u!114 &507888460091864005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,4 +716,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _energyConsumption: 0
   _damage: 0
-  damage: 3
+  createPoint: {fileID: 2228782486840905101}
+  _bulletSpeed: 15
+--- !u!114 &8347748346861011963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303974074018659497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29295b2158c348a1abe53c1ed04731cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _energyConsumption: 4
+  _damage: 0
+  spaceShip: {fileID: 5194357867336490167}
+  healAmount: 5
