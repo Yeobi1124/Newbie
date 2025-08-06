@@ -5,54 +5,59 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Scripting.APIUpdating;
 
-public class DroneInfo : MonoBehaviour
+public class DroneInfo : MonoBehaviour, IHittable
 {
     public float OriginalHealth;
     public float Health;
     public float DroneSpeed = 1;
     public int ShootNum = 0;
     public bool Shootable = true;
-    public Animator animator;
-    public int check = 0;
+    public bool isFriendly = false; 
+    private bool isDestroyed = false;
+    private float collisionDamage = 20;
+
     void Start()
     {
-        Shootable = true;
-        Health = OriginalHealth;
-        ShootNum = 0;
+        ResetDrone();
     }
 
-    void Onable()
-    {
-        Shootable = true;
-        Health = OriginalHealth;
-        ShootNum = 0;        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (gameObject.transform.position.x < -16 || gameObject.transform.position.x > 16 || gameObject.transform.position.y < -10 || gameObject.transform.position.y > 10)
+        if (transform.position.x < -16 || transform.position.x > 16 || transform.position.y < -10 || transform.position.y > 10)
         {
             gameObject.SetActive(false);
         }
 
-        if (Health <= 0)
+        if (Health <= 0 && !isDestroyed)
         {
-            check++;
+            isDestroyed = true;
             Destroyed();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    public void Hit(float damage)
     {
-        Health -= 1;
+        Health -= damage;
+    }
+
+    public bool IsValidTarget(bool isFriendlyToAttacker)
+    {
+        return isFriendly != isFriendlyToAttacker;
+    }
+
+    private void Destroyed()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void ResetDrone()
+    {
+        Shootable = true;
+        Health = OriginalHealth;
+        ShootNum = 0;
+        isDestroyed = false;
     }
 
     
-    //파괴시 가동
-    private void Destroyed()
-    {
-        //animator.Play("DroneExplosion");
-        gameObject.SetActive(false);
-    }
 }
+
