@@ -15,5 +15,5 @@ public abstract class Skill : MonoBehaviour
             _energy = GetComponent<IEnergy>();
     }
 
-    public abstract void Use();
+    public abstract bool Use();
 }
