@@ -12,6 +12,7 @@ public class DroneAnimation : MonoBehaviour
         Anim = GetComponent<Animator>();
         SpriteRender = GetComponent<SpriteRenderer>();
         OriginSprite = SpriteRender.sprite;
+        Anim.enabled = false;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
