@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityQuaternion;
 using UnityEngine;
 
 public class WaypointThenChase : IMissileMover
@@ -8,7 +9,7 @@ public class WaypointThenChase : IMissileMover
     private Vector2 direction;
     private Transform missileTransform;
     private Vector2 wayPoint;
-    private Transform targetTransform;
+    private Transform playerTransform;
     private Vector2 target;
     private float speed;
     private float arriveThreshold = 0.1f;
@@ -17,10 +18,10 @@ public class WaypointThenChase : IMissileMover
     public bool IsArrived { get; private set; }
 
 
-    public WaypointThenChase(Vector2 wayPoint, Transform targetTransform, float speed)
+    public WaypointThenChase(Vector2 wayPoint, Transform playerTransform, float speed)
     {
         this.wayPoint = wayPoint;
-        this.targetTransform = targetTransform;
+        this.playerTransform = playerTransform;
         target = new Vector2(0, 0);
         this.speed = speed;
     }
@@ -28,6 +29,8 @@ public class WaypointThenChase : IMissileMover
     public void Initialize(Transform missileTransform, Vector2 targetPosition)
     {
         this.missileTransform = missileTransform;
+        missileTransform.rotation = Quaternion.Euler(0, 0, 180);
+        curState = State.ToWayPoint;
         timer = 0.0f;
     }
 
@@ -42,9 +45,13 @@ public class WaypointThenChase : IMissileMover
         if (curState == State.ToWayPoint)
         {
             direction = MakeDirection(curPos, destination);
-            missileTransform.Translate(direction * speed * deltaTime);
+            missileTransform.Translate(direction * speed * deltaTime,Space.World);
 
-            if (Vector2.Distance(curPos, destination) < arriveThreshold)
+			
+			Vector2 aimDir = ((Vector2)playerTransform.position - wayPoint).normalized;
+			RotateSlowly(aimDir, deltaTime);
+
+			if (Vector2.Distance(curPos, destination) < arriveThreshold)
             {
                 curState = State.Wait;
                 timer = 0f;
@@ -54,21 +61,35 @@ public class WaypointThenChase : IMissileMover
         else if (curState == State.Wait)
         {
             timer += deltaTime;
-            if (timer >= 0.5f)
+			Vector2 aimDir = ((Vector2)playerTransform.position - curPos).normalized;
+			RotateSlowly(aimDir, deltaTime);
+			if (timer >= 0.5f)
             {
                 curState = State.ToTarget;
-                speed *= 5;
-
-                target = targetTransform.position;
+                speed *= 3;
+				target = playerTransform.position;
                 direction = MakeDirection(curPos, target);
             }
         }
         //น฿ป็
         else if (curState == State.ToTarget)
         {
-            missileTransform.Translate(direction * speed * deltaTime);
+            missileTransform.Translate(direction * speed * deltaTime,Space.World);
         }
     }
 
     private Vector2 MakeDirection(Vector2 curPos, Vector2 destination) => (destination - curPos).normalized;
+
+	private void RotateSlowly(Vector2 targetDirection, float deltaTime)
+	{
+		float rotateSpeed = 720f; // deg/sec
+		float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+
+		Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
+		missileTransform.rotation = Quaternion.RotateTowards(
+			missileTransform.rotation,
+			targetRotation,
+			rotateSpeed * deltaTime
+		);
+	}
 }
