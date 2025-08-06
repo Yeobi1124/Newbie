@@ -5,10 +5,10 @@ public class ObjectManager : MonoBehaviour
 {
     public static ObjectManager instance;
 
-    [SerializeField]GameObject BulletPlayerPrefab;
-    [SerializeField] GameObject BulletEnemyPrefab;
-    [SerializeField] GameObject DroneShooterPrefab;
-    [SerializeField] GameObject DroneChargerPrefab;
+    public GameObject BulletPlayerPrefab;
+    public GameObject BulletEnemyPrefab;
+    public GameObject DroneShooterPrefab;
+    public GameObject DroneChargerPrefab;
 
     GameObject[] BulletPlayer;
     GameObject[] BulletEnemy;
@@ -87,7 +87,7 @@ public class ObjectManager : MonoBehaviour
             }
         }
 
-        Debug.Log(type + " Ç®¿¡ ³²¾ÆÀÖ´Â ¿ÀºêÁ§Æ®°¡ ¾ø½À´Ï´Ù!");
+        Debug.Log(type + " Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½!");
         return null;
     }
 }

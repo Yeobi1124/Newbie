@@ -10,7 +10,7 @@ public class BulletController : MonoBehaviour
         direction = Vector2.right;
     }
 
-    public void Init(Vector2 dir) // ¹ß»ç ¹æÇâ º¯°æ
+    public void Init(Vector2 dir) // ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         direction = dir;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
