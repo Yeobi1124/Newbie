@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5938872302056045694}
   - component: {fileID: 3871493587112563211}
   - component: {fileID: 1587332848527248640}
+  - component: {fileID: 4004782796554000227}
   m_Layer: 0
   m_Name: DroneShooterB
   m_TagString: Untagged
@@ -161,12 +162,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3302743109397144731}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 449227c3ff7dd284ba9718448fbabe16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   xCenter: 0
+  xOffset: 0
   yOffset: 0
   Amplitude: 1
   Frequency: 1
@@ -185,3 +187,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShootNum: 0
   ShootDelay: 2
+--- !u!114 &4004782796554000227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3302743109397144731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7683b96cc33ff48903c1067f2dd9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  moveDuration: 1
+  minBounds: {x: 0, y: -5}
+  maxBounds: {x: 9, y: 5}
+  droneSpeed: 1
