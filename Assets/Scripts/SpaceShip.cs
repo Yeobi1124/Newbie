@@ -43,6 +43,8 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
     private float energy = 0;
     [SerializeField]
     private float maxEnergy = 7;
+
+    public bool isFriendlyToPlayer = true;
     
     public float Energy
     {
@@ -113,7 +115,7 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
 
     public void Move(Vector2 dir) => _moveDir = dir;
 
-    public bool IsValidTarget(bool isFriendlyToPlayer) => !isFriendlyToPlayer;
+    public bool IsValidTarget(bool isFriendlyToPlayer) => isFriendlyToPlayer != this.isFriendlyToPlayer;
 
     public void Hit(float damage)
     {

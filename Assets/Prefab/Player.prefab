@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 5481573209372843892}
   - component: {fileID: 507888460091864005}
   - component: {fileID: 8347748346861011963}
+  - component: {fileID: 1838745136920908279}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -495,7 +496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceShip: {fileID: 5194357867336490167}
   basicAttack: {fileID: 507888460091864005}
-  heavyAttack: {fileID: 0}
+  heavyAttack: {fileID: 1838745136920908279}
   specialAttack: {fileID: 0}
   parrying: {fileID: 5481573209372843892}
   heal: {fileID: 8347748346861011963}
@@ -734,3 +735,19 @@ MonoBehaviour:
   _damage: 0
   spaceShip: {fileID: 5194357867336490167}
   healAmount: 5
+--- !u!114 &1838745136920908279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303974074018659497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db83ee3cf82479fa5771a58ef6d385a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _energyConsumption: 2
+  _damage: 0
+  createPoint: {fileID: 2228782486840905101}
+  _bulletSpeed: 5
