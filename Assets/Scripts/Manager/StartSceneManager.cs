@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections;
+using DG.Tweening;
 
 public class StartSceneManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class StartSceneManager : MonoBehaviour
     public Button PlayButton;
     public Button SettingButton;
     public Button QuitButton;
+
+    private Button ChosenButton;
 
     public Image Line;
 
@@ -51,10 +54,11 @@ public class StartSceneManager : MonoBehaviour
         Quit2Button.onClick.AddListener(Quit);
         ResumeButton.onClick.AddListener(Setting);
 
-        
+        ChosenButton = QuitButton;
+        Line.rectTransform.sizeDelta = new Vector2(Line.rectTransform.sizeDelta.x, 373);
 
-        IsSetting = true;
-        Setting();
+        IsSetting = false;
+        SettingMenu.SetActive(false);
     }
 
     private void Update()
@@ -68,28 +72,25 @@ public class StartSceneManager : MonoBehaviour
         }
     }
 
-    public void MouseOnPlay()
-    {
-
-    }
-
-    public void MouseOnSetting()
-    {
-
-    }
-
-    public void MouseOnQuit()
-    {
-
-    }
-
     public void Play()
     {
+        if (ChosenButton != PlayButton)
+        {
+            ChosenButton = PlayButton;
+            Line.rectTransform.sizeDelta = new Vector2(Line.rectTransform.sizeDelta.x, 240);
+            return;
+        }
         StartCoroutine(PlayCoroutine());
     }
 
     public void Setting()
     {
+        if (ChosenButton != SettingButton)
+        {
+            ChosenButton = SettingButton;
+            Line.rectTransform.sizeDelta = new Vector2(Line.rectTransform.sizeDelta.x, 307);
+            return;
+        }
         IsSetting = !IsSetting;
 
         if (IsSetting)
@@ -106,25 +107,30 @@ public class StartSceneManager : MonoBehaviour
 
     public void Quit()
     {
+        if (ChosenButton != QuitButton)
+        {
+            ChosenButton = QuitButton;
+            Line.rectTransform.sizeDelta = new Vector2(Line.rectTransform.sizeDelta.x, 373);
+            return;
+        }
         Application.Quit();
     }
 
     public IEnumerator PlayCoroutine()
     {
         StartCoroutine(WipeUp(Line));
-        yield return new WaitForSeconds(0.5F);
+        yield return new WaitForSeconds(0.3F);
         StartCoroutine(WipeTitleLeft(Title));
-        yield return new WaitForSeconds(0.5f);
-        /*
+        yield return new WaitForSeconds(0.1f);
+
         StartCoroutine(WipeButtonLeft(PlayButton));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         StartCoroutine(WipeButtonLeft(SettingButton));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         StartCoroutine(WipeButtonLeft(QuitButton));
         yield return new WaitForSeconds(0.5f);
-        */
 
-        //LoadingSceneManager.LoadScene("MainScene");
+        LoadingSceneManager.LoadScene("MainScene");
     }
 
     public IEnumerator WipeUp(Image var)
@@ -151,17 +157,16 @@ public class StartSceneManager : MonoBehaviour
         }
     }
 
-    /*
     public IEnumerator WipeButtonLeft(Button var)
     {
+        RectTransform rect = var.transform as RectTransform;
         float Myspeed = wipeSpeed;
-        while (var.rectTransform.anchoredPosition.x > -500)
+        while (rect.anchoredPosition.x > -500)
         {
-            var.rectTransform.anchor edPosition =
-                new Vector2(var.rectTransform.anchoredPosition.x + Myspeed, var.rectTransform.anchoredPosition.y);
+            rect.anchoredPosition =
+                new Vector2(rect.anchoredPosition.x + Myspeed, rect.anchoredPosition.y);
             Myspeed -= 0.1f;
             yield return null;
         }
     }
-    */
 }
