@@ -440,7 +440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5194357867336490167, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
       propertyPath: energy
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5481573209372843892, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
       propertyPath: duration
