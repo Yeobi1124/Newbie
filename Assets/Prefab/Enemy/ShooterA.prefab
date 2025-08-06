@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1408291159324120587}
   - component: {fileID: 4263143602104198557}
   - component: {fileID: 8213518758479332024}
+  - component: {fileID: 1842930537749406965}
   - component: {fileID: 8764590483362675033}
   m_Layer: 0
   m_Name: ShooterA
@@ -172,7 +173,7 @@ MonoBehaviour:
   ShootNum: 0
   Shootable: 1
   isFriendly: 0
---- !u!114 &8764590483362675033
+--- !u!114 &1842930537749406965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,6 +181,20 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5327018594472947731}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3f5b7e655a1e3478a24a3f80b36ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyBullet: {fileID: 0}
+  ShootDelay: 0
+--- !u!114 &8764590483362675033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327018594472947731}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3bf9271563d0cc41b0b788c6331af08, type: 3}
   m_Name: 
