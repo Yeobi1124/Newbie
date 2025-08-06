@@ -58,11 +58,13 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
 
     private Vector2 _moveDir;
     private Rigidbody2D _rb;
+    private Animator _animator;
 
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -120,5 +122,14 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
     public void Hit(float damage)
     {
         health -= damage;
+
+        if (health <= 0)
+        {
+            _animator.SetTrigger("Dead");
+        }
+        else
+        {
+            _animator.SetTrigger("Hit");
+        }
     }
 }
