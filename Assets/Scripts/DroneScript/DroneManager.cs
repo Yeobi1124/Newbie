@@ -18,7 +18,7 @@ public class DroneManager : MonoBehaviour
         //StartCoroutine(SummonE(3, 0.3f, 3, "DroneShooterE"));
         //StartCoroutine(SummonF(3, 0.3f, 3, "DroneShooterE"));
         //StartCoroutine(SummonG(1, 1, 7, 3, "DroneShooterF"));
-        StartCoroutine(SummonH(1, 1, 7, 3, "DroneShooterF"));
+        //StartCoroutine(SummonH(1, 1, 7, 3, "DroneShooterF"));
     }
     // Update is called once per frame
     void Update()
