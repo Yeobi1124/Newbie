@@ -1596,6 +1596,8 @@ MonoBehaviour:
   parrying: {fileID: 5481573209372843892}
   heal: {fileID: 8347748346861011963}
   basicAttackInterval: 0.3
+  autoFireLock: 0
+  autoFireLockTime: 8
   targetEnergyAmount: 1
   fillEnergyPerSecond: 0.2
 --- !u!114 &5194357867336490167
