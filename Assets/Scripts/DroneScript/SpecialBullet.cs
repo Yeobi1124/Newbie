@@ -1,9 +1,26 @@
 using UnityEngine;
 
-public class DroneBullet : Attack
+public class SpecialBullet :Attack
 {
+    //ToDo - Animation check
+    public bool isAnimationIsOver;
     public float BulletSpeed;
+
+
+    void Start()
+    {
+        isAnimationIsOver = false;
+    }
     void Update()
+    {
+        if (isAnimationIsOver)
+        {
+            Shooting();
+        }
+    }
+
+
+    private void Shooting()
     {
         transform.Translate(BulletSpeed * Time.deltaTime, 0, 0);
 
@@ -29,4 +46,5 @@ public class DroneBullet : Attack
             gameObject.SetActive(false);
         }
     }
+
 }
