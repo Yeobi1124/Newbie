@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: -1987828948439092434}
   - component: {fileID: 2068831795067627205}
   - component: {fileID: 110887705763159363}
+  - component: {fileID: 1919673176047707150}
   - component: {fileID: 8553679516883756649}
-  - component: {fileID: 3668251788180809135}
+  - component: {fileID: 1668989535511897416}
   m_Layer: 0
   m_Name: ChargerA
   m_TagString: Untagged
@@ -158,6 +159,20 @@ MonoBehaviour:
   droneSpeed: 1
   waitTimer: 0
   waitDuration: 3
+--- !u!114 &1919673176047707150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746029821489583094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7d7dee87e03234baed77dbc0a0564e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
+  OriginSprite: {fileID: 0}
 --- !u!114 &8553679516883756649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,20 +188,29 @@ MonoBehaviour:
   damage: 0
   isFriendlyToPlayer: 0
   OriginalHealth: 100
-  Health: 0
+  Health: 100
   DroneSpeed: 1
   check: 0
   detect: 0
---- !u!114 &3668251788180809135
-MonoBehaviour:
+--- !u!95 &1668989535511897416
+Animator:
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746029821489583094}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d7d7dee87e03234baed77dbc0a0564e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OriginSprite: {fileID: 21300000, guid: 36dd21d8a75298c4297451b33cafba27, type: 3}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b78c03b1962076244a65cc38b102abca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
