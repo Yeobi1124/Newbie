@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: b16a646ec16800048887b300ef6f0e06
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6006615285912576775
+    second: HPbarNo2_0
+  - first:
+      213: -162974936483769309
+    second: HPbarNo2_1
+  - first:
+      213: 415999297096086982
+    second: HPbarNo2_2
+  - first:
+      213: -3100591739746297291
+    second: HPbarNo2_3
+  - first:
+      213: -6627519891182611639
+    second: HPbarNo2_4
+  - first:
+      213: 1022137165082515293
+    second: HPbarNo2_5
+  - first:
+      213: 6474063434600479562
+    second: HPbarNo2_6
+  - first:
+      213: -1612729032177829140
+    second: HPbarNo2_7
+  - first:
+      213: 5822805278835301839
+    second: HPbarNo2_8
+  - first:
+      213: -7034561750351502105
+    second: HPbarNo2_9
+  - first:
+      213: -2519144184962279382
+    second: HPbarNo2_10
+  - first:
+      213: 1080321743107764885
+    second: HPbarNo2_11
+  - first:
+      213: 6838662980372525025
+    second: HPbarNo2_12
+  - first:
+      213: 1639216384956809788
+    second: HPbarNo2_13
+  - first:
+      213: 6683506580859066966
+    second: HPbarNo2_14
+  - first:
+      213: 321000389387292177
+    second: HPbarNo2_15
+  - first:
+      213: -8408617378553573879
+    second: HPbarNo2_16
+  - first:
+      213: -2083813526111893459
+    second: HPbarNo2_17
+  - first:
+      213: -4033068277769571439
+    second: HPbarNo2_18
+  - first:
+      213: -4817992659564163690
+    second: HPbarNo2_19
+  - first:
+      213: 5437413889421312804
+    second: HPbarNo2_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HPbarNo2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1040
+        width: 1000
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fcdfbcc83734aca0800000000000000
+      internalID: -6006615285912576775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b20468c9f2471cb4d99072e9a6c4ed99
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1000.0,"y":400.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      HPbarNo2_0: -6006615285912576775
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

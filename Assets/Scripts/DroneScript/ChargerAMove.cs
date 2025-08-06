@@ -28,7 +28,7 @@ public class ChargerAMove : MonoBehaviour
     }
     void OnDisable()
     {
-        Debug.Log("Disable");
+        //Debug.Log("Disable");
         droneSpeed = 0f;
         chargeSpeed = 0f;
     }
