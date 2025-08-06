@@ -14,7 +14,6 @@ public class DroneInfo : MonoBehaviour, IHittable
     public bool Shootable = true;
     public bool isFriendly = false; 
     private bool isDestroyed = false;
-    private float collisionDamage = 20;
 
     void Start()
     {
