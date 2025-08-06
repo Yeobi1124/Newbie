@@ -13,8 +13,11 @@ public class MoveA : MonoBehaviour
 
     public float droneSpeed = 1f;
     private bool summon = true;
-    //TODO - RandomMove
-
+    void OnEnable()
+    {
+        moveSpeed = 3f;
+        droneSpeed = 1f;
+    }
     void Start()
     {
         summon = true;
@@ -32,6 +35,12 @@ public class MoveA : MonoBehaviour
         {
             gameObject.GetComponent<DroneInfo>().Shootable = true;
             RandomMove();
+        }
+
+        if (gameObject.GetComponent<DroneInfo>().isDestroyed)
+        {
+            droneSpeed = 0;
+            moveSpeed = 0;
         }
     }
     private void RandomMove()

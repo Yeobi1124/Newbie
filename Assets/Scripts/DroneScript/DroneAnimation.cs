@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DroneAnimation : MonoBehaviour
 {
-    private Animator Anim;
+    public Animator Anim;
     private SpriteRenderer SpriteRender;
     [SerializeField] private Sprite OriginSprite;
 
