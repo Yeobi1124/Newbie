@@ -23,3 +23,11 @@ public interface IEnergy
     public float Energy { get; set; }
     public float MaxEnergy { get; }
 }
+
+
+public interface IMissileMover
+{
+    void Initialize(Transform transform, Vector2 targetPosition);
+    void Move(float deltaTime);
+    bool IsArrived { get; }
+}
