@@ -5,11 +5,12 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "PlayerTargetBulletAttack", story: "[Self] attacks [Target] in each [duration]", category: "Action", id: "fbe62009d3003d27378aeec2d5cc9a94")]
+[NodeDescription(name: "PlayerTargetBulletAttack", story: "[Self] attacks [Target] [bulletNumber] time in [duration]", category: "Action", id: "fbe62009d3003d27378aeec2d5cc9a94")]
 public partial class PlayerTargetBulletAttackAction : Action
 {
-    [SerializeReference] public BlackboardVariable<Transform> Self;
-    [SerializeReference] public BlackboardVariable<GameObject> Target;
+    [SerializeReference] public BlackboardVariable<GameObject> Self;
+    [SerializeReference] public BlackboardVariable<Transform> Target;
+    [SerializeReference] public BlackboardVariable<int> BulletNumber;
     [SerializeReference] public BlackboardVariable<float> Duration;
     private float curDuration;
     private int bulletCnt;
@@ -22,7 +23,7 @@ public partial class PlayerTargetBulletAttackAction : Action
 
     protected override Status OnUpdate()
     {
-        if (bulletCnt >= 10)
+        if (bulletCnt >= BulletNumber.Value)
         {
             return Status.Success;
         }
@@ -42,17 +43,17 @@ public partial class PlayerTargetBulletAttackAction : Action
 
     private void BulletMake()
     {
-        Debug.Log(Self.Value.transform.position+" "+ Target.Value);
         GameObject bulletObj = ObjectManager.instance.PullObject("BulletEnemy");
         bulletObj.transform.position = Self.Value.transform.position;
         
 
         Vector2 bulletDir = CalculateBulletDir(Self.Value.transform.position, Target.Value.transform.position);
+        Debug.Log(bulletDir + ","+ (Self.Value.transform.position - Target.Value.transform.position));
         BulletController bulletController = bulletObj.GetComponent<BulletController>();
         bulletController.Init(bulletDir);
     }
 
-    private Vector2 CalculateBulletDir(Vector2 bossPosition, Vector2 targetPosition) => (bossPosition - targetPosition).normalized;
+    private Vector2 CalculateBulletDir(Vector2 bossPosition, Vector2 targetPosition) => (targetPosition-bossPosition).normalized;
 
     private bool IsDurationOver() => curDuration >= Duration.Value; 
     private void ResetDuration()
