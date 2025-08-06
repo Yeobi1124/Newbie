@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 3551404998817919419}
   - component: {fileID: -1987828948439092434}
   - component: {fileID: 2068831795067627205}
+  - component: {fileID: 110887705763159363}
+  - component: {fileID: 8553679516883756649}
+  - component: {fileID: 3668251788180809135}
   m_Layer: 0
   m_Name: ChargerA
   m_TagString: Untagged
@@ -118,7 +121,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -134,3 +137,56 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.43, y: 1.89}
   m_EdgeRadius: 0
+--- !u!114 &110887705763159363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746029821489583094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3735aca2397ed439f1df3f47f50505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  moveDuration: 1
+  minBounds: {x: 0, y: -5}
+  maxBounds: {x: 9, y: 5}
+  detectionRange: 8
+  chargeSpeed: 10
+  droneSpeed: 1
+  waitTimer: 0
+  waitDuration: 3
+--- !u!114 &8553679516883756649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746029821489583094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac46d39d8f0e974abb68e2ec809dfe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  isFriendlyToPlayer: 0
+  OriginalHealth: 100
+  Health: 0
+  DroneSpeed: 1
+  check: 0
+  detect: 0
+--- !u!114 &3668251788180809135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746029821489583094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7d7dee87e03234baed77dbc0a0564e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginSprite: {fileID: 21300000, guid: 36dd21d8a75298c4297451b33cafba27, type: 3}

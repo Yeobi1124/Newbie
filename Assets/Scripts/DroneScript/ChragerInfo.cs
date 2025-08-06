@@ -1,11 +1,11 @@
+    using System;
 using UnityEngine;
 
-public class ChragerInfo : MonoBehaviour, IHittable
+public class ChragerInfo : Attack, IHittable
 {
     public float OriginalHealth;
     public float Health;
     public float DroneSpeed = 1;
-    public int ShootNum = 0;
     public int check = 0;
     public bool detect = false;
 
@@ -34,6 +34,24 @@ public class ChragerInfo : MonoBehaviour, IHittable
             Destroyed();
         }
     }
+    protected override void OnTriggerEnter2D(Collider2D col)
+    {
+        //Debug.Log("Trigger called?");
+        if (col.TryGetComponent(out IHittable hittable))
+        {
+            //Debug.Log("At List HITTABLE");
+            if (hittable.IsValidTarget(isFriendlyToPlayer))
+            {
+                hittable.Hit(damage);
+                gameObject.SetActive(false);
+                return;
+            }
+        }
+        if (col.gameObject.CompareTag("Border"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
     public void Hit(float damage)
     {
@@ -53,7 +71,6 @@ public class ChragerInfo : MonoBehaviour, IHittable
     public void ResetCharger()
     {
         Health = OriginalHealth;
-        ShootNum = 0;
         isDestroyed = false;
         detect = false;
     }
