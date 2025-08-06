@@ -15,7 +15,9 @@ public interface IHittable
     /// 데미지를 인자로 받는 피격 시 반응 함수
     /// </summary>
     /// <param name="damage"></param>
-    public void Hit(float damage);
+    /// <param name="fillEnergyAmount"></param>
+    /// <param name="parryable"></param>
+    public void Hit(float damage, bool parryable = true);
 }
 
 public interface IEnergy
