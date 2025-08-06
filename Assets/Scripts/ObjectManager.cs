@@ -5,10 +5,10 @@ public class ObjectManager : MonoBehaviour
 {
     public static ObjectManager instance;
 
-    GameObject BulletPlayerPrefab;
-    GameObject BulletEnemyPrefab;
-    GameObject DroneShooterPrefab;
-    GameObject DroneChargerPrefab;
+    [SerializeField]GameObject BulletPlayerPrefab;
+    [SerializeField] GameObject BulletEnemyPrefab;
+    [SerializeField] GameObject DroneShooterPrefab;
+    [SerializeField] GameObject DroneChargerPrefab;
 
     GameObject[] BulletPlayer;
     GameObject[] BulletEnemy;
