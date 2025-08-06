@@ -5,37 +5,37 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Scripting.APIUpdating;
 
-public class DroneInfo : MonoBehaviour, IHittable
+public class DroneInfo : Attack, IHittable
 {
     public float OriginalHealth;
     public float Health;
-    public float DroneSpeed = 1;
+    public float OriginalSpeed = 1;
+    public float DroneSpeed;
     public int ShootNum = 0;
-    public bool Shootable = true;
-    public bool isFriendly = false; 
-    private bool isDestroyed = false;
-    private float collisionDamage = 20;
-
+    public bool Shootable = false;
+    public bool isFriendly = false;
+    public bool isDestroyed = false;
+    public float chargeDamage = 20;
     void Start()
     {
         ResetDrone();
+        DroneSpeed = OriginalSpeed;
     }
 
     void Update()
     {
         if (transform.position.x < -16 || transform.position.x > 16 || transform.position.y < -10 || transform.position.y > 10)
         {
-            gameObject.SetActive(false);
+            Destroyed();
         }
 
         if (Health <= 0 && !isDestroyed)
         {
-            isDestroyed = true;
             Destroyed();
         }
     }
 
-    public void Hit(float damage)
+    public void Hit(float damage, bool parryable = true)
     {
         Health -= damage;
     }
@@ -45,10 +45,6 @@ public class DroneInfo : MonoBehaviour, IHittable
         return isFriendly != isFriendlyToAttacker;
     }
 
-    private void Destroyed()
-    {
-        gameObject.SetActive(false);
-    }
 
     public void ResetDrone()
     {
@@ -58,6 +54,33 @@ public class DroneInfo : MonoBehaviour, IHittable
         isDestroyed = false;
     }
 
-    
+    protected override void OnTriggerEnter2D(Collider2D col)
+    {
+        //Debug.Log("Trigger called?");
+        if (col.TryGetComponent(out IHittable hittable))
+        {
+            //Debug.Log("At List HITTABLE");
+            if (hittable.IsValidTarget(isFriendlyToPlayer))
+            {
+                Destroyed();
+                hittable.Hit(chargeDamage);
+                DroneSpeed = 0;
+            }
+        }
+        if (col.gameObject.CompareTag("Border"))
+        {
+            gameObject.GetComponent<DroneAnimation>().OnDead();
+        }
+    }
+
+    public void Destroyed()
+    {
+        isDestroyed = true;
+        Shootable = false;
+        Debug.Log($"NONE Shootable: {gameObject.GetComponent<DroneInfo>().Shootable}");
+        gameObject.GetComponent<DroneAnimation>().OnDead();
+        //GameObject shard = DroneObjectManager.Instance.PullObject("EnergyShard");
+    }
+
 }
 

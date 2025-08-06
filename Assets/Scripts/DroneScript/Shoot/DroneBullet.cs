@@ -3,9 +3,11 @@ using UnityEngine;
 public class DroneBullet : Attack
 {
     public float BulletSpeed;
+    public Vector3 moveDirection;
     void Update()
     {
-        transform.Translate(BulletSpeed * Time.deltaTime, 0, 0);
+        if (moveDirection == new Vector3(0,0,0)) moveDirection = new Vector3(-1, 0, 0);
+        transform.position += moveDirection * BulletSpeed * Time.deltaTime;
 
         if (transform.position.x < -10)
         {
@@ -15,14 +17,15 @@ public class DroneBullet : Attack
 
     protected override void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Trigger called?");
+        //Debug.Log("Trigger called?");
         if (col.TryGetComponent(out IHittable hittable))
         {
-            Debug.Log("At List HITTABLE");
+            //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
                 hittable.Hit(damage);
                 gameObject.SetActive(false);
+                moveDirection = new Vector3(0, 0, 0);
                 return;
             }
         }

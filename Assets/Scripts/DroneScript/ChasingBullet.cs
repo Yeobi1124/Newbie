@@ -1,16 +1,36 @@
 using UnityEngine;
 
-public class ChasingBullet : MonoBehaviour
+public class ChasingBullet : Attack
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    public float BulletSpeed;
+    public Vector3 moveDirection;
     void Update()
     {
+        
+        transform.position += moveDirection * BulletSpeed * Time.deltaTime;
 
+        if (transform.position.x < -10)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D col)
+    {
+        //Debug.Log("Trigger called?");
+        if (col.TryGetComponent(out IHittable hittable))
+        {
+            //Debug.Log("At List HITTABLE");
+            if (hittable.IsValidTarget(isFriendlyToPlayer))
+            {
+                hittable.Hit(damage);
+                gameObject.SetActive(false);
+                return;
+            }
+        }
+        if (col.gameObject.CompareTag("Border"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
