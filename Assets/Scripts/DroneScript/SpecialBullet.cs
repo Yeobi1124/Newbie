@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpecialBullet :Attack
+public class SpecialBullet : Attack
 {
     //ToDo - Animation check
     public bool isAnimationIsOver;
