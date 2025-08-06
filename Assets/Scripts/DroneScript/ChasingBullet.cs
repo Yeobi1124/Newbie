@@ -6,7 +6,7 @@ public class ChasingBullet : Attack
     public Vector3 moveDirection;
     void Update()
     {
-
+        
         transform.position += moveDirection * BulletSpeed * Time.deltaTime;
 
         if (transform.position.x < -10)

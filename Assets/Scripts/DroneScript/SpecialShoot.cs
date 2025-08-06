@@ -28,16 +28,12 @@ public class SpecialShoot : MonoBehaviour
 
     public void Shoot()
     {
+        Debug.Log("Special shooting");
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletEnemyBig");
         bulletA.transform.position = transform.position;
         gameObject.GetComponent<DroneInfo>().ShootNum++;
     }
 
-    //Todo-플레이어 보더와 충돌시 대미지 주기
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        
-    }
 
 }
 

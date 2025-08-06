@@ -50,6 +50,7 @@ public class MoveB : MonoBehaviour
 
         if (gameObject.GetComponent<DroneInfo>().isDestroyed)
         {
+            gameObject.GetComponent<DroneInfo>().Shootable = false;
             droneSpeed = 0;
             moveSpeed = 0;
         }
