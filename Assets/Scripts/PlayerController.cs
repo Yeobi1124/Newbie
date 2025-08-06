@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [Header("Status")]
     [SerializeField] private float basicAttackInterval = 0.3f;
 
+    [SerializeField] private float targetEnergyAmount = 1f;
+    [SerializeField] private float fillEnergyPerSecond = 0.2f;
+
     private float _time = 0f;
     
     private PlayerInput playerInput;
@@ -55,6 +58,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Fill Energy
+        if (spaceShip.Energy < 1)
+        {
+            float energyAddition = fillEnergyPerSecond * Time.deltaTime;
+            spaceShip.Energy = spaceShip.Energy + energyAddition > targetEnergyAmount ? targetEnergyAmount : spaceShip.Energy + energyAddition;
+        }
+        
+        // Basic Attack
         _time += Time.deltaTime;
         
         if (_time >= basicAttackInterval)
