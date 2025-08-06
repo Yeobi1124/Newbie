@@ -15,8 +15,11 @@ public class ChrgerMoveA : MonoBehaviour
 
     public float droneSpeed = 1f;
     private bool summon = true;
-    private bool detecting = true;
     private bool isCharging = false;
+    private bool isWaiting = false;
+
+    public float waitTimer;
+    public float waitDuration = 3f;
 
     void Start()
     {
@@ -32,18 +35,31 @@ public class ChrgerMoveA : MonoBehaviour
         }
         else
         {
+            if (isWaiting)
+            {
+                waitTimer += Time.deltaTime;
+                if (waitTimer >= waitDuration)
+                {
+                    isWaiting = false;
+                    isCharging = true;
+                    GameObject player = GameObject.Find("Player");
+                    moveDirection = (player.transform.position - transform.position).normalized;
+                }
+                return;
+            }
+
             if (!isCharging)
             {
-                Detect(); // 탐지 후 돌진 조건 확인
+                Detect(); // 탐지 후 대기 상태 진입 여부 확인
             }
 
             if (isCharging)
             {
-                ChargeToPlayer(); // 돌진 중이면 플레이어 향해 돌진
+                ChargeToPlayer(); // 돌진 상태
             }
             else
             {
-                RandomMove(); // 아니면 계속 랜덤 이동
+                RandomMove(); // 평상시 이동
             }
         }
     }
@@ -98,7 +114,8 @@ public class ChrgerMoveA : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (distance <= detectionRange)
         {
-            isCharging = true;
+            isWaiting = true;
+            waitTimer = 0f;
             moveDirection = (player.transform.position - transform.position).normalized;
         }
     }
