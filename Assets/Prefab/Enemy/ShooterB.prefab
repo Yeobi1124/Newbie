@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7039919778187978458}
   - component: {fileID: 415411900725815373}
   - component: {fileID: 3407221171826370782}
+  - component: {fileID: 5976276577814656568}
   m_Layer: 0
   m_Name: ShooterB
   m_TagString: Untagged
@@ -154,8 +155,7 @@ MonoBehaviour:
   DroneSpeed: 1
   ShootNum: 0
   Shootable: 1
-  animator: {fileID: 0}
-  check: 0
+  isFriendly: 0
 --- !u!114 &415411900725815373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,9 +181,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056394675418078706}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a372724133a7c8f4481e06bc83fc8293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShootNum: 0
+  ShootDelay: 2
+--- !u!114 &5976276577814656568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056394675418078706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 357096d9b15dca340b915f0a4623ca71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShootNum: 0
