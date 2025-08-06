@@ -113,5 +113,10 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
 
     public void Move(Vector2 dir) => _moveDir = dir;
 
-    public void Hit(float damage){}
+    public bool IsValidTarget(bool isFriendlyToPlayer) => !isFriendlyToPlayer;
+
+    public void Hit(float damage)
+    {
+        health -= damage;
+    }
 }

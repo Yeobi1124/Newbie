@@ -100,3 +100,6 @@ InitTestScene*.unity*
 
 # IDE specific files
 .idea/
+
+temp/
+temp.meta
