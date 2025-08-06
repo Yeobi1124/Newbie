@@ -481,9 +481,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 507888460091864005, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
+      propertyPath: _damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838745136920908279, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
+      propertyPath: _damage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194357867336490167, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
+      propertyPath: energy
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194357867336490167, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194357867336490167, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7303974074018659497, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347748346861011963, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
+      propertyPath: healAmount
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9103409048517855142, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
       propertyPath: m_LocalPosition.x
