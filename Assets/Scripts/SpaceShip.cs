@@ -132,4 +132,14 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
             _animator.SetTrigger("Hit");
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Shard"))
+        {
+            EnergyShard energyShard = GetComponent<EnergyShard>();
+            
+            // Get Energy Shard Info, fill energy
+        }
+    }
 }
