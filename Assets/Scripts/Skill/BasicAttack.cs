@@ -4,6 +4,7 @@ public class BasicAttack : Skill
 {
     [SerializeField] private GameObject createPoint;
     [SerializeField] private float _bulletSpeed = 5f;
+    [SerializeField] private Animator _animator;
     public override bool Use()
     {
         GameObject bullet = ObjectManager.instance.PullObject("BulletPlayer");
@@ -13,6 +14,8 @@ public class BasicAttack : Skill
         // bullet.GetComponent<Rigidbody2D>().linearVelocity = bullet.transform.forward * _bulletSpeed; // forward 백터가 zero vector인 듯?
         bullet.GetComponent<Rigidbody2D>().linearVelocityX = _bulletSpeed;
 
+        _animator.SetTrigger("Shoot");
+        
         return true;
     }
 }
