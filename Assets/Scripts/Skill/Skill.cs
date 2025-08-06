@@ -3,11 +3,11 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-    [SerializeField] private IEnergy _energy;
+    protected IEnergy _energy;
     
     [Header("Status")]
-    [SerializeField] private float _energyConsumption;
-    [SerializeField] private float _damage;
+    [SerializeField] protected float _energyConsumption;
+    [SerializeField] protected float _damage;
 
     protected virtual void Awake()
     {

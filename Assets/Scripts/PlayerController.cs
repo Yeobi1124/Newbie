@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,10 +9,16 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private SpaceShip spaceShip;
+    [SerializeField] private Skill basicAttack;
     [SerializeField] private Skill heavyAttack;
     [SerializeField] private Skill specialAttack;
     [SerializeField] private Skill parrying;
     [SerializeField] private Skill heal;
+
+    [Header("Status")]
+    [SerializeField] private float basicAttackInterval = 0.3f;
+
+    private float _time = 0f;
     
     private PlayerInput playerInput;
 
@@ -46,28 +53,20 @@ public class PlayerController : MonoBehaviour
         inputs.Disable();
     }
 
-    private void Move(InputAction.CallbackContext context)
+    private void Update()
     {
-        spaceShip.Move(context.ReadValue<Vector2>());
+        _time += Time.deltaTime;
+        
+        if (_time >= basicAttackInterval)
+        {
+            _time -= basicAttackInterval;
+            basicAttack.Use();
+        }
     }
 
-    private void Parry(InputAction.CallbackContext context)
-    {
-        Debug.Log("Parry");
-    }
-
-    private void Heal(InputAction.CallbackContext context)
-    {
-        Debug.Log("Heal");
-    }
-
-    private void HeavyAttack(InputAction.CallbackContext context)
-    {
-        Debug.Log("Heavy Attack");
-    }
-
-    private void SpecialAttack(InputAction.CallbackContext context)
-    {
-        Debug.Log("Special Attack");
-    }
+    private void Move(InputAction.CallbackContext context) => spaceShip.Move(context.ReadValue<Vector2>());
+    private void Parry(InputAction.CallbackContext context) => parrying.Use();
+    private void Heal(InputAction.CallbackContext context) => heal.Use();
+    private void HeavyAttack(InputAction.CallbackContext context) => heavyAttack.Use();
+    private void SpecialAttack(InputAction.CallbackContext context) => specialAttack.Use();
 }
