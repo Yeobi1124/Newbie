@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         Fire();
 
         HP = Mathf.Clamp(HP, 0, 100);
-        HP_bar.value = HP;
+        //HP_bar.value = HP;
     }
 
     void Move()
