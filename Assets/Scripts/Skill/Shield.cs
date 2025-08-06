@@ -8,6 +8,7 @@ public class Shield : MonoBehaviour, IHittable
     
     public void Hit(float damage, bool parryable = true)
     {
+        if (parryable == false) return;
         parry.ParrySuccess(damage);
     }
 
