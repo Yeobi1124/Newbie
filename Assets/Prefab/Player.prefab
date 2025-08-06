@@ -713,9 +713,9 @@ GameObject:
   - component: {fileID: 210074720143612891}
   - component: {fileID: 4725483437178939123}
   - component: {fileID: 1233493303423751076}
-  - component: {fileID: 2649229375562097409}
   - component: {fileID: 5974746205735817614}
   - component: {fileID: 299261990845573663}
+  - component: {fileID: 2750541896801335547}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -732,9 +732,9 @@ Transform:
   m_GameObject: {fileID: 5631795331236414029}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.92, y: -0.16, z: 0}
-  m_LocalScale: {x: 1.2, y: 4.5, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.06, y: -0.16, z: 0}
+  m_LocalScale: {x: 8.5, y: 8.5, z: 8.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9103409048517855142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -830,18 +830,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.61, y: 0.61}
   m_Direction: 0
---- !u!114 &2649229375562097409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5631795331236414029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25a33ae78c55460abddb847d68ecba5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &5974746205735817614
 Animator:
   serializedVersion: 7
@@ -876,6 +864,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3183ef68584b84bb9e01157079987d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2750541896801335547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5631795331236414029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbd618a40db1a84b94e79ab748b35ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parry: {fileID: 5481573209372843892}
+  isFriendlyToPlayer: 1
 --- !u!1 &5928154421625900616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,6 +1316,8 @@ GameObject:
   - component: {fileID: 8347748346861011963}
   - component: {fileID: 1838745136920908279}
   - component: {fileID: 90743729517497276}
+  - component: {fileID: 7534001709941441698}
+  - component: {fileID: 5537365348535853364}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1791,9 +1795,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _energyConsumption: 1
   _damage: 0
-  shield: {fileID: 2649229375562097409}
+  shield: {fileID: 2750541896801335547}
   duration: 0.5
-  fillEnergyWhenSuccess: 2
+  fillDefaultEnergy: 1
+  fillEnergyRate: 0.2
+  fillEnergyMax: 2
+  damageCut: 999
   isLocked: 0
 --- !u!114 &507888460091864005
 MonoBehaviour:
@@ -1865,6 +1872,40 @@ MonoBehaviour:
   laser: {fileID: 2136036559481210897}
   duration: 7
   attackActivateTime: 1
+--- !u!95 &7534001709941441698
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303974074018659497}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ca26c1912680f74a9a799b904ba203a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5537365348535853364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303974074018659497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3183ef68584b84bb9e01157079987d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8529087851634207859
 GameObject:
   m_ObjectHideFlags: 0
