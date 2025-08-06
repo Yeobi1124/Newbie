@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChrgerMoveA : MonoBehaviour
+public class ChargerAMove : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float moveDuration = 1f;
@@ -8,7 +8,7 @@ public class ChrgerMoveA : MonoBehaviour
     [SerializeField] private Vector2 maxBounds = new Vector2(9f, 5f);
 
     [SerializeField] private float detectionRange = 8f;
-    [SerializeField] private float chargeSpeed = 5f;
+    [SerializeField] public float chargeSpeed = 5f;
 
     private Vector3 moveDirection;
     private float moveTimer = 0f;
@@ -25,6 +25,12 @@ public class ChrgerMoveA : MonoBehaviour
     {
         summon = true;
         gameObject.GetComponent<DroneInfo>().Shootable = false;
+    }
+    void OnDisable()
+    {
+        Debug.Log("Disable");
+        droneSpeed = 0f;
+        chargeSpeed = 0f;
     }
 
     void Update()
@@ -62,6 +68,7 @@ public class ChrgerMoveA : MonoBehaviour
                 RandomMove(); // 평상시 이동
             }
         }
+
     }
 
     private void InitialMove()
