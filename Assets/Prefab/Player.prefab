@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7855677769828902508}
   - component: {fileID: 677811060010379572}
   - component: {fileID: 3043213912318988032}
+  - component: {fileID: 1458456343826763551}
+  - component: {fileID: 8122449914430626856}
   m_Layer: 0
   m_Name: drone (2)
   m_TagString: Untagged
@@ -33,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3707864493599368997}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 35.73}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 327.27}
 --- !u!212 &7855677769828902508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -209,6 +211,73 @@ MonoBehaviour:
   target: {fileID: 1424556151539976331}
   laserSpeed: 1
   _active: 0
+--- !u!95 &1458456343826763551
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14841424903297617}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8122449914430626856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14841424903297617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 67c44f41e9c0e504ca1a7b97f9fbb4cc, type: 2}
+    - {fileID: 11400000, guid: 532696f8b614eb14cba3ad245d40f3d4, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3043213912318988032}
+          m_TargetAssemblyTypeName: SpecialAttackDrone, Assembly-CSharp
+          m_MethodName: Act
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3043213912318988032}
+          m_TargetAssemblyTypeName: SpecialAttackDrone, Assembly-CSharp
+          m_MethodName: Init
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1424556151539976331
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +291,7 @@ GameObject:
   - component: {fileID: 2020133716286544817}
   - component: {fileID: 7554777089021895298}
   - component: {fileID: 2136036559481210897}
+  - component: {fileID: 3058691114204726768}
   m_Layer: 0
   m_Name: point
   m_TagString: Untagged
@@ -425,6 +495,51 @@ MonoBehaviour:
   target: {fileID: 8529087851634207859}
   laserSpeed: 5
   _active: 0
+--- !u!114 &3058691114204726768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424556151539976331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 67c44f41e9c0e504ca1a7b97f9fbb4cc, type: 2}
+    - {fileID: 11400000, guid: 532696f8b614eb14cba3ad245d40f3d4, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2136036559481210897}
+          m_TargetAssemblyTypeName: SpecialAttackLaser, Assembly-CSharp
+          m_MethodName: Act
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 1
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2136036559481210897}
+          m_TargetAssemblyTypeName: SpecialAttackLaser, Assembly-CSharp
+          m_MethodName: Init
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2228782486840905101
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +580,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3707864493599368997}
+  - component: {fileID: 2953426549441301318}
+  - component: {fileID: 5732507424766938948}
+  - component: {fileID: 4096761588383826067}
   m_Layer: 0
   m_Name: Special
   m_TagString: Untagged
@@ -493,6 +611,111 @@ Transform:
   - {fileID: 9120368161885118918}
   m_Father: {fileID: 9103409048517855142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &2953426549441301318
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3042941981403859000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 2872852559215079798, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 6890444630556845985}
+  - key: {fileID: 3492672502977388662, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 2707096504144076276}
+  - key: {fileID: -438114879640725797, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 1329839459189539572}
+  - key: {fileID: -1148397196574031139, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 14841424903297617}
+  - key: {fileID: 2334912109076529563, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 8122449914430626856}
+  - key: {fileID: 912412892855826188, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 1458456343826763551}
+  - key: {fileID: -4961062342306194587, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 3630373409663751248}
+  - key: {fileID: -5221471490047138700, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 6924867692411040785}
+  - key: {fileID: 7113472199623414731, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 4600868588981428501}
+  - key: {fileID: -134500256761351076, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 5928154421625900616}
+  - key: {fileID: -5688313171736319088, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 4667124091075579159}
+  - key: {fileID: 3278697965819634004, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 5808620611877223332}
+  - key: {fileID: 4978462924166699930, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 1424556151539976331}
+  - key: {fileID: -6079765112468801439, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 3058691114204726768}
+  - key: {fileID: 6662089434838294288, guid: 2e56c14e83cd75f46a168db433b9f532, type: 2}
+    value: {fileID: 4096761588383826067}
+  m_ExposedReferences:
+    m_References: []
+--- !u!114 &5732507424766938948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3042941981403859000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88631c64e02e0474888d84c0022644be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDone: 1
+--- !u!114 &4096761588383826067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3042941981403859000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 67c44f41e9c0e504ca1a7b97f9fbb4cc, type: 2}
+    - {fileID: 11400000, guid: 532696f8b614eb14cba3ad245d40f3d4, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5732507424766938948}
+          m_TargetAssemblyTypeName: SpecialAttackManage, Assembly-CSharp
+          m_MethodName: SetDone
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5732507424766938948}
+          m_TargetAssemblyTypeName: SpecialAttackManage, Assembly-CSharp
+          m_MethodName: SetDone
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &3630373409663751248
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,6 +728,8 @@ GameObject:
   - component: {fileID: 8651388908573608357}
   - component: {fileID: 5936440908675802309}
   - component: {fileID: 4646686476043203824}
+  - component: {fileID: 6924867692411040785}
+  - component: {fileID: 4600868588981428501}
   m_Layer: 0
   m_Name: drone (3)
   m_TagString: Untagged
@@ -702,6 +927,73 @@ MonoBehaviour:
   target: {fileID: 1424556151539976331}
   laserSpeed: 1
   _active: 0
+--- !u!114 &6924867692411040785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630373409663751248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 67c44f41e9c0e504ca1a7b97f9fbb4cc, type: 2}
+    - {fileID: 11400000, guid: 532696f8b614eb14cba3ad245d40f3d4, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4646686476043203824}
+          m_TargetAssemblyTypeName: SpecialAttackDrone, Assembly-CSharp
+          m_MethodName: Act
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4646686476043203824}
+          m_TargetAssemblyTypeName: SpecialAttackDrone, Assembly-CSharp
+          m_MethodName: Init
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!95 &4600868588981428501
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630373409663751248}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5631795331236414029
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +1182,8 @@ GameObject:
   - component: {fileID: 3786295230095776164}
   - component: {fileID: 5731008936212654652}
   - component: {fileID: 1086231421826443654}
+  - component: {fileID: 4667124091075579159}
+  - component: {fileID: 5808620611877223332}
   m_Layer: 0
   m_Name: drone (4)
   m_TagString: Untagged
@@ -1087,6 +1381,73 @@ MonoBehaviour:
   target: {fileID: 1424556151539976331}
   laserSpeed: 1
   _active: 0
+--- !u!114 &4667124091075579159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928154421625900616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 67c44f41e9c0e504ca1a7b97f9fbb4cc, type: 2}
+    - {fileID: 11400000, guid: 532696f8b614eb14cba3ad245d40f3d4, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1086231421826443654}
+          m_TargetAssemblyTypeName: SpecialAttackDrone, Assembly-CSharp
+          m_MethodName: Act
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1086231421826443654}
+          m_TargetAssemblyTypeName: SpecialAttackDrone, Assembly-CSharp
+          m_MethodName: Init
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!95 &5808620611877223332
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928154421625900616}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6890444630556845985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1460,8 @@ GameObject:
   - component: {fileID: 4614219426650348560}
   - component: {fileID: 1277946932941948256}
   - component: {fileID: 8885578970495969883}
+  - component: {fileID: 2707096504144076276}
+  - component: {fileID: 1329839459189539572}
   m_Layer: 0
   m_Name: drone (1)
   m_TagString: Untagged
@@ -1296,6 +1659,73 @@ MonoBehaviour:
   target: {fileID: 1424556151539976331}
   laserSpeed: 1
   _active: 0
+--- !u!114 &2707096504144076276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6890444630556845985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 67c44f41e9c0e504ca1a7b97f9fbb4cc, type: 2}
+    - {fileID: 11400000, guid: 532696f8b614eb14cba3ad245d40f3d4, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8885578970495969883}
+          m_TargetAssemblyTypeName: SpecialAttackDrone, Assembly-CSharp
+          m_MethodName: Act
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8885578970495969883}
+          m_TargetAssemblyTypeName: SpecialAttackDrone, Assembly-CSharp
+          m_MethodName: Init
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!95 &1329839459189539572
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6890444630556845985}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7303974074018659497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,14 +2296,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _energyConsumption: 7
   _damage: 0
-  drones:
-  - {fileID: 8885578970495969883}
-  - {fileID: 3043213912318988032}
-  - {fileID: 4646686476043203824}
-  - {fileID: 1086231421826443654}
-  laser: {fileID: 2136036559481210897}
-  duration: 7
-  attackActivateTime: 1
+  director: {fileID: 2953426549441301318}
+  manage: {fileID: 5732507424766938948}
 --- !u!95 &7534001709941441698
 Animator:
   serializedVersion: 7
