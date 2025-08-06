@@ -16,9 +16,6 @@ public class SpecialAttackDrone : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-
-        // Test
-        Act();
     }
 
     private void LateUpdate()

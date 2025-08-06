@@ -1,4 +1,4 @@
-癤퓎sing System;
+using System;
 using System.Collections;
 using Unity.Collections;
 using Unity.VisualScripting;
@@ -6,31 +6,28 @@ using UnityEngine;
 
 public class Parry : Skill
 {
-    [SerializeField] private CollisionNotifier shield;
+    [SerializeField] private Shield shield;
     [SerializeField] private float duration = 1f;
-    [SerializeField] private float fillEnergyWhenSuccess = 2f;
+    [SerializeField] private float fillDefaultEnergy = 1f;
+    [SerializeField] private float fillEnergyRate = 0.2f;
+    [SerializeField] private float fillEnergyMax = 2f;
+    [SerializeField, Tooltip("즉사기 판별하기 위해 어느 데미지 이상을 즉사기로 볼 건지")]
+    private float damageCut = 999f;
 
     [ReadOnly, SerializeField]
     private bool isLocked = false;
     
     private Coroutine coroutine;
     
-    public override void Use()
+    public override bool Use()
     {
         if (isLocked == false && _energy.Energy >= _energyConsumption)
             _energy.Energy -= _energyConsumption;
-        else return;
+        else return false;
         
         coroutine = StartCoroutine(Parrying());
-    }
-
-    private void OnEnable()
-    {
-        shield.triggerEnter2D += ParrySuccess;
-    }
-    private void OnDisable()
-    {
-        shield.triggerEnter2D -= ParrySuccess;
+        
+        return true;
     }
 
     private IEnumerator Parrying()
@@ -46,13 +43,20 @@ public class Parry : Skill
         shield.gameObject.SetActive(false);
     }
 
-    private void ParrySuccess(Collider2D other)
+    public void ParrySuccess(float damage)
     {
-        // Attack Check
-        if (TryGetComponent(out Attack attack) == false) return;
-        
         // Fill Energy
-        _energy.Energy = _energy.Energy + fillEnergyWhenSuccess > _energy.MaxEnergy ? _energy.MaxEnergy : _energy.Energy + fillEnergyWhenSuccess;
+        if (damage < damageCut)
+        {
+            float fillEnergy = fillDefaultEnergy + fillEnergyRate * damage;
+            if(fillEnergy > fillEnergyMax) fillEnergy = fillEnergyMax;
+        
+            _energy.Energy = _energy.Energy + fillEnergy > _energy.MaxEnergy ? _energy.MaxEnergy : _energy.Energy + fillEnergy;
+        }
+        else
+        {
+            _energy.Energy = _energy.MaxEnergy;
+        }
         
         // Shield Visual
         Animator shieldAnimator = shield.gameObject.GetComponent<Animator>();
@@ -61,8 +65,5 @@ public class Parry : Skill
         // Stop Coroutine, Unlock Skill
         isLocked = false;
         StopCoroutine(coroutine);
-        
-        // Remove Bullet
-        other.gameObject.SetActive(false);
     }
 }

@@ -58,11 +58,13 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
 
     private Vector2 _moveDir;
     private Rigidbody2D _rb;
+    private Animator _animator;
 
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -117,8 +119,28 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
 
     public bool IsValidTarget(bool isFriendlyToPlayer) => isFriendlyToPlayer != this.isFriendlyToPlayer;
 
-    public void Hit(float damage)
+    public void Hit(float damage, bool parryable = true)
     {
         health -= damage;
+
+        if (health <= 0)
+        {
+            _animator.SetTrigger("Dead");
+        }
+        else
+        {
+            _animator.SetTrigger("Hit");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Shard"))
+        {
+            EnergyShard energyShard = other.GetComponent<EnergyShard>();
+            
+            Energy += energyShard.energyFillAmount;
+            other.gameObject.SetActive(false);
+        }
     }
 }

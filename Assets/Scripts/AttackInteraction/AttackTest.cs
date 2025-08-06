@@ -6,7 +6,7 @@ public class AttackTest : MonoBehaviour, IHittable
     public float health = 20f;
     public float maxHealth = 20f;
     
-    public void Hit(float damage)
+    public void Hit(float damage, bool parryable = true)
     {
         health -= damage;
     }
