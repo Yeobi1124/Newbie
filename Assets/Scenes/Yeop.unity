@@ -320,15 +320,15 @@ MonoBehaviour:
   BulletEnemyAPrefab: {fileID: 1601997350750905400, guid: f874c5ec760a8ae40bfc6f3fca7fdac8, type: 3}
   BulletEnemyBPrefab: {fileID: 1601997350750905400, guid: f874c5ec760a8ae40bfc6f3fca7fdac8, type: 3}
   BulletEnemyCPrefab: {fileID: 1601997350750905400, guid: f874c5ec760a8ae40bfc6f3fca7fdac8, type: 3}
-  DroneShooterAPrefab: {fileID: 6655919836841640479, guid: 5adecd052d0ec3d4c89538fdaa88af79, type: 3}
-  DroneShooterBPrefeb: {fileID: 3302743109397144731, guid: 4eea3ed08fc399a46aeb9124885095cb, type: 3}
-  DroneShooterCPrefeb: {fileID: 5873101842723970325, guid: 2f2371b67cb5f1f42bd90fd87ff26599, type: 3}
-  DroneShooterDPrefeb: {fileID: 4496436446547052147, guid: 79dae38a1a65d13449b7f36850fc6d56, type: 3}
-  DroneShooterEPrefeb: {fileID: 5859266561205844532, guid: d78a2d06510206547a1d8ae51fa935ee, type: 3}
-  DroneShooterFPrefeb: {fileID: 1746029821489583094, guid: 442749095ab195245821ad28a1a92ab3, type: 3}
-  DroneShooterGPrefeb: {fileID: 1746029821489583094, guid: 3f717bde8802ebf4281ad0de8a25ebc9, type: 3}
+  DroneShooterAPrefab: {fileID: 5327018594472947731, guid: 258c81d69dc8dd04885797b0ce02820d, type: 3}
+  DroneShooterBPrefeb: {fileID: 1056394675418078706, guid: 1a5acc5e23616f1428d21c074bf2bdaf, type: 3}
+  DroneShooterCPrefeb: {fileID: 5327018594472947731, guid: 258c81d69dc8dd04885797b0ce02820d, type: 3}
+  DroneShooterDPrefeb: {fileID: 5327018594472947731, guid: 258c81d69dc8dd04885797b0ce02820d, type: 3}
+  DroneShooterEPrefeb: {fileID: 5327018594472947731, guid: 258c81d69dc8dd04885797b0ce02820d, type: 3}
+  DroneShooterFPrefeb: {fileID: 5327018594472947731, guid: 258c81d69dc8dd04885797b0ce02820d, type: 3}
+  DroneShooterGPrefeb: {fileID: 5327018594472947731, guid: 258c81d69dc8dd04885797b0ce02820d, type: 3}
   DroneChargerAPrefeb: {fileID: 1746029821489583094, guid: 38e633e75c5ed2547842dec120e62e1c, type: 3}
-  DroneChargerBPrefeb: {fileID: 1746029821489583094, guid: aa04a532b49916e4a89d36d9a64a8c71, type: 3}
+  DroneChargerBPrefeb: {fileID: 1746029821489583094, guid: 38e633e75c5ed2547842dec120e62e1c, type: 3}
   BulletEnemyA: []
   BulletEnemyB: []
   BulletEnemyC: []
@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 2047551645}
   - component: {fileID: 2047551644}
   - component: {fileID: 2047551643}
+  - component: {fileID: 2047551646}
   - component: {fileID: 2047551642}
   m_Layer: 0
   m_Name: Sandbag
@@ -485,12 +486,39 @@ Transform:
   m_GameObject: {fileID: 2047551641}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.79, y: 5.07, z: 0}
+  m_LocalPosition: {x: 6.72, y: 0.79, z: 0}
   m_LocalScale: {x: 1, y: 1.8375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &2047551646
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047551641}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1001 &2142784445
 PrefabInstance:
   m_ObjectHideFlags: 0
