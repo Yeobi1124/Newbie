@@ -8,6 +8,7 @@ TagManager:
   - BulletPlayer
   - BulletEnemy
   - Bullet
+  - Shard
   layers:
   - Default
   - TransparentFX

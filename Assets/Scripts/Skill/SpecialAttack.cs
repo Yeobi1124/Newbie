@@ -1,51 +1,21 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class SpecialAttack : Skill
 {
-    [SerializeField] private SpecialAttackDrone[] drones;
-    [SerializeField] private SpecialAttackLaser laser;
+    [SerializeField] private PlayableDirector director;
+    [SerializeField] private SpecialAttackManage manage;
     
-    [SerializeField] private float duration = 7f;
-    
-    [SerializeField] private float attackActivateTime = 1f;
-
-    private bool isLocked = false;
-    
-    public override void Use()
+    public override bool Use()
     {
-        if (isLocked == true || _energy.Energy < _energyConsumption) return;
+        if (manage.isDone == false || _energy.Energy < _energyConsumption) return false;
         _energy.Energy -= _energyConsumption;
 
-        StartCoroutine(Activate());
-    }
-
-    private IEnumerator Activate()
-    {
-        isLocked = true;
-
-        foreach (var drone in drones)
-        {
-            drone.gameObject.SetActive(true);
-            drone.Act();
-        }
+        Debug.Log("Special Attack");
         
-        yield return new WaitForSeconds(attackActivateTime);
-        
-        laser.gameObject.SetActive(true);
-        laser.Act();
-        
-        yield return new WaitForSeconds(duration);
-        
-        isLocked = false;
-        
-        foreach (var drone in drones)
-        {
-            drone.Init();
-            drone.gameObject.SetActive(false);
-        }
-        
-        laser.Init();
-        laser.gameObject.SetActive(false);
+        director.time = director.initialTime;
+        director.Play();
+        return true;
     }
 }
