@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 785778f6f91d5c249aeba03c4d784dea
+guid: 7161c4e2c23db394ba96f23290d54b2e
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -8,6 +8,21 @@ TextureImporter:
   - first:
       213: -7076099054175436133
     second: Fill_1
+  - first:
+      213: -7704091511442276907
+    second: Fill_2
+  - first:
+      213: -4990796693429552596
+    second: Fill_3
+  - first:
+      213: 1987372618967681650
+    second: Fill_4
+  - first:
+      213: -1737941780268195982
+    second: Fill_5
+  - first:
+      213: 488222495843674081
+    second: Fill_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -107,9 +122,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 120
+        y: 1040
         width: 1000
-        height: 100
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,33 +139,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Fill_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1000
-        height: 100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b924568a665accd90800000000000000
-      internalID: -7076099054175436133
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0eccd48afab3b38489f1003c589cfaac
+    spriteID: bf4b06c7aaca0744e9a652ab96b49356
     internalID: 0
     vertices: []
     indices: 
@@ -158,10 +151,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1000.0,"y":400.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Fill_0: 1399725893816511699
-      Fill_1: -7076099054175436133
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
