@@ -9,17 +9,17 @@ public class PlayerMuzzle : MonoBehaviour
         Anim = GetComponent<Animator>();
     }
 
-    void Shoot()
+    public void Shoot()
     {
         Anim.SetTrigger("Shoot");
     }
 
-    void SkillStart()
+    public void SkillStart()
     {
         Anim.SetBool("UseSkill", true);
     }
 
-    void SkillEnd()
+    public void SkillEnd()
     {
         Anim.SetBool("UseSkill", false);
     }

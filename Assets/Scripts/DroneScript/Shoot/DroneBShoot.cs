@@ -8,10 +8,13 @@ public class DroneBShoot : MonoBehaviour
     public int ShootNum = 0;
     private GameObject EnemyBullet;
     public float ShootDelay;
+
+    public GameObject muzzle;
+    private MuzzleFlashAnimation muzzleAnim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        muzzleAnim = muzzle.GetComponent<MuzzleFlashAnimation>();
     }
 
     void OnEnable()
@@ -36,6 +39,8 @@ public class DroneBShoot : MonoBehaviour
 
     public void Shoot()
     {
+        muzzleAnim.Shoot();
+
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletEnemy");
         bulletA.transform.position = transform.position;
         bulletA.transform.Translate(1.3f, -0.5f, 0);
