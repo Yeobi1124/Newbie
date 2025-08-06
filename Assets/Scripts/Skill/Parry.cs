@@ -19,13 +19,15 @@ public class Parry : Skill
     
     private Coroutine coroutine;
     
-    public override void Use()
+    public override bool Use()
     {
         if (isLocked == false && _energy.Energy >= _energyConsumption)
             _energy.Energy -= _energyConsumption;
-        else return;
+        else return false;
         
         coroutine = StartCoroutine(Parrying());
+        
+        return true;
     }
 
     private IEnumerator Parrying()

@@ -5,9 +5,9 @@ public class HeavyAttack : Skill
 {
     [SerializeField] private GameObject createPoint;
     [SerializeField] private float _bulletSpeed = 5f;
-    public override void Use()
+    public override bool Use()
     {
-        if (_energy.Energy < _energyConsumption) return;
+        if (_energy.Energy < _energyConsumption) return false;
         
         _energy.Energy -= _energyConsumption;
         
@@ -16,5 +16,7 @@ public class HeavyAttack : Skill
         
         bullet.transform.position = createPoint.transform.position;
         bullet.GetComponent<Rigidbody2D>().linearVelocityX = _bulletSpeed;
+
+        return true;
     }
 }
