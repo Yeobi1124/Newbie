@@ -88,6 +88,7 @@ public class Parry : Skill
         AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerParrySuccess);
         
         // Stop Coroutine, Unlock Skill
+        shield.gameObject.SetActive(false);
         _unitCollider.enabled = true;
         isLocked = false;
         StopCoroutine(coroutine);
