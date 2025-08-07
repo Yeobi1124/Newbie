@@ -18,7 +18,7 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
     [ReadOnly, SerializeField]
     private float _verticalInputDuration = 0f;
     [ReadOnly, SerializeField]
-    private float _noVerticalInputDuration = 0f;
+    private float _noVerticalInputDuration = 999f;
     
     [Header("Horizontal")]
     public float forwardMaxSpeed = 3f;
@@ -34,7 +34,7 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
     [ReadOnly, SerializeField]
     private float _horizontalInputDuration = 0f;
     [ReadOnly, SerializeField]
-    private float _noHorizontalInputDuration = 0f;
+    private float _noHorizontalInputDuration = 999f;
 
     [Header("Status")]
     public float health = 20f;
