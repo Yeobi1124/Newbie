@@ -11,7 +11,9 @@ public class StageManager : MonoBehaviour
     public float waveTime = 0;
     [SerializeField, Tooltip("Please using FIFO(Queue) method")]
     public List<Wave> waves = new List<Wave>();
-    
+
+    [SerializeField] private GameObject laser;
+
     [SerializeField]
     public List<GameObject> remainEnemies = new List<GameObject>();
 
@@ -28,7 +30,7 @@ public class StageManager : MonoBehaviour
             Destroy(this);
         }
 
-        bossSpawner = GetComponent<BossSpawner>();
+        laser.SetActive(false);
     }
 
     private int CheckRemainEnemies()
@@ -67,8 +69,7 @@ public class StageManager : MonoBehaviour
         Wave wave = waves[currentWave];
         while (IsSpawnAble(wave))
         {
-            
-            if(wave.spawns[0].enemyName == "Boss"&&CheckRemainEnemies()==0)
+            if (wave.spawns[0].enemyName == "Boss"&&CheckRemainEnemies()==0)
             {
                 GameObject boss = bossSpawner.SpawnBoss(wave.spawns[0].spawnPoint.transform.position);
                 remainEnemies.Add(boss);

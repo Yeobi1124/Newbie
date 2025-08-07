@@ -10,15 +10,16 @@ public class BossSpawner : MonoBehaviour
     [SerializeField]private GameObject laser;
     [SerializeField]private Transform laserTransform;
     [SerializeField]private List<GameObject> wayPoints;
-
+    [SerializeField] private Transform deathPos;
 
 
     public GameObject SpawnBoss(Vector2 spawnPosition)
     {
         GameObject boss = Instantiate(bossPrefab);
+
         boss.transform.position = spawnPosition;
         Boss bossStarter = boss.GetComponent<Boss>();
-        bossStarter.BTInit(player, mover, backgrounds, laser, wayPoints, laserTransform);
+        bossStarter.BTInit(player, mover, backgrounds, laser, wayPoints, laserTransform,deathPos);
         return boss;
     }
 }
