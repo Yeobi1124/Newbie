@@ -5,12 +5,11 @@ using System.Collections.Generic;
 public class Boss : Attack,IHittable
 {
     public float originalHealth;
-    public float health;
+    public float curHealth;
     public float originalSpeed = 1;
     public float speed;
     public bool isDestroyed = false;
     private bool isFriendly = false;
-    private int collideDamage = 25;
     BTInitializer btInitializer;
 
     [SerializeField] private BehaviorGraphAgent behaviorTree;
@@ -26,17 +25,23 @@ public class Boss : Attack,IHittable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        health = 1000;
+        curHealth = 1000;
         originalHealth = 1000;
         originalSpeed = 1;
         speed = 1;
+        behaviorTree = GetComponent<BehaviorGraphAgent>();
         btInitializer = new BTInitializer(behaviorTree);
-        btInitializer.Init(player,mover,missileAbove,missileBelow,backgrounds,laser);
+        btInitializer.Init(player,mover,missileAbove,missileBelow,backgrounds,laser,originalHealth);
+    }
+
+    void Update()
+    {
+        btInitializer.HPUpdate(curHealth);
     }
 
     public void Hit(float damage, bool parryable = true)
     {
-        health -= damage;
+        curHealth -= damage;
     }
 
     public bool IsValidTarget(bool isFriendlyToAttacker)
@@ -52,7 +57,7 @@ public class Boss : Attack,IHittable
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                hittable.Hit(collideDamage);
+                hittable.Hit(damage);
             }
         }
         if (col.gameObject.CompareTag("Border"))
