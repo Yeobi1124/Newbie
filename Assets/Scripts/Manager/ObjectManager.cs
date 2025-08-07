@@ -36,12 +36,12 @@ public class ObjectManager : MonoBehaviour
 
     void Generate()
     {
-        for (int index = 0; index < BulletEnemy.Length; index++)
+        for (int index = 0; index < BulletPlayer.Length; index++)
         {
             BulletPlayer[index] = Instantiate(BulletPlayerPrefab);
             BulletPlayer[index].SetActive(false);
         }
-        for (int index = 0; index < BulletPlayer.Length; index++)
+        for (int index = 0; index < BulletEnemy.Length; index++)
         {
             BulletEnemy[index] = Instantiate(BulletEnemyPrefab);
             BulletEnemy[index].SetActive(false);
