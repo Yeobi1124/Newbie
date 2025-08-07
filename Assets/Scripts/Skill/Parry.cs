@@ -45,18 +45,14 @@ public class Parry : Skill
         // Activate Parry
         isLocked = true;
         shield.gameObject.SetActive(true);
-        
-        material.EnableKeyword("HOLOGRAM_ON");
-        material.EnableKeyword("OUTBASE_ON");
+        animator.SetBool("IsActivate", true);
         
         yield return new WaitForSeconds(duration);
         
         // Deactivate Parry
         isLocked = false;
         shield.gameObject.SetActive(false);
-        
-        material.DisableKeyword("HOLOGRAM_ON");
-        material.DisableKeyword("OUTBASE_ON");
+        animator.SetBool("IsActivate", false);
     }
 
     public void ParrySuccess(float damage)
@@ -76,9 +72,7 @@ public class Parry : Skill
         
         // Shield Visual
         animator.SetTrigger("Destroy");
-        
-        material.DisableKeyword("HOLOGRAM_ON");
-        material.DisableKeyword("OUTBASE_ON");
+        animator.SetBool("IsActivate", false);
         
         // Stop Coroutine, Unlock Skill
         isLocked = false;
