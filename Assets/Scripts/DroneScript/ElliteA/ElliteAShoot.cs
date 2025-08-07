@@ -51,7 +51,8 @@ public class ElliteAShoot : MonoBehaviour
 
     public void RandomShoot()
     {
-        Debug.Log("RandomShoot");
+        //Debug.Log("RandomShoot");
+        AudioManager.Instance.PlaySE(AudioManager.SEType.DroneShootA);
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletEnemy");
         bulletA.transform.position = transform.position;
         bulletA.transform.Translate(-2f, -1.3f, 0, Space.World);
@@ -69,6 +70,7 @@ public class ElliteAShoot : MonoBehaviour
     public void ArcShoot()
     {
         //Debug.Log("Arc Shoot!");
+        AudioManager.Instance.PlaySE(AudioManager.SEType.DroneShootB);
         float angleStep = 15f; 
         float startAngle = -angleStep-30;
 
@@ -89,6 +91,7 @@ public class ElliteAShoot : MonoBehaviour
 
     public void ChaseShoot()
     {
+        AudioManager.Instance.PlaySE(AudioManager.SEType.DroneShootC);
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletChase");
         bulletA.transform.position = transform.position;
         bulletA.transform.Translate(-2.0f, -1.3f, 0, Space.World);

@@ -26,12 +26,13 @@ public class DroneInfo : Attack, IHittable
     {
         if (transform.position.x < -16 || transform.position.x > 16 || transform.position.y < -10 || transform.position.y > 10)
         {
-            Destroyed();
+            //Destroyed();
+            // gameObject.SetActive(fa)
         }
 
         if (Health <= 0 && !shardGive)
         {
-            Debug.Log("Dead!");
+            //Debug.Log("Dead!");
             if (!shardGive)
             {
                 shardGive = true;
@@ -84,6 +85,7 @@ public class DroneInfo : Attack, IHittable
 
     public void Destroyed()
     {
+        AudioManager.Instance.PlaySE(AudioManager.SEType.DroneDie);
         isDestroyed = true;
         Shootable = false;
         //Debug.Log($"NONE Shootable: {gameObject.GetComponent<DroneInfo>().Shootable}");

@@ -37,6 +37,7 @@ public class DroneBullet : Attack
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
                 // Debug.Log("GetHit");
+                AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerHit);
                 Instantiate(particle, gameObject.transform.position, Quaternion.identity);
                 hittable.Hit(damage);
                 gameObject.SetActive(false);

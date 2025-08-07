@@ -28,7 +28,8 @@ public class ArcShoot : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log("Arc Shooting");
+        //Debug.Log("Arc Shooting");
+        AudioManager.Instance.PlaySE(AudioManager.SEType.DroneShootA);
         float angleStep = 30f; // 총알 간의 각도 차이
         float startAngle = -angleStep; // 왼쪽에서 시작 (총 3발)
 

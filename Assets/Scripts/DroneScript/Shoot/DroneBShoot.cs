@@ -38,7 +38,7 @@ public class DroneBShoot : MonoBehaviour
     public void Shoot()
     {
         muzzleAnim.Shoot();
-
+        AudioManager.Instance.PlaySE(AudioManager.SEType.DroneShootB);
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletEnemy");
         bulletA.transform.position = transform.position;
         bulletA.transform.Translate(1.3f, -0.5f, 0);
