@@ -14,8 +14,7 @@ public class AudioManager : MonoBehaviour
         InGame,
         Elite,
         Boss,
-        Lose,
-        Win
+        Lose
     }
 
     public enum SEType
@@ -39,7 +38,6 @@ public class AudioManager : MonoBehaviour
         DroneCharge,
         DroneChargeShoot,
         DroneDashReady,
-        DroneDash,
         DroneDie,
 
         BossShootA,
@@ -48,7 +46,6 @@ public class AudioManager : MonoBehaviour
         BossHit,
         BossMissileHit,
         BossDashReady,
-        BossDash,
         BossLaser,
         BossMissile,
         BossMissileBoost,
@@ -66,7 +63,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip BGMElite;
     public AudioClip BGMBoss;
     public AudioClip BGMLose;
-    public AudioClip BGMWin;
 
     [Header("Player SE")]
     public AudioClip PlayerShoot;
@@ -89,7 +85,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip DroneCharge;
     public AudioClip DroneChargeShoot;
     public AudioClip DroneDashReady;
-    public AudioClip DroneDash;
     public AudioClip DroneDie;
 
     [Header("Boss SE")]
@@ -99,7 +94,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip BossHit;
     public AudioClip BossMissileHit;
     public AudioClip BossDashReady;
-    public AudioClip BossDash;
     public AudioClip BossLaser;
     public AudioClip BossMissile;
     public AudioClip BossMissileBoost;
@@ -151,9 +145,6 @@ public class AudioManager : MonoBehaviour
                 break;
             case BGMType.Lose:
                 Player.clip = BGMLose;
-                break;
-            case BGMType.Win:
-                Player.clip = BGMWin;
                 break;
             default:
                 break;
@@ -227,9 +218,6 @@ public class AudioManager : MonoBehaviour
             case SEType.DroneDashReady:
                 Player.PlayOneShot(DroneDashReady, volume);
                 break;
-            case SEType.DroneDash:
-                Player.PlayOneShot(DroneDash, volume);
-                break;
             case SEType.DroneDie:
                 Player.PlayOneShot(DroneDie, volume);
                 break;
@@ -251,9 +239,6 @@ public class AudioManager : MonoBehaviour
                 break;
             case SEType.BossDashReady:
                 Player.PlayOneShot(BossDashReady, volume);
-                break;
-            case SEType.BossDash:
-                Player.PlayOneShot(BossDash, volume);
                 break;
             case SEType.BossLaser:
                 Player.PlayOneShot(BossLaser, volume);
