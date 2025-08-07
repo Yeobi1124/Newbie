@@ -65,6 +65,7 @@ public class UIManager : MonoBehaviour
     {
         BGM_Volume.value = StartSceneManager.Instance.BGM_Volume.value;
         SE_Volume.value = StartSceneManager.Instance.SE_Volume.value;
+        StartSceneManager.Instance.enabled = false;
     }
 
     public void WinGame()
@@ -113,7 +114,6 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene");
         StartSceneManager.Instance.enabled = true;
-        this.enabled = false;
     }
 
     public void ChangeStatusValue(string type, float val)
