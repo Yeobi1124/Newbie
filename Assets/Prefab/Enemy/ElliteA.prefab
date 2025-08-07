@@ -205,7 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomShootDelay: 0
-  arcShootDelay: 2
+  arcShootDelay: 1.5
+  chaseShootDelay: 2.5
   delayTimer: 0
 --- !u!114 &615237017087164499
 MonoBehaviour:
@@ -219,11 +220,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431d3de0986597a4a9c6962ec45c4ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
   moveDuration: 1
-  minBounds: {x: 0, y: -5}
+  minBounds: {x: 0, y: -3}
   maxBounds: {x: 9, y: 5}
   xCenter: 6
   yCenter: 0
   timer: 0
-  droneSpeed: 2
+  droneSpeed: 3
+  stopDuration: 2
