@@ -38,12 +38,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if(null == Instance)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else Destroy(this.gameObject);
+        if(null == Instance) Instance = this;
+        else Destroy(gameObject);
 
         Menu.SetActive(false);
 
@@ -63,9 +59,8 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        BGM_Volume.value = StartSceneManager.Instance.BGM_Volume.value;
-        SE_Volume.value = StartSceneManager.Instance.SE_Volume.value;
-        StartSceneManager.Instance.enabled = false;
+        BGM_Volume.value = AudioManager.Instance.BGM_Volume;
+        SE_Volume.value = AudioManager.Instance.SE_Volume;
     }
 
     public void WinGame()
@@ -90,6 +85,9 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        AudioManager.Instance.BGM_Volume = BGM_Volume.value;
+        AudioManager.Instance.SE_Volume = SE_Volume.value;
+
         timeCount += Time.deltaTime;
         time.text = timeCount.ToString("F2") + "s";
     }

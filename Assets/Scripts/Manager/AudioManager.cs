@@ -7,7 +7,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public static BGMType PlayingBGM = BGMType.None;
-    
+
+    public float BGM_Volume = 1, SE_Volume = 1;
+
     public enum BGMType
     {
         None,
@@ -120,8 +122,7 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "StartScene") Player.volume = StartSceneManager.Instance.BGM_Volume.value;
-        else if (SceneManager.GetActiveScene().name == "MainScene") Player.volume = UIManager.Instance.BGM_Volume.value;
+        Player.volume = BGM_Volume;
     }
 
     public void PlayBGM(BGMType type)
@@ -162,9 +163,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySE(SEType type)
     {
-        float volume = 1;
-        if(SceneManager.GetActiveScene().name == "MainScene") volume = UIManager.Instance.SE_Volume.value;
-        else if(SceneManager.GetActiveScene().name == "StartScene") volume = StartSceneManager.Instance.SE_Volume.value;
+        float volume = SE_Volume;
         switch (type)
             {
                 case SEType.PlayerShoot:
