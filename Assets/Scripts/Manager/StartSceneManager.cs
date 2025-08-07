@@ -7,6 +7,10 @@ using DG.Tweening;
 
 public class StartSceneManager : MonoBehaviour
 {
+    public static StartSceneManager Instance;
+
+    private bool isPlayedOnce = false;
+
     public GameObject MainMenu;
     public GameObject SettingMenu;
 
@@ -39,6 +43,16 @@ public class StartSceneManager : MonoBehaviour
     public GameObject[] BG = new GameObject[2];
     private void Awake()
     {
+        if (null == Instance)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         PlayButton.onClick.AddListener(Play);
         SettingButton.onClick.AddListener(Setting);
         QuitButton.onClick.AddListener(Quit);
@@ -52,6 +66,12 @@ public class StartSceneManager : MonoBehaviour
         SettingMenu.SetActive(false);
 
         AudioManager.Instance.PlayBGM(AudioManager.BGMType.Title);
+    }
+
+    private void OnEnable()
+    {
+        BGM_Volume.value = StartSceneManager.Instance.BGM_Volume.value;
+        SE_Volume.value = StartSceneManager.Instance.SE_Volume.value;
     }
 
     private void Update()
@@ -123,7 +143,11 @@ public class StartSceneManager : MonoBehaviour
         StartCoroutine(WipeButtonLeft(QuitButton));
         yield return new WaitForSeconds(0.5f);
 
+        if (isPlayedOnce) UIManager.Instance.enabled = true;
+        else isPlayedOnce = true;
+
         LoadingSceneManager.LoadScene("MainScene");
+        this.enabled = false;
     }
 
     public IEnumerator WipeUp(Image var)
