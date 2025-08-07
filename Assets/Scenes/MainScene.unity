@@ -2971,7 +2971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &977637311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5228,11 +5228,7 @@ MonoBehaviour:
   waveTime: 0
   waves:
   - spawns:
-    - enemyName: Boss
-      spawnPoint: {fileID: 1154571285}
-      spawnTime: 0.1
-  - spawns:
-    - enemyName: DroneShooterA
+    - enemyName: DroneChargerA
       spawnPoint: {fileID: 496182494}
       spawnTime: 0.1
     - enemyName: DroneShooterB
@@ -5256,6 +5252,10 @@ MonoBehaviour:
       spawnTime: 0.3
     - enemyName: DroneShooterB
       spawnPoint: {fileID: 1982593396}
+      spawnTime: 0.1
+  - spawns:
+    - enemyName: Boss
+      spawnPoint: {fileID: 1154571285}
       spawnTime: 0.1
   remainEnemies: []
   bossSpawner: {fileID: 1515092696}

@@ -11,7 +11,9 @@ public class StageManager : MonoBehaviour
     public float waveTime = 0;
     [SerializeField, Tooltip("Please using FIFO(Queue) method")]
     public List<Wave> waves = new List<Wave>();
-    
+
+    [SerializeField] private GameObject laser;
+
     [SerializeField]
     public List<GameObject> remainEnemies = new List<GameObject>();
 
@@ -27,6 +29,8 @@ public class StageManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        laser.SetActive(false);
     }
 
     private int CheckRemainEnemies()
