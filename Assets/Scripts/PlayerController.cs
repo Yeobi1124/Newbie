@@ -47,6 +47,10 @@ public class PlayerController : MonoBehaviour
         inputs.Enable();
 
         spaceShip.OnDead += () => autoFireLock = true;
+        
+        // Spaceship status
+        previousHP = spaceShip.health;
+        previousSP = spaceShip.Energy;
     }
 
     private void OnDestroy()
@@ -82,6 +86,22 @@ public class PlayerController : MonoBehaviour
             _time -= basicAttackInterval;
             basicAttack.Use();
         }
+    }
+
+    private float previousHP;
+    private float previousSP;
+    private void LateUpdate()
+    {
+        if (SceneManager.GetActiveScene().name == "StartScene") return;
+        
+        float hpDiff = 100 * (spaceShip.health - previousHP) / spaceShip.maxHealth;
+        float spDiff = 100 * (spaceShip.Energy - previousSP) / spaceShip.MaxEnergy;
+        
+        UIManager.Instance.ChangeStatusValue("HP", hpDiff);
+        UIManager.Instance.ChangeStatusValue("SP", spDiff);
+        
+        previousHP = spaceShip.health;
+        previousSP = spaceShip.Energy;
     }
 
     private void Move(InputAction.CallbackContext context) => spaceShip.Move(context.ReadValue<Vector2>());
