@@ -23,6 +23,8 @@ public class StartSceneManager : MonoBehaviour
     public Button SettingButton;
     public Button QuitButton;
 
+    private Button ChosenButton;
+
     public Image Line;
 
     public TMP_Text time;
@@ -51,10 +53,10 @@ public class StartSceneManager : MonoBehaviour
         Quit2Button.onClick.AddListener(Quit);
         ResumeButton.onClick.AddListener(Setting);
 
-        
 
-        IsSetting = true;
-        Setting();
+        ChosenButton = QuitButton;
+        IsSetting = false;
+        SettingMenu.SetActive(false);
     }
 
     private void Update()
@@ -68,28 +70,25 @@ public class StartSceneManager : MonoBehaviour
         }
     }
 
-    public void MouseOnPlay()
-    {
-
-    }
-
-    public void MouseOnSetting()
-    {
-
-    }
-
-    public void MouseOnQuit()
-    {
-
-    }
-
     public void Play()
     {
+        if(ChosenButton != PlayButton)
+        {
+            Line.rectTransform.sizeDelta = new Vector2(35, 240);
+            ChosenButton = PlayButton;
+            return;
+        }
         StartCoroutine(PlayCoroutine());
     }
 
     public void Setting()
     {
+        if(ChosenButton != SettingButton)
+        {
+            Line.rectTransform.sizeDelta = new Vector2(35, 307);
+            ChosenButton = SettingButton;
+            return;
+        }
         IsSetting = !IsSetting;
 
         if (IsSetting)
@@ -106,25 +105,30 @@ public class StartSceneManager : MonoBehaviour
 
     public void Quit()
     {
+        if(ChosenButton != QuitButton)
+        {
+            Line.rectTransform.sizeDelta = new Vector2(35, 373);
+            ChosenButton = QuitButton;
+            return;
+        }
         Application.Quit();
     }
 
     public IEnumerator PlayCoroutine()
     {
         StartCoroutine(WipeUp(Line));
-        yield return new WaitForSeconds(0.5F);
+        yield return new WaitForSeconds(0.3F);
         StartCoroutine(WipeTitleLeft(Title));
-        yield return new WaitForSeconds(0.5f);
-        /*
-        StartCoroutine(WipeButtonLeft(PlayButton));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(WipeButtonLeft(SettingButton));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(WipeButtonLeft(QuitButton));
-        yield return new WaitForSeconds(0.5f);
-        */
+        yield return new WaitForSeconds(0.1f);
 
-        //LoadingSceneManager.LoadScene("MainScene");
+        StartCoroutine(WipeButtonLeft(PlayButton));
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(WipeButtonLeft(SettingButton));
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(WipeButtonLeft(QuitButton));
+        yield return new WaitForSeconds(1);
+
+        LoadingSceneManager.LoadScene("MainScene");
     }
 
     public IEnumerator WipeUp(Image var)
@@ -150,22 +154,16 @@ public class StartSceneManager : MonoBehaviour
             yield return null;
         }
     }
-
-    /*
     public IEnumerator WipeButtonLeft(Button var)
     {
-<<<<<<< Updated upstream
-=======
         RectTransform rect = var.GetComponent<RectTransform>();
->>>>>>> Stashed changes
         float Myspeed = wipeSpeed;
-        while (var.rectTransform.anchoredPosition.x > -500)
+        while (rect.anchoredPosition.x > -500)
         {
-            var.rectTransform.anchor edPosition =
-                new Vector2(var.rectTransform.anchoredPosition.x + Myspeed, var.rectTransform.anchoredPosition.y);
+            rect.anchoredPosition =
+                new Vector2(rect.anchoredPosition.x + Myspeed, rect.anchoredPosition.y);
             Myspeed -= 0.1f;
             yield return null;
         }
     }
-    */
 }
