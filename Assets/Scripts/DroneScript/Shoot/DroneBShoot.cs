@@ -1,5 +1,3 @@
-using System.Numerics;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class DroneBShoot : MonoBehaviour

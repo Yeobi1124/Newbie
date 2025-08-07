@@ -1,9 +1,4 @@
-using System;
-using UnityEditor.Rendering;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.Scripting.APIUpdating;
 
 public class DroneInfo : Attack, IHittable
 {
