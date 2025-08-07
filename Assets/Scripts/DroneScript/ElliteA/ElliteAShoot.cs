@@ -9,7 +9,10 @@ public class ElliteAShoot : MonoBehaviour
     public float randomShootDelay;
     private float arcShootCounter = 0;
     public float arcShootDelay;
+    private float chaseShootCounter = 0;
+    public float chaseShootDelay;
     public float delayTimer;
+    private Vector3 moveDirection;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,8 +37,15 @@ public class ElliteAShoot : MonoBehaviour
                 arcShootCounter = 0;
             }
 
+            if (chaseShootCounter >= chaseShootDelay)
+            {
+                ChaseShoot();
+                chaseShootCounter = 0;
+            }
+
             randomShootCounter += Time.deltaTime;
             arcShootCounter += Time.deltaTime;
+            chaseShootCounter += Time.deltaTime;
         }
     }
 
@@ -44,7 +54,7 @@ public class ElliteAShoot : MonoBehaviour
         Debug.Log("RandomShoot");
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletEnemy");
         bulletA.transform.position = transform.position;
-        bulletA.transform.Translate(-2f, -1.3f, 0,Space.World);
+        bulletA.transform.Translate(-2f, -1.3f, 0, Space.World);
         bulletA.transform.localScale = new Vector3(-1, 1, 1);
         gameObject.GetComponent<ElliteInfo>().ShootNum++;
         randomShootDelay = Random.Range(0.3f, 2f);
@@ -58,13 +68,13 @@ public class ElliteAShoot : MonoBehaviour
 
     public void ArcShoot()
     {
-        Debug.Log("Arc Shoot!");
-        float angleStep = 15f; // 총알 간의 각도 차이
-        float startAngle = -angleStep; // 왼쪽에서 시작 (총 3발)
+        //Debug.Log("Arc Shoot!");
+        float angleStep = 15f; 
+        float startAngle = -angleStep-30;
 
         for (int i = 0; i < 5; i++)
         {
-            float angle = startAngle + angleStep * i;
+            float angle = startAngle + angleStep * (i+1);
             Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.right;
             GameObject bullet = DroneObjectManager.Instance.PullObject("BulletEnemy");
             float angleSpin = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -75,5 +85,32 @@ public class ElliteAShoot : MonoBehaviour
             bullet.GetComponent<DroneBullet>().moveDirection = direction * (-1);
         }
         gameObject.GetComponent<ElliteInfo>().ShootNum++;
+    }
+
+    public void ChaseShoot()
+    {
+        GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletChase");
+        bulletA.transform.position = transform.position;
+        bulletA.transform.Translate(-2.0f, -1.3f, 0, Space.World);
+        Detect(bulletA);
+
+        bulletA.GetComponent<ChasingBullet>().moveDirection = moveDirection;
+
+        GameObject bulletB = DroneObjectManager.Instance.PullObject("BulletChase");
+        bulletB.transform.position = transform.position;
+        bulletB.transform.Translate(-1.7f, -1.3f, 0, Space.World);
+        Detect(bulletB);
+        bulletB.GetComponent<ChasingBullet>().moveDirection = moveDirection;
+        gameObject.GetComponent<ElliteInfo>().ShootNum++;
+    }
+
+    private void Detect(GameObject bullet)
+    {
+        GameObject player = GameObject.Find("Player");
+        if (player == null) return;
+        moveDirection = (player.transform.position - bullet.transform.position).normalized;
+
+        float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 }

@@ -187,11 +187,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   isFriendlyToPlayer: 0
-  OriginalHealth: 100
+  OriginalHealth: 50
   Health: 100
   DroneSpeed: 1
   check: 0
   detect: 0
+  chargeDamage: 20
 --- !u!95 &1668989535511897416
 Animator:
   serializedVersion: 7
