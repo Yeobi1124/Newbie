@@ -82,6 +82,7 @@ public class ElliteInfo : Attack, IHittable
 
     public void Destroyed()
     {
+        AudioManager.Instance.PlaySE(AudioManager.SEType.DroneDie);
         isDestroyed = true;
         Shootable = false;
         //Debug.Log($"NONE Shootable: {gameObject.GetComponent<DroneInfo>().Shootable}");

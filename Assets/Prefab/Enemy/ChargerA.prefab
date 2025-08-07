@@ -112,7 +112,7 @@ MonoBehaviour:
   chargeSpeed: 10
   droneSpeed: 1
   waitTimer: 0
-  waitDuration: 3
+  waitDuration: 1.5
 --- !u!114 &1919673176047707150
 MonoBehaviour:
   m_ObjectHideFlags: 0

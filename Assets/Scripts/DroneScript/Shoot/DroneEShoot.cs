@@ -28,6 +28,7 @@ public class DroneEShoot : MonoBehaviour
 
     public void Shoot()
     {
+        AudioManager.Instance.PlaySE(AudioManager.SEType.DroneShootA);
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletEnemy");
         bulletA.transform.position = transform.position;
         bulletA.transform.Translate(0.7f, -0.04f, 0);

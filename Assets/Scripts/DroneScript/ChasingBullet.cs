@@ -29,6 +29,7 @@ public class ChasingBullet : Attack
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
+                AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerHit);
                 Instantiate(particle, gameObject.transform.position, Quaternion.identity);
                 hittable.Hit(damage);
                 gameObject.SetActive(false);

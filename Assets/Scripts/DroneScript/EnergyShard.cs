@@ -24,6 +24,6 @@ public class EnergyShard : MonoBehaviour
         transform.localPosition = new Vector3(transform.localPosition.x - horizontalSpeed * Time.fixedDeltaTime,
                                             transform.position.y - previousY + yOffset);
 
-        previousY = yOffset;      
+        previousY = yOffset;
     }
 }
