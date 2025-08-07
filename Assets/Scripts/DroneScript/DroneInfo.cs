@@ -29,7 +29,7 @@ public class DroneInfo : Attack, IHittable
             Destroyed();
         }
 
-        if (Health <= 0 && !isDestroyed)
+        if (Health <= 0)
         {
             Destroyed();
             GameObject shard = DroneObjectManager.Instance.PullObject("Shard");

@@ -24,11 +24,15 @@ public class ElliteInfo : Attack, IHittable
             Destroyed();
         }
 
-        if (Health <= 0 && !isDestroyed)
+        if (Health <= 0)
         {
             Destroyed();
-            GameObject shard = DroneObjectManager.Instance.PullObject("Shard");
-            shard.transform.position = gameObject.transform.position;
+            for (int i = -1; i < 2; i++)
+            {
+                GameObject shard = DroneObjectManager.Instance.PullObject("Shard");
+                shard.transform.position = gameObject.transform.position;
+                shard.transform.Translate(i, 0, 0);
+            }
         }
     }
 
