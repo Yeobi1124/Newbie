@@ -2,8 +2,8 @@ using System;
 using Unity.Behavior;
 
 [BlackboardEnum]
-public enum Phase
+public enum State
 {
-    Phase1,
-	Phase2
+    ChargingLaser,
+	NotChargingLaser
 }
