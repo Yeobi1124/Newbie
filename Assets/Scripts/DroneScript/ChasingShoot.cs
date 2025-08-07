@@ -36,6 +36,7 @@ public class ChasingShoot : MonoBehaviour
     {
         //Debug.Log($"Chasing Shoot: {gameObject.GetComponent<DroneInfo>().Shootable}");
         //if (!gameObject.GetComponent<DroneInfo>().Shootable) return;
+        AudioManager.Instance.PlaySE(AudioManager.SEType.DroneShootC);
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletChase");
         bulletA.transform.position = transform.position;
         bulletA.transform.Translate(-1.3f, -0.5f, 0, Space.World);

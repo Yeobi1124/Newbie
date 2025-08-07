@@ -16,7 +16,6 @@ public class ChragerInfo : Attack, IHittable
     {
         isDestroyed = false;
         ResetCharger();
-        Health = OriginalHealth;
     }
     void OnEnable()
     {
@@ -75,6 +74,7 @@ public class ChragerInfo : Attack, IHittable
 
     private void Destroyed()
     {
+        AudioManager.Instance.PlaySE(AudioManager.SEType.DroneDie);
         gameObject.GetComponent<ChargerAMove>().chargeSpeed = 0;
         gameObject.GetComponent<ChargerAMove>().droneSpeed = 0;
         gameObject.GetComponent<ChargerAMove>().moveSpeed = 0;

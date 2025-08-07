@@ -19,7 +19,7 @@ public class ChargerAMove : MonoBehaviour
     private bool isWaiting = false;
 
     public float waitTimer;
-    public float waitDuration = 3f;
+    public float waitDuration = 1.5f;   
 
     void Start()
     {
@@ -123,6 +123,7 @@ public class ChargerAMove : MonoBehaviour
             isWaiting = true;
             waitTimer = 0f;
             moveDirection = (player.transform.position - transform.position).normalized;
+            AudioManager.Instance.PlaySE(AudioManager.SEType.DroneDashReady);
         }
     }
 
