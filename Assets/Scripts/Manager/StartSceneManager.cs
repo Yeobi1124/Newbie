@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections;
+using DG.Tweening;
 
 public class StartSceneManager : MonoBehaviour
 {
@@ -53,8 +54,9 @@ public class StartSceneManager : MonoBehaviour
         Quit2Button.onClick.AddListener(Quit);
         ResumeButton.onClick.AddListener(Setting);
 
-
         ChosenButton = QuitButton;
+        Line.rectTransform.sizeDelta = new Vector2(Line.rectTransform.sizeDelta.x, 373);
+
         IsSetting = false;
         SettingMenu.SetActive(false);
     }
@@ -126,7 +128,7 @@ public class StartSceneManager : MonoBehaviour
         StartCoroutine(WipeButtonLeft(SettingButton));
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(WipeButtonLeft(QuitButton));
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         LoadingSceneManager.LoadScene("MainScene");
     }

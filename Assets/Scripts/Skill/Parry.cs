@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using AllIn1SpriteShader;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,14 +12,25 @@ public class Parry : Skill
     [SerializeField] private float fillDefaultEnergy = 1f;
     [SerializeField] private float fillEnergyRate = 0.2f;
     [SerializeField] private float fillEnergyMax = 2f;
-    [SerializeField, Tooltip("Áï»ç±â ÆÇº°ÇÏ±â À§ÇØ ¾î´À µ¥¹ÌÁö ÀÌ»óÀ» Áï»ç±â·Î º¼ °ÇÁö")]
+    [SerializeField, Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½Çºï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     private float damageCut = 999f;
 
     [ReadOnly, SerializeField]
     private bool isLocked = false;
     
+    [SerializeField]
+    public Animator animator;
+
     private Coroutine coroutine;
+    private Material material;
     
+
+    protected override void Awake()
+    {
+        base.Awake();
+        material = GetComponent<Renderer>().material;
+    }
+
     public override bool Use()
     {
         if (isLocked == false && _energy.Energy >= _energyConsumption)
@@ -35,12 +47,14 @@ public class Parry : Skill
         // Activate Parry
         isLocked = true;
         shield.gameObject.SetActive(true);
+        animator.SetBool("IsActivate", true);
         
         yield return new WaitForSeconds(duration);
         
         // Deactivate Parry
         isLocked = false;
         shield.gameObject.SetActive(false);
+        animator.SetBool("IsActivate", false);
     }
 
     public void ParrySuccess(float damage)
@@ -59,8 +73,8 @@ public class Parry : Skill
         }
         
         // Shield Visual
-        Animator shieldAnimator = shield.gameObject.GetComponent<Animator>();
-        shieldAnimator.SetTrigger("Destroy");
+        animator.SetTrigger("Destroy");
+        animator.SetBool("IsActivate", false);
         
         // Stop Coroutine, Unlock Skill
         isLocked = false;

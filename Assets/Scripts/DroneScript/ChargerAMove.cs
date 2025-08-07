@@ -24,7 +24,6 @@ public class ChargerAMove : MonoBehaviour
     void Start()
     {
         summon = true;
-        gameObject.GetComponent<DroneInfo>().Shootable = false;
     }
     void OnDisable()
     {
