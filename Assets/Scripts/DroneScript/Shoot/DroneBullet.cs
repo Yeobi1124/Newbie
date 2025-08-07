@@ -1,9 +1,21 @@
+
 using UnityEngine;
 
 public class DroneBullet : Attack
 {
     public float BulletSpeed;
     public Vector3 moveDirection;
+    public Quaternion originalRotation;
+    void Start()
+    {
+        originalRotation = Quaternion.Euler(0, 0, 0);
+    }
+    void OnEnable()
+    {
+        //Debug.Log("?????");
+        moveDirection = Vector3.zero;
+        gameObject.transform.rotation = originalRotation;
+    }
     void Update()
     {
         if (moveDirection == new Vector3(0,0,0)) moveDirection = new Vector3(-1, 0, 0);
