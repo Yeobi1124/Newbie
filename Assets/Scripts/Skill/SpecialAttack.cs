@@ -1,52 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class SpecialAttack : Skill
 {
-    [SerializeField] private SpecialAttackDrone[] drones;
-    [SerializeField] private SpecialAttackLaser laser;
-    
-    [SerializeField] private float duration = 7f;
-    
-    [SerializeField] private float attackActivateTime = 1f;
+    [SerializeField] private PlayableDirector director;
+    [SerializeField] private SpecialAttackManage manage;
+    [SerializeField] private Animator _animator;
 
-    private bool isLocked = false;
-    
-    public override bool Use()
+    private void Start()
     {
-        if (isLocked == true || _energy.Energy < _energyConsumption) return false;
-        _energy.Energy -= _energyConsumption;
-
-        StartCoroutine(Activate());
-        return true;
+        manage.OnDone += () => _animator.SetBool("UseSkill", false);
     }
 
-    private IEnumerator Activate()
+    public override bool Use()
     {
-        isLocked = true;
-
-        foreach (var drone in drones)
-        {
-            drone.gameObject.SetActive(true);
-            drone.Act();
-        }
+        if (manage.isDone == false || _energy.Energy < _energyConsumption) return false;
+        _energy.Energy -= _energyConsumption;
         
-        yield return new WaitForSeconds(attackActivateTime);
+        director.time = director.initialTime;
+        director.Play();
         
-        laser.gameObject.SetActive(true);
-        laser.Act();
+        _animator.SetBool("UseSkill", true);
         
-        yield return new WaitForSeconds(duration);
-        
-        isLocked = false;
-        
-        foreach (var drone in drones)
-        {
-            drone.Init();
-            drone.gameObject.SetActive(false);
-        }
-        
-        laser.Init();
-        laser.gameObject.SetActive(false);
+        return true;
     }
 }

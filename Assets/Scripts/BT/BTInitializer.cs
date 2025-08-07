@@ -1,23 +1,33 @@
 using UnityEngine;
 using Unity.Behavior;
+using System.Collections.Generic;
 
-public class BTInitializer : MonoBehaviour
+public class BTInitializer
 {
-    [SerializeField] private GameObject player;
-    [SerializeField] private BehaviorGraphAgent behaviorTree;
-    [SerializeField] private IMissileMover mover;
-    [SerializeField] private Transform missileAbove;
-    [SerializeField] private Transform missileBelow;
-    void Start()
+    private BehaviorGraphAgent behaviorTree;
+
+    public BTInitializer(BehaviorGraphAgent behaviorTree)
     {
-        behaviorTree = GetComponent<BehaviorGraphAgent>();
+        this.behaviorTree = behaviorTree;
+    }
+    public void Init(GameObject player,IMissileMover mover,Transform missileAbove, Transform missileBelow, List<GameObject> backgrounds,GameObject laser,float hp,List<GameObject> WayPoints,Transform laserTransform)
+    {
         behaviorTree.SetVariableValue("Player", player);
         behaviorTree.SetVariableValue("MissilePosition_Above", missileAbove);
         behaviorTree.SetVariableValue("MissilePosition_Below", missileBelow);
-        //mover ³Ö±â
+		behaviorTree.SetVariableValue("Backgrounds", backgrounds);
+		behaviorTree.SetVariableValue("Laser", laser);
+        behaviorTree.SetVariableValue("maxHP", hp);
+        HPUpdate(hp);
+        behaviorTree.SetVariableValue("WayPoints", WayPoints);
+        behaviorTree.SetVariableValue("LaserTransform", laserTransform);
     }
-    void Update()
+
+    public void HPUpdate(float hp)
     {
-        
+        behaviorTree.SetVariableValue("curHP", hp);
+
     }
+
+    
 }
