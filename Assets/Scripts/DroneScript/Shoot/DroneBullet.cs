@@ -36,7 +36,8 @@ public class DroneBullet : Attack
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                // particle = Instantiate(particle, gameObject.transform.position, Quaternion.identity);
+                // Debug.Log("GetHit");
+                Instantiate(particle, gameObject.transform.position, Quaternion.identity);
                 hittable.Hit(damage);
                 gameObject.SetActive(false);
                 moveDirection = new Vector3(0, 0, 0);
