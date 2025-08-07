@@ -116,6 +116,8 @@ MonoBehaviour:
   isFriendlyToPlayer: 1
   isPlaySFX: 1
   sfx: 3
+  isPlayVFX: 1
+  vfx: {fileID: 4625738548344898044, guid: 768a7e2a9d2edc94b8055d67f76bba5c, type: 3}
 --- !u!1 &6405982700137532283
 GameObject:
   m_ObjectHideFlags: 0
