@@ -5,7 +5,7 @@ public class ElliteAmove : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;                 // 이동 속도
     [SerializeField] private float moveDuration = 1f;              // 방향 유지 시간
-    [SerializeField] private Vector2 minBounds = new Vector2(0f, -5f);  // XY 최소 범위
+    [SerializeField] private Vector2 minBounds = new Vector2(0f, -3f);  // XY 최소 범위
     [SerializeField] private Vector2 maxBounds = new Vector2(9f, 5f);   // XY 최대 범위
 
     private Vector3 moveDirection;     // 현재 이동 방향
@@ -21,6 +21,8 @@ public class ElliteAmove : MonoBehaviour
     private float stayTimer = 0; 
     private bool isMoving = true;
     private bool stayOver;
+    private float stopTimer;
+    public float stopDuration;
 
     void Onable()
     {
@@ -87,21 +89,28 @@ public class ElliteAmove : MonoBehaviour
         }
         else
         {
-            if (gameObject.GetComponent<ElliteInfo>().ShootNum > 2)
+            stopTimer += Time.deltaTime;
+            if (stopTimer >= stopDuration)
             {
-                if (stayOver)
-                {
-                    isMoving = true;
-                    SetRandomDirection();
-                    gameObject.GetComponent<ElliteInfo>().ShootNum = 0;
-                    stayOver = false;
-                }
-
-                else
-                {
-                    Stay();
-                }
+                stopTimer = 0f;
+                isMoving = true;      
+                SetRandomDirection();
             }
+            // if (gameObject.GetComponent<ElliteInfo>().ShootNum > 2)
+            // {
+            //     if (stayOver)
+            //     {
+            //         isMoving = true;
+            //         SetRandomDirection();
+            //         gameObject.GetComponent<ElliteInfo>().ShootNum = 0;
+            //         stayOver = false;
+            //     }
+
+            //     else
+            //     {
+            //         Stay();
+            //     }
+            // }
         }
     }
 
