@@ -144,8 +144,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2849587964675636904}
-  - {fileID: 1654461416236963483}
-  - {fileID: 809269058697387866}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &3370186923695638367
@@ -215,10 +213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430d1fc78fac8e24398f7c1387266f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 20
   isFriendlyToPlayer: 0
   player: {fileID: 0}
-  BulletSpeed: 50
+  BulletSpeed: 37.5
 --- !u!61 &7349075884440727948
 BoxCollider2D:
   m_ObjectHideFlags: 0

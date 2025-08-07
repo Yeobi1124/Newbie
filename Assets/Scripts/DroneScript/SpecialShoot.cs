@@ -24,6 +24,11 @@ public class SpecialShoot : MonoBehaviour
                 effectSpawned = true;
             }
 
+            if (gameObject.GetComponent<ElliteInfo>().isDestroyed == true)
+            {
+                Destroy(effectInstance);
+            }
+
             timer += Time.deltaTime;
 
             // Make effect follow the target
