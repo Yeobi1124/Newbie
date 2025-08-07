@@ -71,7 +71,7 @@ public class StageManager : MonoBehaviour
             
             if(wave.spawns[0].enemyName == "Boss"&&CheckRemainEnemies()==0)
             {
-                GameObject boss = bossSpawner.SpawnBoss();
+                GameObject boss = bossSpawner.SpawnBoss(wave.spawns[0].spawnPoint.transform.position);
                 remainEnemies.Add(boss);
                 wave.spawns.RemoveAt(0);
                 break;
