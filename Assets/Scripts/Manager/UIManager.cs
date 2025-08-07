@@ -106,13 +106,14 @@ public class UIManager : MonoBehaviour
 
     public void RetryGame()
     {
+        Time.timeScale = 1;
         LoadingSceneManager.LoadScene("MainScene");
     }
 
     public void QuitGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("StartScene");
-        StartSceneManager.Instance.enabled = true;
     }
 
     public void ChangeStatusValue(string type, float val)
