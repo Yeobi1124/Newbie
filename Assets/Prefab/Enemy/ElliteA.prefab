@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5319699481966421071}
   - component: {fileID: -3437207876368476906}
   - component: {fileID: 8781519964757314336}
+  - component: {fileID: 8466283978334696322}
   - component: {fileID: 615237017087164499}
   m_Layer: 0
   m_Name: ElliteA
@@ -191,6 +192,21 @@ MonoBehaviour:
   isFriendly: 0
   isDestroyed: 0
   chargeDamage: 20
+--- !u!114 &8466283978334696322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277420256911438983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97bc654defb5e247a8b5bb7e6d25194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomShootDelay: 0
+  arcShootDelay: 2
+  delayTimer: 0
 --- !u!114 &615237017087164499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,4 +226,4 @@ MonoBehaviour:
   xCenter: 6
   yCenter: 0
   timer: 0
-  droneSpeed: 1
+  droneSpeed: 2
