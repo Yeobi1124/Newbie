@@ -14,6 +14,8 @@ public class Parry : Skill
     [SerializeField] private float fillEnergyMax = 2f;
     [SerializeField, Tooltip("���� �Ǻ��ϱ� ���� ��� ������ �̻��� ����� �� ����")]
     private float damageCut = 999f;
+    
+    [SerializeField] private Collider2D _unitCollider;
 
     [ReadOnly, SerializeField]
     private bool isLocked = false;
@@ -49,6 +51,8 @@ public class Parry : Skill
         shield.gameObject.SetActive(true);
         animator.SetBool("IsActivate", true);
         
+        _unitCollider.enabled = false;
+        
         AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerParry);
         
         yield return new WaitForSeconds(duration);
@@ -57,6 +61,8 @@ public class Parry : Skill
         isLocked = false;
         shield.gameObject.SetActive(false);
         animator.SetBool("IsActivate", false);
+        
+        _unitCollider.enabled = true;
     }
 
     public void ParrySuccess(float damage)
@@ -82,6 +88,7 @@ public class Parry : Skill
         AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerParrySuccess);
         
         // Stop Coroutine, Unlock Skill
+        _unitCollider.enabled = true;
         isLocked = false;
         StopCoroutine(coroutine);
     }

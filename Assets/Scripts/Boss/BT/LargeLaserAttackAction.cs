@@ -55,10 +55,10 @@ public partial class LargeLaserAttackAction : Action
 			{
 
 				invisibleBullet = Laser.Value.transform.GetChild(0).gameObject;
-				invisibleBullet.transform.position = new Vector2(0, 0);
+				invisibleBullet.transform.localPosition = new Vector2(0, 0);
 				invisibleBullet.SetActive(true);
 				Rigidbody2D invisibleBulletRb = invisibleBullet.GetComponent<Rigidbody2D>();
-				invisibleBulletRb.linearVelocityX = -50f;
+				invisibleBulletRb.linearVelocityX = -40f;
 
 				timer = 0f;
 				curState = State.LaserOff;
