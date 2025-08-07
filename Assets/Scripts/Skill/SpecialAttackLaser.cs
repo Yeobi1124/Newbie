@@ -12,6 +12,7 @@ public class SpecialAttackLaser : MonoBehaviour
 
     [SerializeField]
     private bool _active = false;
+    [SerializeField]
     private float _progress; // 0 to 1
     
     [SerializeField] private float _lineMaxWidth;
@@ -28,7 +29,7 @@ public class SpecialAttackLaser : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float distance = (transform.position - target.transform.position).magnitude; // °¢µµ °è»ê ÀÏ´Ü ±ÍÂú¾Æ¼­ »­.
+        float distance = 2 * (transform.position - target.transform.position).magnitude; // °¢µµ °è»ê ÀÏ´Ü ±ÍÂú¾Æ¼­ »­.
         _collider.size = new Vector2(distance * _progress, _collider.size.y);
         _collider.offset = new Vector2(distance * _progress * 0.5f, _collider.offset.y);
     }
@@ -51,6 +52,7 @@ public class SpecialAttackLaser : MonoBehaviour
         _progress = 0;
         
         _collider.enabled = false;
+        _collider.size = new Vector2(0.01f, _lineMaxWidth);
 
         _active = false;
     }

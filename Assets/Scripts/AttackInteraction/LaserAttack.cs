@@ -14,7 +14,6 @@ public class LaserAttack : Attack
         if (other.TryGetComponent(out IHittable hittable) == false) return;
         if (hittable.IsValidTarget(isFriendlyToPlayer) == false) return;
         
-        // targets.Add(new TempTuple(hittable, Time.time));
         targets.Add(new TempTuple(other.gameObject, Time.time));
     }
 
@@ -22,9 +21,10 @@ public class LaserAttack : Attack
     {
         for (int i = 0; i < targets.Count; i++)
         {
-            if (targets[i].Item2 > Time.time)
+            if (targets[i].Item2 <= Time.time)
             {
-                targets[i].Item1.Hit(damage);
+                // targets[i].Item1.Hit(damage);
+                targets[i].Item1.GetComponent<IHittable>().Hit(damage);
                 targets[i] = new TempTuple(targets[i].Item1, targets[i].Item2 + damageInterval);
             }
         }
