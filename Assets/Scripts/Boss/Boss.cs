@@ -49,7 +49,7 @@ public class Boss : Attack,IHittable
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                hittable.Hit(damage);
+                hittable.Hit(damage, false);
             }
         }
         if (col.gameObject.CompareTag("Border"))
