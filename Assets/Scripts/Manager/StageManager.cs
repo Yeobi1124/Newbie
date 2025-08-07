@@ -15,6 +15,8 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     public List<GameObject> remainEnemies = new List<GameObject>();
 
+    public BossSpawner bossSpawner;
+
     private void Awake()
     {
         if (Instance == null)
@@ -26,6 +28,8 @@ public class StageManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        bossSpawner = GetComponent<BossSpawner>();
     }
 
     private int CheckRemainEnemies()
@@ -55,15 +59,23 @@ public class StageManager : MonoBehaviour
         {
             currentWave++;
             waveTime = 0;
+            
         }
         
         // Spawn Enemey
         waveTime += Time.deltaTime;
         
         Wave wave = waves[currentWave];
-        Debug.Log(currentWave);
         while (IsSpawnAble(wave))
         {
+            
+            if(wave.spawns[0].enemyName == "Boss"&&CheckRemainEnemies()==0)
+            {
+                GameObject boss = bossSpawner.SpawnBoss();
+                remainEnemies.Add(boss);
+                wave.spawns.RemoveAt(0);
+                break;
+            }
             // Spawn Drone
             GameObject enemy = DroneObjectManager.Instance.PullObject(wave.spawns[0].enemyName);
             enemy.transform.position = wave.spawns[0].spawnPoint.transform.position;
@@ -79,10 +91,11 @@ public class StageManager : MonoBehaviour
         if (wave.spawns.Count <= 0)
             return false;
         return wave.spawns[0].spawnTime <= waveTime;
-
     }
 
+    public bool IsLastWave(int index) => waves.Count <= index;
 }
+
 
 
 [Serializable]

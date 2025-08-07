@@ -124,7 +124,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 57dbc1c5b4fab4d439a07589c989aa3b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -172,6 +172,8 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 6800488309627289600
   - rid: 4103027902922621342
+  - rid: 6800488381418307689
+  - rid: 6800488381418307690
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -193,6 +195,22 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 8218106706227436072}
+    - rid: 6800488381418307689
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 259379584123129745
+          m_Value1: 13860110896486458840
+        Name: MissilePosition_Above
+        m_Value: {fileID: 3532611258517970973}
+    - rid: 6800488381418307690
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7094765081909157237
+          m_Value1: 14306584808017545961
+        Name: MissilePosition_Below
+        m_Value: {fileID: 4934797949175856780}
 --- !u!114 &552727515151764529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,12 +231,6 @@ MonoBehaviour:
   speed: 0
   isDestroyed: 0
   behaviorTree: {fileID: 0}
-  player: {fileID: 0}
-  missileAbove: {fileID: 3532611258517970973}
-  missileBelow: {fileID: 4934797949175856780}
-  backgrounds:
-  - {fileID: 0}
-  laser: {fileID: 0}
 --- !u!61 &8589072356297493060
 BoxCollider2D:
   m_ObjectHideFlags: 0
