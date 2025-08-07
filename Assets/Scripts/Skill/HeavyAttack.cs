@@ -18,6 +18,8 @@ public class HeavyAttack : Skill
         
         bullet.transform.position = createPoint.transform.position;
         bullet.GetComponent<Rigidbody2D>().linearVelocityX = _bulletSpeed;
+        
+        AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerMissile);
 
         return true;
     }
