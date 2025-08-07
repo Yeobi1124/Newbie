@@ -27,8 +27,6 @@ public class StageManager : MonoBehaviour
         {
             Destroy(this);
         }
-
-        bossSpawner = GetComponent<BossSpawner>();
     }
 
     private int CheckRemainEnemies()
@@ -67,8 +65,7 @@ public class StageManager : MonoBehaviour
         Wave wave = waves[currentWave];
         while (IsSpawnAble(wave))
         {
-            
-            if(wave.spawns[0].enemyName == "Boss"&&CheckRemainEnemies()==0)
+            if (wave.spawns[0].enemyName == "Boss"&&CheckRemainEnemies()==0)
             {
                 GameObject boss = bossSpawner.SpawnBoss(wave.spawns[0].spawnPoint.transform.position);
                 remainEnemies.Add(boss);
