@@ -1940,7 +1940,7 @@ MonoBehaviour:
   timeToVerticalMaxSpeed: 0.3
   timeToVerticalStop: 0.5
   _verticalInputDuration: 0
-  _noVerticalInputDuration: 0
+  _noVerticalInputDuration: 999
   forwardMaxSpeed: 4
   forwardSpeedCurve:
     serializedVersion: 2
@@ -2050,7 +2050,7 @@ MonoBehaviour:
   timeToBackwardMaxSpeed: 0.3
   timeToBackwardStop: 0.5
   _horizontalInputDuration: 0
-  _noHorizontalInputDuration: 0
+  _noHorizontalInputDuration: 999
   health: 100
   maxHealth: 100
   energy: 0
