@@ -61,6 +61,12 @@ public class UIManager : MonoBehaviour
         Lose.SetActive(false);
     }
 
+    private void OnEnable()
+    {
+        BGM_Volume.value = StartSceneManager.Instance.BGM_Volume.value;
+        SE_Volume.value = StartSceneManager.Instance.SE_Volume.value;
+    }
+
     public void WinGame()
     {
         Win.SetActive(true);
@@ -106,6 +112,8 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         SceneManager.LoadScene("StartScene");
+        StartSceneManager.Instance.enabled = true;
+        this.enabled = false;
     }
 
     public void ChangeStatusValue(string type, float val)
