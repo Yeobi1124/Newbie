@@ -122,7 +122,7 @@ public class UIManager : MonoBehaviour
         {
             case "HP":
                 HP_bar.fillAmount += val/100f;
-                if (HP_bar.fillAmount < 0.2f) HP_bar.color = Color.red;
+                if (HP_bar.fillAmount <= 0.2f) HP_bar.color = Color.red;
                 else if (HP_bar.fillAmount < 0.5f) HP_bar.color = Color.yellow;
                 else HP_bar.color = new Color(0, 0.937255f, 0.9960785f);
                     break;
