@@ -65,7 +65,7 @@ public class StartSceneManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //AudioManager.Instance.PlayBGM(AudioManager.BGMType.Title);
+        AudioManager.Instance.PlayBGM(AudioManager.BGMType.Title);
 
         BGM_Volume.value = AudioManager.Instance.BGM_Volume;
         SE_Volume.value = AudioManager.Instance.SE_Volume;
