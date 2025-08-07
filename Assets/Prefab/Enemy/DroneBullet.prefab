@@ -149,5 +149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   isFriendlyToPlayer: 0
-  BulletSpeed: 5
+  BulletSpeed: 10
   moveDirection: {x: 0, y: 0, z: 0}
+  originalRotation: {x: 0, y: 0, z: 0, w: 0}
