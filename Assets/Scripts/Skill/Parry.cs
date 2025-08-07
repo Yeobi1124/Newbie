@@ -12,16 +12,18 @@ public class Parry : Skill
     [SerializeField] private float fillDefaultEnergy = 1f;
     [SerializeField] private float fillEnergyRate = 0.2f;
     [SerializeField] private float fillEnergyMax = 2f;
-    [SerializeField, Tooltip("Áï»ç±â ÆÇº°ÇÏ±â À§ÇØ ¾î´À µ¥¹ÌÁö ÀÌ»óÀ» Áï»ç±â·Î º¼ °ÇÁö")]
+    [SerializeField, Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½Çºï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     private float damageCut = 999f;
 
     [ReadOnly, SerializeField]
     private bool isLocked = false;
     
+    [SerializeField]
+    public Animator animator;
+
     private Coroutine coroutine;
     private Material material;
-    [SerializeField]
-    private Animator animator;
+    
 
     protected override void Awake()
     {
