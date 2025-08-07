@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "LargeLaserAttack", story: "[Laser] shoot and [Backgrounds] change", category: "Action", id: "220bc9d9342aac0aa7a79d476bfed5b6")]
+[NodeDescription(name: "LargeLaserAttack", story: "[Laser] shoot and [Backgrounds] reset", category: "Action", id: "220bc9d9342aac0aa7a79d476bfed5b6")]
 public partial class LargeLaserAttackAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Laser;
