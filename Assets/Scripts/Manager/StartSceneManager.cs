@@ -9,8 +9,6 @@ public class StartSceneManager : MonoBehaviour
 {
     public static StartSceneManager Instance;
 
-    private bool isPlayedOnce = false;
-
     public GameObject MainMenu;
     public GameObject SettingMenu;
 
@@ -41,6 +39,8 @@ public class StartSceneManager : MonoBehaviour
 
 
     public GameObject[] BG = new GameObject[2];
+
+    private RectTransform[] rects = new RectTransform[3];
     private void Awake()
     {
         if (null == Instance) Instance = this;
@@ -58,11 +58,15 @@ public class StartSceneManager : MonoBehaviour
         IsSetting = false;
         SettingMenu.SetActive(false);
 
-        AudioManager.Instance.PlayBGM(AudioManager.BGMType.Title);
+        rects[0] = PlayButton.GetComponent<RectTransform>();
+        rects[1] = SettingButton.GetComponent<RectTransform>();
+        rects[2] = QuitButton.GetComponent<RectTransform>();
     }
 
     private void OnEnable()
     {
+        AudioManager.Instance.PlayBGM(AudioManager.BGMType.Title);
+
         BGM_Volume.value = AudioManager.Instance.BGM_Volume;
         SE_Volume.value = AudioManager.Instance.SE_Volume;
     }
@@ -86,7 +90,7 @@ public class StartSceneManager : MonoBehaviour
         AudioManager.Instance.PlaySE(AudioManager.SEType.UIButton);
         if (ChosenButton != PlayButton)
         {
-            Line.rectTransform.sizeDelta = new Vector2(35, 240);
+            Line.rectTransform.sizeDelta = new Vector2(35, -rects[0].anchoredPosition.y + 60);
             ChosenButton = PlayButton;
             return;
         }
@@ -98,7 +102,7 @@ public class StartSceneManager : MonoBehaviour
         AudioManager.Instance.PlaySE(AudioManager.SEType.UIButton);
         if (ChosenButton != SettingButton)
         {
-            Line.rectTransform.sizeDelta = new Vector2(35, 307);
+            Line.rectTransform.sizeDelta = new Vector2(35, -rects[1].anchoredPosition.y + 60);
             ChosenButton = SettingButton;
             return;
         }
@@ -121,7 +125,7 @@ public class StartSceneManager : MonoBehaviour
         AudioManager.Instance.PlaySE(AudioManager.SEType.UIButton);
         if (ChosenButton != QuitButton)
         {
-            Line.rectTransform.sizeDelta = new Vector2(35, 373);
+            Line.rectTransform.sizeDelta = new Vector2(35, -rects[2].anchoredPosition.y + 60);
             ChosenButton = QuitButton;
             return;
         }
@@ -132,18 +136,15 @@ public class StartSceneManager : MonoBehaviour
     {
         StartCoroutine(WipeUp(Line));
         yield return new WaitForSeconds(0.3F);
-        StartCoroutine(WipeTitleLeft(Title));
+        StartCoroutine(WipeLeft(Title.rectTransform));
         yield return new WaitForSeconds(0.1f);
 
-        StartCoroutine(WipeButtonLeft(PlayButton));
-        yield return new WaitForSeconds(0.1f);
-        StartCoroutine(WipeButtonLeft(SettingButton));
-        yield return new WaitForSeconds(0.1f);
-        StartCoroutine(WipeButtonLeft(QuitButton));
+        foreach (RectTransform rect in rects)
+        {
+            StartCoroutine(WipeLeft(rect));
+            yield return new WaitForSeconds(0.1f);
+        }
         yield return new WaitForSeconds(0.5f);
-
-        if (isPlayedOnce) UIManager.Instance.enabled = true;
-        else isPlayedOnce = true;
 
         LoadingSceneManager.LoadScene("MainScene");
     }
@@ -151,7 +152,7 @@ public class StartSceneManager : MonoBehaviour
     public IEnumerator WipeUp(Image var)
     {
         float Myspeed = wipeSpeed;
-        while(var.rectTransform.anchoredPosition.y < 550)
+        while(var.rectTransform.anchoredPosition.y < var.rectTransform.sizeDelta.y)
         {
             var.rectTransform.anchoredPosition =
                 new Vector2(var.rectTransform.anchoredPosition.x, var.rectTransform.anchoredPosition.y - Myspeed);
@@ -160,25 +161,13 @@ public class StartSceneManager : MonoBehaviour
         }
     }
 
-    public IEnumerator WipeTitleLeft(TMP_Text var)
+    public IEnumerator WipeLeft(RectTransform var)
     {
         float Myspeed = wipeSpeed;
-        while (var.rectTransform.anchoredPosition.x > -500)
+        while (var.anchoredPosition.x > -var.sizeDelta.x)
         {
-            var.rectTransform.anchoredPosition =
-                new Vector2(var.rectTransform.anchoredPosition.x + Myspeed, var.rectTransform.anchoredPosition.y);
-            Myspeed -= 0.1f;
-            yield return null;
-        }
-    }
-    public IEnumerator WipeButtonLeft(Button var)
-    {
-        RectTransform rect = var.GetComponent<RectTransform>();
-        float Myspeed = wipeSpeed;
-        while (rect.anchoredPosition.x > -500)
-        {
-            rect.anchoredPosition =
-                new Vector2(rect.anchoredPosition.x + Myspeed, rect.anchoredPosition.y);
+            var.anchoredPosition =
+                new Vector2(var.anchoredPosition.x + Myspeed, var.anchoredPosition.y);
             Myspeed -= 0.1f;
             yield return null;
         }

@@ -4003,7 +4003,6 @@ GameObject:
   - component: {fileID: 1515092694}
   - component: {fileID: 1515092693}
   - component: {fileID: 1515092692}
-  - component: {fileID: 1515092695}
   - component: {fileID: 1515092696}
   m_Layer: 0
   m_Name: Manager
@@ -4071,53 +4070,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1515092695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515092691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9e34e4fcb3cf3243a2fa97ef50d22fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentWave: 0
-  waveTime: 0
-  waves:
-  - spawns:
-    - enemyName: DroneShooterA
-      spawnPoint: {fileID: 496182494}
-      spawnTime: 0.1
-    - enemyName: DroneShooterB
-      spawnPoint: {fileID: 1154571285}
-      spawnTime: 0.1
-    - enemyName: DroneShooterB
-      spawnPoint: {fileID: 1982593396}
-      spawnTime: 0.1
-  - spawns:
-    - enemyName: DroneShooterB
-      spawnPoint: {fileID: 496182494}
-      spawnTime: 0.1
-    - enemyName: DroneShooterA
-      spawnPoint: {fileID: 886737768}
-      spawnTime: 0.3
-    - enemyName: DroneShooterB
-      spawnPoint: {fileID: 1982593396}
-      spawnTime: 0.1
-    - enemyName: DroneShooterA
-      spawnPoint: {fileID: 1967511093}
-      spawnTime: 0.3
-    - enemyName: DroneShooterB
-      spawnPoint: {fileID: 1982593396}
-      spawnTime: 0.1
-  - spawns:
-    - enemyName: Boss
-      spawnPoint: {fileID: 1154571285}
-      spawnTime: 0
-  remainEnemies: []
-  bossSpawner: {fileID: 0}
 --- !u!114 &1515092696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5208,6 +5160,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897914867}
   m_CullTransparentMesh: 1
+--- !u!1 &1963231326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963231328}
+  - component: {fileID: 1963231327}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1963231327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963231326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e34e4fcb3cf3243a2fa97ef50d22fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWave: 0
+  waveTime: 0
+  waves:
+  - spawns:
+    - enemyName: DroneShooterA
+      spawnPoint: {fileID: 496182494}
+      spawnTime: 0.1
+    - enemyName: DroneShooterB
+      spawnPoint: {fileID: 1154571285}
+      spawnTime: 0.1
+    - enemyName: DroneShooterB
+      spawnPoint: {fileID: 1982593396}
+      spawnTime: 0.1
+  - spawns:
+    - enemyName: DroneShooterB
+      spawnPoint: {fileID: 496182494}
+      spawnTime: 0.1
+    - enemyName: DroneShooterA
+      spawnPoint: {fileID: 886737768}
+      spawnTime: 0.3
+    - enemyName: DroneShooterB
+      spawnPoint: {fileID: 1982593396}
+      spawnTime: 0.1
+    - enemyName: DroneShooterA
+      spawnPoint: {fileID: 1967511093}
+      spawnTime: 0.3
+    - enemyName: DroneShooterB
+      spawnPoint: {fileID: 1982593396}
+      spawnTime: 0.1
+  - spawns:
+    - enemyName: Boss
+      spawnPoint: {fileID: 1154571285}
+      spawnTime: 0
+  remainEnemies: []
+  bossSpawner: {fileID: 1515092696}
+--- !u!4 &1963231328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963231326}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 633.693, y: 969.8159, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1967511093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5515,3 +5546,4 @@ SceneRoots:
   - {fileID: 262661843}
   - {fileID: 84874760}
   - {fileID: 2097239094}
+  - {fileID: 1963231328}

@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
         inputs.FindAction("ESC").performed += ToggleMenu;
 
         ResumeButton.onClick.AddListener(ResumeGame);
-        ResumeButton.onClick.AddListener(RetryGame);
+        RetryButton.onClick.AddListener(RetryGame);
         QuitButton.onClick.AddListener(QuitGame);
         Quit2Button.onClick.AddListener(QuitGame);
         HomeButton.onClick.AddListener(QuitGame);
@@ -101,6 +101,7 @@ public class UIManager : MonoBehaviour
     public void ResumeGame()
     {
         Menu.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void RetryGame()
