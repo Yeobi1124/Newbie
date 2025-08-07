@@ -1,3 +1,4 @@
+using System;
 using System.CodeDom.Compiler;
 using UnityEngine;
 
@@ -31,7 +32,6 @@ public class DroneObjectManager : MonoBehaviour
         if (null == instance)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
 
@@ -48,6 +48,12 @@ public class DroneObjectManager : MonoBehaviour
         
 
         Generate();
+    }
+
+    private void OnDestroy()
+    {
+        if(instance == this)
+            instance = null;
     }
 
     void Generate()
