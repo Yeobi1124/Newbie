@@ -11,4 +11,9 @@ public class SpecialAttackManage : MonoBehaviour
         this.isDone = isDone;
         if (isDone) OnDone?.Invoke();
     }
+
+    public void PlaySE()
+    {
+        AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerLaser);
+    }
 }

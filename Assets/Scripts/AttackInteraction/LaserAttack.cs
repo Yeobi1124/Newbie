@@ -26,6 +26,8 @@ public class LaserAttack : Attack
                 // targets[i].Item1.Hit(damage);
                 targets[i].Item1.GetComponent<IHittable>().Hit(damage);
                 targets[i] = new TempTuple(targets[i].Item1, targets[i].Item2 + damageInterval);
+                
+                // AudioManager.Instance.PlaySE(SEType.La);
             }
         }
     }
