@@ -77,7 +77,7 @@ MonoBehaviour:
   BossHit: {fileID: 8300000, guid: 4a1ad2a264c6e464abdac5cce102d825, type: 3}
   BossMissileHit: {fileID: 8300000, guid: 924dc6d5609abc3478cbd95f22648849, type: 3}
   BossDashReady: {fileID: 8300000, guid: d220cb29987660a4698dbb2df0dfb19b, type: 3}
-  BossLaser: {fileID: 8300000, guid: 55a3599cccf963b4fb7a9267b80018b5, type: 3}
+  BossLaser: {fileID: 8300000, guid: 98321717aeaf4e14f92b9a75257146d8, type: 3}
   BossMissile: {fileID: 8300000, guid: 60f6b447a4d1ad04a9c5cb8d5138565f, type: 3}
   BossMissileBoost: {fileID: 8300000, guid: ebff64c2b9acbc04b8cfc723a5c7c5db, type: 3}
   BossDie: {fileID: 8300000, guid: c3120000dbaf6a341beba59e767eb292, type: 3}
