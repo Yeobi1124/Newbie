@@ -177,3 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   isFriendlyToPlayer: 1
+  isPlaySFX: 0
+  sfx: 13
+  isPlayVFX: 1
+  vfx: {fileID: 4625738548344898044, guid: 768a7e2a9d2edc94b8055d67f76bba5c, type: 3}
