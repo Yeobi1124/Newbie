@@ -19,7 +19,9 @@ public class Boss : Attack,IHittable
     [SerializeField] private Transform missileBelow;
     [SerializeField] private List<GameObject> backgrounds;
     [SerializeField] private GameObject laser;
-
+    [SerializeField] private Transform laserTransform;
+    [SerializeField] private List<GameObject> wayPoints;
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,7 +33,7 @@ public class Boss : Attack,IHittable
         speed = 1;
         behaviorTree = GetComponent<BehaviorGraphAgent>();
         btInitializer = new BTInitializer(behaviorTree);
-        btInitializer.Init(player,mover,missileAbove,missileBelow,backgrounds,laser,originalHealth);
+        btInitializer.Init(player,mover,missileAbove,missileBelow,backgrounds,laser,originalHealth,wayPoints,laserTransform);
     }
 
     void Update()
