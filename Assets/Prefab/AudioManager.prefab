@@ -45,42 +45,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7848df377ee6f0c429def7344d82573b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM_Volume: 1
+  SE_Volume: 1
   BGMTitle: {fileID: 8300000, guid: 7b6007e9bfd7ac14c8849e82ff7475fd, type: 3}
   BGMInGame: {fileID: 8300000, guid: f84002c3332bebd49a804919c770e4bd, type: 3}
   BGMElite: {fileID: 8300000, guid: 3536d0b246c58784d97bca18394c49a6, type: 3}
   BGMBoss: {fileID: 8300000, guid: af517eba860795f4fa404775aa89ca95, type: 3}
   BGMLose: {fileID: 8300000, guid: 588bdbfb525244e47bd98d06ffb36fec, type: 3}
-  PlayerShoot: {fileID: 8300000, guid: 536ba71afe4259647a1ff2e7e5404f07, type: 3}
-  PlayerHit: {fileID: 8300000, guid: c4e086b23f678ef4292d9dd767cc2728, type: 3}
-  PlayerMissile: {fileID: 8300000, guid: 239b20a4dad4dd941afc9f533660e268, type: 3}
-  PlayerMissileHit: {fileID: 8300000, guid: 6c0d186293410fc4eab0a03c87aeef2a, type: 3}
-  PlayerLaser: {fileID: 8300000, guid: 1e2239cc312fb4940a7e90a9cd7e6fd0, type: 3}
-  PlayerDie: {fileID: 8300000, guid: 652f78923ac0bf6439bcbf865471a389, type: 3}
-  PlayerEnergyShard: {fileID: 8300000, guid: 5c90b1fe176b6df46992afda8744413e, type: 3}
-  PlayerParry: {fileID: 8300000, guid: 9153889ecf4e0e5438f887c2e19bf6a7, type: 3}
-  PlayerParrySuccess: {fileID: 8300000, guid: c4cdf86df73209b4486afe611cc5e577, type: 3}
-  PlayerHeal: {fileID: 8300000, guid: e03dc9d56e3d75a4d91ba8e8e7f590b7, type: 3}
-  DroneShootA: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
-  DroneShootB: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
-  DroneShootC: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
-  DroneHit: {fileID: 8300000, guid: c4e086b23f678ef4292d9dd767cc2728, type: 3}
-  DroneMissileHit: {fileID: 8300000, guid: 6c0d186293410fc4eab0a03c87aeef2a, type: 3}
-  DroneCharge: {fileID: 8300000, guid: 793007d2330271d42adf619b20879fe5, type: 3}
-  DroneChargeShoot: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
-  DroneDashReady: {fileID: 8300000, guid: f70592767bfed454da0697c2b985ce30, type: 3}
-  DroneDie: {fileID: 8300000, guid: 652f78923ac0bf6439bcbf865471a389, type: 3}
-  BossShootA: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
-  BossShootB: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
-  BossShootC: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
-  BossHit: {fileID: 8300000, guid: c4e086b23f678ef4292d9dd767cc2728, type: 3}
-  BossMissileHit: {fileID: 8300000, guid: 6c0d186293410fc4eab0a03c87aeef2a, type: 3}
-  BossDashReady: {fileID: 8300000, guid: f70592767bfed454da0697c2b985ce30, type: 3}
-  BossLaser: {fileID: 8300000, guid: ab503764c2413af4d8a91016a1dd8cf5, type: 3}
-  BossMissile: {fileID: 8300000, guid: 793007d2330271d42adf619b20879fe5, type: 3}
-  BossMissileBoost: {fileID: 8300000, guid: 239b20a4dad4dd941afc9f533660e268, type: 3}
-  BossDie: {fileID: 8300000, guid: 534bddcc89003fa4ea499b055a14aa4e, type: 3}
-  UIButton: {fileID: 8300000, guid: c30110e0caebb084db48ad9422bec62e, type: 3}
-  UIClearStamp: {fileID: 8300000, guid: e6cba92d4fd7b0244934705cefab466e, type: 3}
+  PlayerShoot: {fileID: 8300000, guid: d616688aaec99f041b73d1612456254d, type: 3}
+  PlayerHit: {fileID: 8300000, guid: 95e872b4087a233448cbcd1db7d2d284, type: 3}
+  PlayerMissile: {fileID: 8300000, guid: d4850a7e7f34a8144a4004ab3e927e31, type: 3}
+  PlayerMissileHit: {fileID: 8300000, guid: ac43cdc982ac7d04aa5d7f1b94354fca, type: 3}
+  PlayerLaser: {fileID: 8300000, guid: 0f4a5f3339149cf48b8fe61fb326452f, type: 3}
+  PlayerDie: {fileID: 8300000, guid: 3d3a4e7cf9956824fa3c062bcdd9ad1e, type: 3}
+  PlayerEnergyShard: {fileID: 8300000, guid: dee91da31e1d5c04eab6095b60f39d2c, type: 3}
+  PlayerParry: {fileID: 8300000, guid: c404fbd4a3f29ce4bab4ee9275fc591b, type: 3}
+  PlayerParrySuccess: {fileID: 8300000, guid: ebe674f6be86b7f4aa8f08f2446880f6, type: 3}
+  PlayerHeal: {fileID: 8300000, guid: 7c4dbd4d2a8bd76469320425327c2123, type: 3}
+  DroneShootA: {fileID: 8300000, guid: 7670339bf8f197445b5d7ad9207c6ac1, type: 3}
+  DroneShootB: {fileID: 8300000, guid: d47b955d9ffeb394c8f79732c0bb5d67, type: 3}
+  DroneShootC: {fileID: 8300000, guid: ab251f05205282d4bb1309d62131e0a0, type: 3}
+  DroneHit: {fileID: 8300000, guid: fa753ee242df85b46a65e40255b3b3f6, type: 3}
+  DroneMissileHit: {fileID: 8300000, guid: 7d829ff63b65cf245b306b0ee3316ee1, type: 3}
+  DroneCharge: {fileID: 8300000, guid: 554108e07d0dd8f46a81c5c736451760, type: 3}
+  DroneChargeShoot: {fileID: 8300000, guid: 463e564ba58695d47928abcb3565f30d, type: 3}
+  DroneDashReady: {fileID: 8300000, guid: bf7293c7e51aac748ae102bde329e77f, type: 3}
+  DroneDie: {fileID: 8300000, guid: f7b82e7884fb2ea46940b8b3515104fb, type: 3}
+  BossShootA: {fileID: 8300000, guid: a734e49ad641cde43b22ff6278b3ad3b, type: 3}
+  BossShootB: {fileID: 8300000, guid: abf25e3662a54f349974b4f5dcd37d9f, type: 3}
+  BossShootC: {fileID: 8300000, guid: 23b56ef8466ec4443bbdbce216b8629c, type: 3}
+  BossHit: {fileID: 8300000, guid: 4a1ad2a264c6e464abdac5cce102d825, type: 3}
+  BossMissileHit: {fileID: 8300000, guid: 924dc6d5609abc3478cbd95f22648849, type: 3}
+  BossDashReady: {fileID: 8300000, guid: d220cb29987660a4698dbb2df0dfb19b, type: 3}
+  BossLaser: {fileID: 8300000, guid: 55a3599cccf963b4fb7a9267b80018b5, type: 3}
+  BossMissile: {fileID: 8300000, guid: 60f6b447a4d1ad04a9c5cb8d5138565f, type: 3}
+  BossMissileBoost: {fileID: 8300000, guid: ebff64c2b9acbc04b8cfc723a5c7c5db, type: 3}
+  BossDie: {fileID: 8300000, guid: c3120000dbaf6a341beba59e767eb292, type: 3}
+  UIButton: {fileID: 8300000, guid: 144364cac26a8af4b9ec6d683ae0233f, type: 3}
+  UIClearStamp: {fileID: 8300000, guid: f8266f5b6bfd59e4ab7f4e58a2697576, type: 3}
 --- !u!82 &463159462659707103
 AudioSource:
   m_ObjectHideFlags: 0
