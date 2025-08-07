@@ -152,3 +152,4 @@ MonoBehaviour:
   BulletSpeed: 10
   moveDirection: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
+  particle: {fileID: 2101485081432359387, guid: 4bb7b0bf3b6fbe14aa40e7698e1e57aa, type: 3}

@@ -10,8 +10,10 @@ public class SpecialBullet : Attack
     void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player");
-
+        if(GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
         Vector3 direction = player.transform.position - transform.position;
         rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * BulletSpeed;
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
