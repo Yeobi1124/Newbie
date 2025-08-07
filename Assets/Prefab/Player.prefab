@@ -2056,7 +2056,7 @@ MonoBehaviour:
   energy: 0
   maxEnergy: 7
   isFriendlyToPlayer: 1
-  _knockbackTime: 0.3
+  _knockbackTime: 2
   _knockbackForce: 20
   _knockbackResistance: 0.1
 --- !u!114 &5481573209372843892

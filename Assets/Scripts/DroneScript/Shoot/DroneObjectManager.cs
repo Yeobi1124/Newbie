@@ -45,6 +45,8 @@ public class DroneObjectManager : MonoBehaviour
        
         shards = new GameObject[20];
 
+        
+
         Generate();
     }
 
