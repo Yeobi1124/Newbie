@@ -45,6 +45,8 @@ GameObject:
   - component: {fileID: 8781519964757314336}
   - component: {fileID: 8466283978334696322}
   - component: {fileID: 615237017087164499}
+  - component: {fileID: 8973996571234998682}
+  - component: {fileID: 6406315471408381357}
   m_Layer: 0
   m_Name: ElliteA
   m_TagString: Untagged
@@ -183,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   isFriendlyToPlayer: 0
-  OriginalHealth: 500
+  OriginalHealth: 200
   Health: 0
   OriginalSpeed: 1
   DroneSpeed: 0
@@ -205,7 +207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomShootDelay: 0
-  arcShootDelay: 2
+  arcShootDelay: 1.5
+  chaseShootDelay: 2.5
   delayTimer: 0
 --- !u!114 &615237017087164499
 MonoBehaviour:
@@ -219,11 +222,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431d3de0986597a4a9c6962ec45c4ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
   moveDuration: 1
-  minBounds: {x: 0, y: -5}
+  minBounds: {x: 0, y: -3}
   maxBounds: {x: 9, y: 5}
   xCenter: 6
   yCenter: 0
   timer: 0
-  droneSpeed: 2
+  droneSpeed: 3
+  stopDuration: 2
+--- !u!114 &8973996571234998682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277420256911438983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7d7dee87e03234baed77dbc0a0564e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
+  OriginSprite: {fileID: 0}
+--- !u!95 &6406315471408381357
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277420256911438983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b78c03b1962076244a65cc38b102abca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
