@@ -6,7 +6,11 @@ using System.Collections;
 public class LoadingSceneManager : MonoBehaviour
 {
     public static string nextScene;
-    [SerializeField] Image progressBar;
+    public Image progressBar;
+    public Image Plane;
+
+    private Vector2 start = Vector2.zero;
+    private Vector2 end = new Vector2(750, 0);
 
     private void Start()
     {
@@ -46,6 +50,7 @@ public class LoadingSceneManager : MonoBehaviour
                     yield break;
                 }
             }
+            Plane.rectTransform.anchoredPosition = Vector2.Lerp(start, end, progressBar.fillAmount);
         }
     }
 }
