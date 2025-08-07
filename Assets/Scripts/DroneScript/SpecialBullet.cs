@@ -2,25 +2,40 @@ using UnityEngine;
 
 public class SpecialBullet : Attack
 {
-    public GameObject muzzleEffect;
     public float BulletSpeed;
     public Vector3 moveDirection;
     public bool charging;
-
+    public float timer;
+    public float animationDelay;
     void OnEnable()
     {
         charging = true;
-        gameObject.GetComponent<MuzzleFlashAnimation>().ChargeStart();
+        timer = 0f;
+        moveDirection = Vector3.zero; // 기본값
     }
+
     void Update()
-    {   
-        charging = gameObject.GetComponent<MuzzleFlashAnimation>().charging;
-        if (!charging)
+    {
+        if (charging)
         {
-            gameObject.GetComponent<MuzzleFlashAnimation>().Shoot();
-            if (moveDirection == new Vector3(0, 0, 0)) moveDirection = new Vector3(-1, 0, 0);
+            // 애니메이션 딜레이 동안 대기
+            timer += Time.deltaTime;
+            if (timer >= animationDelay)
+            {
+                charging = false;
+                timer = 0f;
+
+                // 이동 방향이 비어있으면 기본값으로 설정
+                if (moveDirection == Vector3.zero)
+                    moveDirection = new Vector3(-1, 0, 0);
+            }
+        }
+        else
+        {
+            // 애니메이션 딜레이 이후에는 계속 이동
             transform.position += moveDirection * BulletSpeed * Time.deltaTime;
         }
+
         if (transform.position.x < -10)
         {
             gameObject.SetActive(false);
