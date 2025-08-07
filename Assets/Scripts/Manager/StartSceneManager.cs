@@ -154,6 +154,10 @@ public class StartSceneManager : MonoBehaviour
     /*
     public IEnumerator WipeButtonLeft(Button var)
     {
+<<<<<<< Updated upstream
+=======
+        RectTransform rect = var.GetComponent<RectTransform>();
+>>>>>>> Stashed changes
         float Myspeed = wipeSpeed;
         while (var.rectTransform.anchoredPosition.x > -500)
         {
