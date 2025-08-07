@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DroneBullet : Attack
 {
@@ -47,7 +48,8 @@ public class DroneBullet : Attack
         }
         if (col.gameObject.CompareTag("Border"))
         {
-            gameObject.SetActive(false);
+            if (SceneManager.GetActiveScene().name == "StartScene") Destroy(gameObject);
+            else gameObject.SetActive(false);
         }
 
     }
