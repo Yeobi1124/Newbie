@@ -8,9 +8,6 @@ public class LoadingSceneManager : MonoBehaviour
     public static string nextScene;
     public Slider progressBar;
 
-    private Vector2 start = Vector2.zero;
-    private Vector2 end = new Vector2(750, 0);
-
     private void Start()
     {
         StartCoroutine(LoadScene());

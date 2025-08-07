@@ -16,6 +16,8 @@ public class BasicAttack : Skill
 
         _animator.SetTrigger("Shoot");
         
+        AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerShoot);
+        
         return true;
     }
 }

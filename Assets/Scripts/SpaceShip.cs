@@ -138,10 +138,14 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
             _animator.SetTrigger("Dead");
             _moveLock = true;
             _rb.linearVelocity = Vector2.zero;
+            
+            AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerDie);
         }
         else
         {
             _animator.SetTrigger("Hit");
+            
+            AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerHit);
 
             if (parryable == false)
             {
@@ -159,6 +163,8 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
             
             Energy += energyShard.energyFillAmount;
             other.gameObject.SetActive(false);
+            
+            AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerEnergyShard);
         }
     }
 

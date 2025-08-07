@@ -32,6 +32,8 @@ public class Heal : Skill
         if(coroutine != null) StopCoroutine(coroutine);
         coroutine = StartCoroutine(ActivateVFX());
         
+        AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerHeal);
+        
         return true;
     }
 }

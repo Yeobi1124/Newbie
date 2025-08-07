@@ -2,64 +2,38 @@ using UnityEngine;
 
 public class SpecialBullet : Attack
 {
+    public GameObject player;
+    private Rigidbody2D rb;
+    private float timer;
     public float BulletSpeed;
-    public Vector3 moveDirection;
-    public bool charging;
-    public float timer;
-    public float animationDelay;
+
     void OnEnable()
     {
-        charging = true;
-        timer = 0f;
-        moveDirection = Vector3.zero; // 기본값
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        Vector3 direction = player.transform.position - transform.position;
+        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * BulletSpeed;
+        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rot + 180);
     }
 
-    void Update()
+    void Upade()
     {
-        if (charging)
-        {
-            // 애니메이션 딜레이 동안 대기
-            timer += Time.deltaTime;
-            if (timer >= animationDelay)
-            {
-                charging = false;
-                timer = 0f;
+        timer += Time.deltaTime;
 
-                // 이동 방향이 비어있으면 기본값으로 설정
-                if (moveDirection == Vector3.zero)
-                    moveDirection = new Vector3(-1, 0, 0);
-            }
-        }
-        else
+        if(timer > 10)
         {
-            // 애니메이션 딜레이 이후에는 계속 이동
-            transform.position += moveDirection * BulletSpeed * Time.deltaTime;
-        }
-
-        if (transform.position.x < -10)
-        {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
-    protected override void OnTriggerEnter2D(Collider2D col)
+    protected override void OnTriggerEnter2D(Collider2D other) 
     {
-        //Debug.Log("Trigger called?");
-        if (col.TryGetComponent(out IHittable hittable))
+        if (other.gameObject.CompareTag("Player"))
         {
-            //Debug.Log("At List HITTABLE");
-            if (hittable.IsValidTarget(isFriendlyToPlayer))
-            {
-                hittable.Hit(damage);
-                gameObject.SetActive(false);
-                moveDirection = new Vector3(0, 0, 0);
-                return;
-            }
-        }
-        if (col.gameObject.CompareTag("Border"))
-        {
-            gameObject.SetActive(false);
+            other.gameObject.GetComponent<SpaceShip>().health -= damage;
+            Destroy(gameObject);
         }
     }
-
 }

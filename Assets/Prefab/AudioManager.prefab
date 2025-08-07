@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5623544056094141071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6075214880703077820}
+  - component: {fileID: 1934028386887289109}
+  - component: {fileID: 463159462659707103}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6075214880703077820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623544056094141071}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 936, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1934028386887289109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623544056094141071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7848df377ee6f0c429def7344d82573b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGMTitle: {fileID: 8300000, guid: 7b6007e9bfd7ac14c8849e82ff7475fd, type: 3}
+  BGMInGame: {fileID: 8300000, guid: f84002c3332bebd49a804919c770e4bd, type: 3}
+  BGMElite: {fileID: 8300000, guid: 3536d0b246c58784d97bca18394c49a6, type: 3}
+  BGMBoss: {fileID: 8300000, guid: af517eba860795f4fa404775aa89ca95, type: 3}
+  BGMLose: {fileID: 8300000, guid: 588bdbfb525244e47bd98d06ffb36fec, type: 3}
+  PlayerShoot: {fileID: 8300000, guid: 536ba71afe4259647a1ff2e7e5404f07, type: 3}
+  PlayerHit: {fileID: 8300000, guid: c4e086b23f678ef4292d9dd767cc2728, type: 3}
+  PlayerMissile: {fileID: 8300000, guid: 239b20a4dad4dd941afc9f533660e268, type: 3}
+  PlayerMissileHit: {fileID: 8300000, guid: 6c0d186293410fc4eab0a03c87aeef2a, type: 3}
+  PlayerLaser: {fileID: 8300000, guid: 1e2239cc312fb4940a7e90a9cd7e6fd0, type: 3}
+  PlayerDie: {fileID: 8300000, guid: 652f78923ac0bf6439bcbf865471a389, type: 3}
+  PlayerEnergyShard: {fileID: 8300000, guid: 5c90b1fe176b6df46992afda8744413e, type: 3}
+  PlayerParry: {fileID: 8300000, guid: 9153889ecf4e0e5438f887c2e19bf6a7, type: 3}
+  PlayerParrySuccess: {fileID: 8300000, guid: c4cdf86df73209b4486afe611cc5e577, type: 3}
+  PlayerHeal: {fileID: 8300000, guid: e03dc9d56e3d75a4d91ba8e8e7f590b7, type: 3}
+  DroneShootA: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
+  DroneShootB: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
+  DroneShootC: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
+  DroneHit: {fileID: 8300000, guid: c4e086b23f678ef4292d9dd767cc2728, type: 3}
+  DroneMissileHit: {fileID: 8300000, guid: 6c0d186293410fc4eab0a03c87aeef2a, type: 3}
+  DroneCharge: {fileID: 8300000, guid: 793007d2330271d42adf619b20879fe5, type: 3}
+  DroneChargeShoot: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
+  DroneDashReady: {fileID: 8300000, guid: f70592767bfed454da0697c2b985ce30, type: 3}
+  DroneDie: {fileID: 8300000, guid: 652f78923ac0bf6439bcbf865471a389, type: 3}
+  BossShootA: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
+  BossShootB: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
+  BossShootC: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
+  BossHit: {fileID: 8300000, guid: c4e086b23f678ef4292d9dd767cc2728, type: 3}
+  BossMissileHit: {fileID: 8300000, guid: 6c0d186293410fc4eab0a03c87aeef2a, type: 3}
+  BossDashReady: {fileID: 8300000, guid: f70592767bfed454da0697c2b985ce30, type: 3}
+  BossLaser: {fileID: 8300000, guid: ab503764c2413af4d8a91016a1dd8cf5, type: 3}
+  BossMissile: {fileID: 8300000, guid: 793007d2330271d42adf619b20879fe5, type: 3}
+  BossMissileBoost: {fileID: 8300000, guid: 239b20a4dad4dd941afc9f533660e268, type: 3}
+  BossDie: {fileID: 8300000, guid: 534bddcc89003fa4ea499b055a14aa4e, type: 3}
+  UIButton: {fileID: 8300000, guid: c30110e0caebb084db48ad9422bec62e, type: 3}
+  UIClearStamp: {fileID: 8300000, guid: e6cba92d4fd7b0244934705cefab466e, type: 3}
+--- !u!82 &463159462659707103
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623544056094141071}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

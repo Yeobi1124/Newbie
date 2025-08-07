@@ -114,6 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   isFriendlyToPlayer: 1
+  isPlaySFX: 1
+  sfx: 3
 --- !u!1 &6405982700137532283
 GameObject:
   m_ObjectHideFlags: 0
