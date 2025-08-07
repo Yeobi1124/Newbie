@@ -5,6 +5,7 @@ public class ChasingBullet : Attack
     public float BulletSpeed;
     public Vector3 moveDirection;
     public Vector3 Zero;
+    public GameObject particle;
     void Onable()
     {
         gameObject.transform.rotation = Quaternion.identity;
@@ -28,6 +29,7 @@ public class ChasingBullet : Attack
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
+                // particle = Instantiate(particle, gameObject.transform.position, Quaternion.identity);
                 hittable.Hit(damage);
                 gameObject.SetActive(false);
                 return;

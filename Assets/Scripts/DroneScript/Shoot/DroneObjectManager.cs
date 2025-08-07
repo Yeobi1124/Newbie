@@ -90,13 +90,14 @@ public class DroneObjectManager : MonoBehaviour
             ElliteA[index] = Instantiate(ElliteAPrefeb);
             ElliteA[index].SetActive(false);
         }
-        
+
 
         for (int index = 0; index < shards.Length; index++)
         {
             shards[index] = Instantiate(ShardPrefeb);
             shards[index].SetActive(false);
         }
+
 
     }
 
@@ -131,6 +132,7 @@ public class DroneObjectManager : MonoBehaviour
             case "ElliteA":
                 TargetPool = ElliteA;
                 break;
+        
             default:
                 break;
         }
