@@ -7,8 +7,6 @@ using DG.Tweening;
 
 public class StartSceneManager : MonoBehaviour
 {
-    public static StartSceneManager Instance;
-
     public GameObject MainMenu;
     public GameObject SettingMenu;
 
@@ -41,13 +39,6 @@ public class StartSceneManager : MonoBehaviour
     public GameObject[] BG = new GameObject[2];
     private void Awake()
     {
-        if(null == Instance)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else Destroy(gameObject);
-
         PlayButton.onClick.AddListener(Play);
         SettingButton.onClick.AddListener(Setting);
         QuitButton.onClick.AddListener(Quit);
