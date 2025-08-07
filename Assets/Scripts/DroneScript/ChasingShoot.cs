@@ -34,8 +34,8 @@ public class ChasingShoot : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log($"Chasing Shoot: {gameObject.GetComponent<DroneInfo>().Shootable}");
-        if (!gameObject.GetComponent<DroneInfo>().Shootable) return;
+        //Debug.Log($"Chasing Shoot: {gameObject.GetComponent<DroneInfo>().Shootable}");
+        //if (!gameObject.GetComponent<DroneInfo>().Shootable) return;
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletChase");
         bulletA.transform.position = transform.position;
         bulletA.transform.Translate(-1.3f, -0.5f, 0, Space.World);

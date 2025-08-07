@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class ElliteInfo : Attack, IHittable
 {
-    public float OriginalHealth;
+    public float OriginalHealth=200;
     public float Health;
-    public float OriginalSpeed = 1;
+    public float OriginalSpeed = 3;
     public float DroneSpeed;
     public int ShootNum = 0;
     public bool Shootable = false;
     public bool isFriendly = false;
     public bool isDestroyed = false;
     public float chargeDamage = 20;
+    public bool shardGive;
     void Start()
     {
         ResetDrone();
@@ -24,11 +25,20 @@ public class ElliteInfo : Attack, IHittable
             Destroyed();
         }
 
-        if (Health <= 0 && !isDestroyed)
+        if (Health <= 0)
         {
-            Destroyed();
-            GameObject shard = DroneObjectManager.Instance.PullObject("Shard");
-            shard.transform.position = gameObject.transform.position;
+            if (!shardGive)
+            {
+                shardGive = true;
+                Vector3 shardPoint = gameObject.transform.position;
+                Destroyed();
+                for (int i = -1; i < 2; i++)
+                {
+                    GameObject shard = DroneObjectManager.Instance.PullObject("Shard");
+                    shard.transform.position = shardPoint;
+                    shard.transform.Translate(i, 0, 0);
+                }
+            }
         }
     }
 
@@ -49,6 +59,7 @@ public class ElliteInfo : Attack, IHittable
         Health = OriginalHealth;
         ShootNum = 0;
         isDestroyed = false;
+        shardGive = false;
     }
 
     protected override void OnTriggerEnter2D(Collider2D col)
@@ -59,7 +70,7 @@ public class ElliteInfo : Attack, IHittable
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                hittable.Hit(chargeDamage);
+                hittable.Hit(chargeDamage,false);
                 DroneSpeed = 0;
             }
         }
@@ -75,6 +86,8 @@ public class ElliteInfo : Attack, IHittable
         Shootable = false;
         //Debug.Log($"NONE Shootable: {gameObject.GetComponent<DroneInfo>().Shootable}");
         gameObject.GetComponent<DroneAnimation>().OnDead();
+        gameObject.GetComponent<ElliteAmove>().droneSpeed = 0;
+        gameObject.GetComponent<ElliteAmove>().moveSpeed = 0;
         //GameObject shard = DroneObjectManager.Instance.PullObject("EnergyShard");
     }
 

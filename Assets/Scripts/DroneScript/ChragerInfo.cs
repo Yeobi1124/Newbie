@@ -9,7 +9,7 @@ public class ChragerInfo : Attack, IHittable
     public int check = 0;
     public bool detect = false;
     public float chargeDamage= 20;
-    private bool isEnemy = true; // true: 적, false: 플레이어 편
+    private bool isEnemy = false; 
     private bool isDestroyed = false;
 
     void Start()
@@ -17,6 +17,10 @@ public class ChragerInfo : Attack, IHittable
         isDestroyed = false;
         ResetCharger();
         Health = OriginalHealth;
+    }
+    void OnEnable()
+    {
+        ResetCharger();
     }
 
     void Update()
@@ -29,12 +33,15 @@ public class ChragerInfo : Attack, IHittable
         }
 
         // 체력이 0 이하일 때 한 번만 파괴 처리
-        if (Health <= 0 && !isDestroyed)
+        if (Health <= 0)
         {
-            Debug.Log("Dead?");
-            isDestroyed = true;
-            check++;
-            Destroyed();
+            if (!isDestroyed)
+            {
+                //Debug.Log("Dead?");
+                isDestroyed = true;
+                check++;
+                Destroyed();
+            }
         }
     }
     protected override void OnTriggerEnter2D(Collider2D col)
@@ -45,10 +52,8 @@ public class ChragerInfo : Attack, IHittable
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                hittable.Hit(chargeDamage);
+                hittable.Hit(chargeDamage,false);
                 Destroyed();
-                gameObject.GetComponent<ChargerAMove>().chargeSpeed = 0;
-                gameObject.GetComponent<ChargerAMove>().droneSpeed = 0;
                 return;
             }
         }
@@ -70,8 +75,10 @@ public class ChragerInfo : Attack, IHittable
 
     private void Destroyed()
     {
+        gameObject.GetComponent<ChargerAMove>().chargeSpeed = 0;
+        gameObject.GetComponent<ChargerAMove>().droneSpeed = 0;
+        gameObject.GetComponent<ChargerAMove>().moveSpeed = 0;
         gameObject.GetComponent<DroneAnimation>().OnDead();
-        
     }
 
     public void ResetCharger()
