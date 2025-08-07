@@ -1,6 +1,7 @@
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityAudioSource;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -119,7 +120,7 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        Player.volume = UIManager.Instance.BGM_Volume.value;
+        if(SceneManager.GetActiveScene().name == "MainScene") Player.volume = UIManager.Instance.BGM_Volume.value;
     }
 
     public void PlayBGM(BGMType type)
