@@ -165,8 +165,11 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
     private IEnumerator Knockback()
     {
         float time = 0;
-        
+
+        _verticalInputDuration = 0;
+        _horizontalInputDuration = 0;
         _moveLock = true;
+        
         _rb.linearVelocity = Vector2.zero;
         _rb.AddForce(Vector2.left * _knockbackForce, ForceMode2D.Impulse);
 
