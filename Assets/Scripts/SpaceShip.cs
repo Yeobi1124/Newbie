@@ -53,6 +53,8 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
     [SerializeField] private float _knockbackResistance = 0.1f;
     
     private Coroutine _knockbackCoroutine;
+
+    public event Action OnDead;
     
     public float Energy
     {
@@ -140,6 +142,8 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
             _rb.linearVelocity = Vector2.zero;
             
             AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerDie);
+            
+            OnDead?.Invoke();
         }
         else
         {
