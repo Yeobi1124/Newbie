@@ -5,6 +5,7 @@ public class SpecialShoot : MonoBehaviour
     
     private float ShootCounter = 0;
     public float ShootDelay;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,7 +15,7 @@ public class SpecialShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<DroneInfo>().Shootable)
+        if (gameObject.GetComponent<ElliteInfo>().Shootable)
         {
             if (ShootCounter >= ShootDelay)
             {
@@ -30,8 +31,9 @@ public class SpecialShoot : MonoBehaviour
     {
         //Debug.Log("Special shooting");
         GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletEnemyBig");
-        bulletA.transform.position = transform.position;
-        gameObject.GetComponent<DroneInfo>().ShootNum++;
+        bulletA.transform.position = transform.position;    
+        bulletA.transform.Translate(2f, -1.3f,0);
+        gameObject.GetComponent<ElliteInfo>().ShootNum++;
     }
 
 
