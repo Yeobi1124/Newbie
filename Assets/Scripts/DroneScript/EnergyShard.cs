@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class EnergyShard : MonoBehaviour
@@ -11,6 +12,8 @@ public class EnergyShard : MonoBehaviour
 
     private float time;
 
+    private float previousY = 0f;
+
     private void Update()
     {
         time += Time.deltaTime;
@@ -18,6 +21,11 @@ public class EnergyShard : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.localPosition = new Vector3(transform.localPosition.x - horizontalSpeed * Time.fixedDeltaTime, amplitude * verticalMove.Evaluate(time % period));
+        float yOffset = amplitude * verticalMove.Evaluate(time % period);
+
+        transform.localPosition = new Vector3(transform.localPosition.x - horizontalSpeed * Time.fixedDeltaTime,
+                                            transform.position.y - previousY + yOffset);
+
+        previousY = yOffset;      
     }
 }

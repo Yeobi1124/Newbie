@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class ElliteInfo : Attack, IHittable
 {
-    public float OriginalHealth;
+    public float OriginalHealth=200;
     public float Health;
-    public float OriginalSpeed = 1;
+    public float OriginalSpeed = 3;
     public float DroneSpeed;
     public int ShootNum = 0;
     public bool Shootable = false;
     public bool isFriendly = false;
     public bool isDestroyed = false;
     public float chargeDamage = 20;
+    public bool shardGive;
     void Start()
     {
         ResetDrone();
@@ -26,12 +27,17 @@ public class ElliteInfo : Attack, IHittable
 
         if (Health <= 0)
         {
-            Destroyed();
-            for (int i = -1; i < 2; i++)
+            if (!shardGive)
             {
-                GameObject shard = DroneObjectManager.Instance.PullObject("Shard");
-                shard.transform.position = gameObject.transform.position;
-                shard.transform.Translate(i, 0, 0);
+                shardGive = true;
+                Vector3 shardPoint = gameObject.transform.position;
+                Destroyed();
+                for (int i = -1; i < 2; i++)
+                {
+                    GameObject shard = DroneObjectManager.Instance.PullObject("Shard");
+                    shard.transform.position = shardPoint;
+                    shard.transform.Translate(i, 0, 0);
+                }
             }
         }
     }
@@ -53,6 +59,7 @@ public class ElliteInfo : Attack, IHittable
         Health = OriginalHealth;
         ShootNum = 0;
         isDestroyed = false;
+        shardGive = false;
     }
 
     protected override void OnTriggerEnter2D(Collider2D col)
