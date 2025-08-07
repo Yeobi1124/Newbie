@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
         inputs.FindAction("Special Attack").performed += SpecialAttack;
         
         inputs.Enable();
+
+        spaceShip.OnDead += () => autoFireLock = true;
     }
 
     private void OnDestroy()
