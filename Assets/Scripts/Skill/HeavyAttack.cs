@@ -17,7 +17,7 @@ public class HeavyAttack : Skill
             Missile.transform.position = createPoint.transform.position;
             Missile.SetActive(true);
             Missile.GetComponent<Rigidbody2D>().linearVelocityX = _bulletSpeed;
-            return false;
+            return true;
         }
 
         if (_energy.Energy < _energyConsumption) return false;
