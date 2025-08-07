@@ -2079,6 +2079,7 @@ MonoBehaviour:
   fillEnergyRate: 0.2
   fillEnergyMax: 2
   damageCut: 999
+  _unitCollider: {fileID: 2995980648850330061}
   isLocked: 0
   animator: {fileID: 1830276537353425397}
 --- !u!114 &507888460091864005

@@ -1,6 +1,7 @@
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityAudioSource;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -14,8 +15,7 @@ public class AudioManager : MonoBehaviour
         InGame,
         Elite,
         Boss,
-        Lose,
-        Win
+        Lose
     }
 
     public enum SEType
@@ -39,7 +39,6 @@ public class AudioManager : MonoBehaviour
         DroneCharge,
         DroneChargeShoot,
         DroneDashReady,
-        DroneDash,
         DroneDie,
 
         BossShootA,
@@ -48,7 +47,6 @@ public class AudioManager : MonoBehaviour
         BossHit,
         BossMissileHit,
         BossDashReady,
-        BossDash,
         BossLaser,
         BossMissile,
         BossMissileBoost,
@@ -66,7 +64,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip BGMElite;
     public AudioClip BGMBoss;
     public AudioClip BGMLose;
-    public AudioClip BGMWin;
 
     [Header("Player SE")]
     public AudioClip PlayerShoot;
@@ -89,7 +86,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip DroneCharge;
     public AudioClip DroneChargeShoot;
     public AudioClip DroneDashReady;
-    public AudioClip DroneDash;
     public AudioClip DroneDie;
 
     [Header("Boss SE")]
@@ -99,7 +95,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip BossHit;
     public AudioClip BossMissileHit;
     public AudioClip BossDashReady;
-    public AudioClip BossDash;
     public AudioClip BossLaser;
     public AudioClip BossMissile;
     public AudioClip BossMissileBoost;
@@ -125,7 +120,8 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        Player.volume = UIManager.Instance.BGM_Volume.value;
+        if (SceneManager.GetActiveScene().name == "StartScene") Player.volume = StartSceneManager.Instance.BGM_Volume.value;
+        else if (SceneManager.GetActiveScene().name == "MainScene") Player.volume = UIManager.Instance.BGM_Volume.value;
     }
 
     public void PlayBGM(BGMType type)
@@ -152,9 +148,6 @@ public class AudioManager : MonoBehaviour
             case BGMType.Lose:
                 Player.clip = BGMLose;
                 break;
-            case BGMType.Win:
-                Player.clip = BGMWin;
-                break;
             default:
                 break;
         }
@@ -169,113 +162,109 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySE(SEType type)
     {
-        float volume = UIManager.Instance.SE_Volume.value;
+        float volume = 1;
+        if(SceneManager.GetActiveScene().name == "MainScene") volume = UIManager.Instance.SE_Volume.value;
+        else if(SceneManager.GetActiveScene().name == "StartScene") volume = StartSceneManager.Instance.SE_Volume.value;
         switch (type)
-        {
-            case SEType.PlayerShoot:
-                Player.PlayOneShot(PlayerShoot, volume);
-                break;
-            case SEType.PlayerHit:
-                Player.PlayOneShot(PlayerHit, volume);
-                break;
-            case SEType.PlayerMissile:
-                Player.PlayOneShot(PlayerMissile, volume);
-                break;
-            case SEType.PlayerMissileHit:
-                Player.PlayOneShot(PlayerMissileHit, volume);
-                break;
-            case SEType.PlayerLaser:
-                Player.PlayOneShot(PlayerLaser, volume);
-                break;
-            case SEType.PlayerDie:
-                Player.PlayOneShot(PlayerDie, volume);
-                break;
-            case SEType.PlayerEnergyShard:
-                Player.PlayOneShot(PlayerEnergyShard, volume);
-                break;
-            case SEType.PlayerParry:
-                Player.PlayOneShot(PlayerParry, volume);
-                break;
-            case SEType.PlayerParrySuccess:
-                Player.PlayOneShot(PlayerParrySuccess, volume);
-                break;
-            case SEType.PlayerHeal:
-                Player.PlayOneShot(PlayerHeal, volume);
-                break;
+            {
+                case SEType.PlayerShoot:
+                    Player.PlayOneShot(PlayerShoot, volume);
+                    break;
+                case SEType.PlayerHit:
+                    Player.PlayOneShot(PlayerHit, volume);
+                    break;
+                case SEType.PlayerMissile:
+                    Player.PlayOneShot(PlayerMissile, volume);
+                    break;
+                case SEType.PlayerMissileHit:
+                    Player.PlayOneShot(PlayerMissileHit, volume);
+                    break;
+                case SEType.PlayerLaser:
+                    Player.PlayOneShot(PlayerLaser, volume);
+                    break;
+                case SEType.PlayerDie:
+                    Player.PlayOneShot(PlayerDie, volume);
+                    break;
+                case SEType.PlayerEnergyShard:
+                    Player.PlayOneShot(PlayerEnergyShard, volume);
+                    break;
+                case SEType.PlayerParry:
+                    Player.PlayOneShot(PlayerParry, volume);
+                    break;
+                case SEType.PlayerParrySuccess:
+                    Player.PlayOneShot(PlayerParrySuccess, volume);
+                    break;
+                case SEType.PlayerHeal:
+                    Player.PlayOneShot(PlayerHeal, volume);
+                    break;
 
-            case SEType.DroneShootA:
-                Player.PlayOneShot(DroneShootA, volume);
-                break;
-            case SEType.DroneShootB:
-                Player.PlayOneShot(DroneShootB, volume);
-                break;
-            case SEType.DroneShootC:
-                Player.PlayOneShot(DroneShootC, volume);
-                break;
-            case SEType.DroneHit:
-                Player.PlayOneShot(DroneHit, volume);
-                break;
-            case SEType.DroneMissileHit:
-                Player.PlayOneShot(DroneMissileHit, volume);
-                break;
-            case SEType.DroneCharge:
-                Player.PlayOneShot(DroneCharge, volume);
-                break;
-            case SEType.DroneChargeShoot:
-                Player.PlayOneShot(DroneChargeShoot, volume);
-                break;
-            case SEType.DroneDashReady:
-                Player.PlayOneShot(DroneDashReady, volume);
-                break;
-            case SEType.DroneDash:
-                Player.PlayOneShot(DroneDash, volume);
-                break;
-            case SEType.DroneDie:
-                Player.PlayOneShot(DroneDie, volume);
-                break;
+                case SEType.DroneShootA:
+                    Player.PlayOneShot(DroneShootA, volume);
+                    break;
+                case SEType.DroneShootB:
+                    Player.PlayOneShot(DroneShootB, volume);
+                    break;
+                case SEType.DroneShootC:
+                    Player.PlayOneShot(DroneShootC, volume);
+                    break;
+                case SEType.DroneHit:
+                    Player.PlayOneShot(DroneHit, volume);
+                    break;
+                case SEType.DroneMissileHit:
+                    Player.PlayOneShot(DroneMissileHit, volume);
+                    break;
+                case SEType.DroneCharge:
+                    Player.PlayOneShot(DroneCharge, volume);
+                    break;
+                case SEType.DroneChargeShoot:
+                    Player.PlayOneShot(DroneChargeShoot, volume);
+                    break;
+                case SEType.DroneDashReady:
+                    Player.PlayOneShot(DroneDashReady, volume);
+                    break;
+                case SEType.DroneDie:
+                    Player.PlayOneShot(DroneDie, volume);
+                    break;
 
-            case SEType.BossShootA:
-                Player.PlayOneShot(BossShootA, volume);
-                break;
-            case SEType.BossShootB:
-                Player.PlayOneShot(BossShootB, volume);
-                break;
-            case SEType.BossShootC:
-                Player.PlayOneShot(BossShootC, volume);
-                break;
-            case SEType.BossHit:
-                Player.PlayOneShot(BossHit, volume);
-                break;
-            case SEType.BossMissileHit:
-                Player.PlayOneShot(BossMissileHit, volume);
-                break;
-            case SEType.BossDashReady:
-                Player.PlayOneShot(BossDashReady, volume);
-                break;
-            case SEType.BossDash:
-                Player.PlayOneShot(BossDash, volume);
-                break;
-            case SEType.BossLaser:
-                Player.PlayOneShot(BossLaser, volume);
-                break;
-            case SEType.BossMissile:
-                Player.PlayOneShot(BossMissile, volume);
-                break;
-            case SEType.BossMissileBoost:
-                Player.PlayOneShot(BossMissileBoost, volume);
-                break;
-            case SEType.BossDie:
-                Player.PlayOneShot(BossDie, volume);
-                break;
+                case SEType.BossShootA:
+                    Player.PlayOneShot(BossShootA, volume);
+                    break;
+                case SEType.BossShootB:
+                    Player.PlayOneShot(BossShootB, volume);
+                    break;
+                case SEType.BossShootC:
+                    Player.PlayOneShot(BossShootC, volume);
+                    break;
+                case SEType.BossHit:
+                    Player.PlayOneShot(BossHit, volume);
+                    break;
+                case SEType.BossMissileHit:
+                    Player.PlayOneShot(BossMissileHit, volume);
+                    break;
+                case SEType.BossDashReady:
+                    Player.PlayOneShot(BossDashReady, volume);
+                    break;
+                case SEType.BossLaser:
+                    Player.PlayOneShot(BossLaser, volume);
+                    break;
+                case SEType.BossMissile:
+                    Player.PlayOneShot(BossMissile, volume);
+                    break;
+                case SEType.BossMissileBoost:
+                    Player.PlayOneShot(BossMissileBoost, volume);
+                    break;
+                case SEType.BossDie:
+                    Player.PlayOneShot(BossDie, volume);
+                    break;
 
-            case SEType.UIButton:
-                Player.PlayOneShot(UIButton, volume);
-                break;
-            case SEType.UIClearStamp:
-                Player.PlayOneShot(UIClearStamp, volume);
-                break;
-            default:
-                break;
-        }
+                case SEType.UIButton:
+                    Player.PlayOneShot(UIButton, volume);
+                    break;
+                case SEType.UIClearStamp:
+                    Player.PlayOneShot(UIClearStamp, volume);
+                    break;
+                default:
+                    break;
+            }
     }
 }

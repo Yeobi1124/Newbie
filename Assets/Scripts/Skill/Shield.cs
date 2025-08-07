@@ -1,4 +1,5 @@
 using System;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 using UnityEngine;
 
 public class Shield : MonoBehaviour, IHittable
@@ -11,6 +12,6 @@ public class Shield : MonoBehaviour, IHittable
         if (parryable == false) return;
         parry.ParrySuccess(damage);
     }
-
+    
     public bool IsValidTarget(bool isFriendlyToPlayer) => isFriendlyToPlayer != this.isFriendlyToPlayer;
 }
