@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
         None,
         Title,
         InGame,
+        Elite,
         Boss,
         Lose,
         Win
@@ -22,7 +23,7 @@ public class AudioManager : MonoBehaviour
         PlayerShoot,
         PlayerHit,
         PlayerMissile,
-        PlayerMissileBoost,
+        PlayerMissileHit,
         PlayerLaser,
         PlayerDie,
         PlayerEnergyShard,
@@ -34,6 +35,7 @@ public class AudioManager : MonoBehaviour
         DroneShootB,
         DroneShootC,
         DroneHit,
+        DroneMissileHit,
         DroneCharge,
         DroneChargeShoot,
         DroneDashReady,
@@ -44,6 +46,7 @@ public class AudioManager : MonoBehaviour
         BossShootB,
         BossShootC,
         BossHit,
+        BossMissileHit,
         BossDashReady,
         BossDash,
         BossLaser,
@@ -52,9 +55,7 @@ public class AudioManager : MonoBehaviour
         BossDie,
 
         UIButton,
-        UIPause,
-        UIClearStamp,
-        UIPlaneFly
+        UIClearStamp
     }
 
     private AudioSource Player;
@@ -62,6 +63,7 @@ public class AudioManager : MonoBehaviour
     [Header("BGM")]
     public AudioClip BGMTitle;
     public AudioClip BGMInGame;
+    public AudioClip BGMElite;
     public AudioClip BGMBoss;
     public AudioClip BGMLose;
     public AudioClip BGMWin;
@@ -70,7 +72,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip PlayerShoot;
     public AudioClip PlayerHit;
     public AudioClip PlayerMissile;
-    public AudioClip PlayerMissileBoost;
+    public AudioClip PlayerMissileHit;
     public AudioClip PlayerLaser;
     public AudioClip PlayerDie;
     public AudioClip PlayerEnergyShard;
@@ -83,6 +85,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip DroneShootB;
     public AudioClip DroneShootC;
     public AudioClip DroneHit;
+    public AudioClip DroneMissileHit;
     public AudioClip DroneCharge;
     public AudioClip DroneChargeShoot;
     public AudioClip DroneDashReady;
@@ -94,6 +97,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip BossShootB;
     public AudioClip BossShootC;
     public AudioClip BossHit;
+    public AudioClip BossMissileHit;
     public AudioClip BossDashReady;
     public AudioClip BossDash;
     public AudioClip BossLaser;
@@ -103,9 +107,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("UI SE")]
     public AudioClip UIButton;
-    public AudioClip UIPause;
     public AudioClip UIClearStamp;
-    public AudioClip UIPlaneFly;
 
 
     private void Awake()
@@ -140,6 +142,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case BGMType.InGame:
                 Player.clip = BGMInGame;
+                break;
+            case BGMType.Elite:
+                Player.clip = BGMElite;
                 break;
             case BGMType.Boss:
                 Player.clip = BGMBoss;
@@ -176,8 +181,8 @@ public class AudioManager : MonoBehaviour
             case SEType.PlayerMissile:
                 Player.PlayOneShot(PlayerMissile, volume);
                 break;
-            case SEType.PlayerMissileBoost:
-                Player.PlayOneShot(PlayerMissileBoost, volume);
+            case SEType.PlayerMissileHit:
+                Player.PlayOneShot(PlayerMissileHit, volume);
                 break;
             case SEType.PlayerLaser:
                 Player.PlayOneShot(PlayerLaser, volume);
@@ -210,6 +215,9 @@ public class AudioManager : MonoBehaviour
             case SEType.DroneHit:
                 Player.PlayOneShot(DroneHit, volume);
                 break;
+            case SEType.DroneMissileHit:
+                Player.PlayOneShot(DroneMissileHit, volume);
+                break;
             case SEType.DroneCharge:
                 Player.PlayOneShot(DroneCharge, volume);
                 break;
@@ -238,6 +246,9 @@ public class AudioManager : MonoBehaviour
             case SEType.BossHit:
                 Player.PlayOneShot(BossHit, volume);
                 break;
+            case SEType.BossMissileHit:
+                Player.PlayOneShot(BossMissileHit, volume);
+                break;
             case SEType.BossDashReady:
                 Player.PlayOneShot(BossDashReady, volume);
                 break;
@@ -260,14 +271,8 @@ public class AudioManager : MonoBehaviour
             case SEType.UIButton:
                 Player.PlayOneShot(UIButton, volume);
                 break;
-            case SEType.UIPause:
-                Player.PlayOneShot(UIPause, volume);
-                break;
             case SEType.UIClearStamp:
                 Player.PlayOneShot(UIClearStamp, volume);
-                break;
-            case SEType.UIPlaneFly:
-                Player.PlayOneShot(UIPlaneFly, volume);
                 break;
             default:
                 break;
