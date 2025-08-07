@@ -770,6 +770,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 67c44f41e9c0e504ca1a7b97f9fbb4cc, type: 2}
     - {fileID: 11400000, guid: 532696f8b614eb14cba3ad245d40f3d4, type: 2}
+    - {fileID: 11400000, guid: 3771dfda3ae1f4b47a44b1bf0098c683, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -798,6 +799,20 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5732507424766938948}
+          m_TargetAssemblyTypeName: SpecialAttackManage, Assembly-CSharp
+          m_MethodName: PlaySE
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &3630373409663751248
 GameObject:
