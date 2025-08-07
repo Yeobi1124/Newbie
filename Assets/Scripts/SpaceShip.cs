@@ -45,6 +45,8 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
     private float maxEnergy = 7;
 
     public bool isFriendlyToPlayer = true;
+
+    private bool _moveLock = false;
     
     public float Energy
     {
@@ -72,6 +74,8 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
         // Move
         float dirX = _moveDir.x;
         float dirY = _moveDir.y;
+
+        if (_moveLock == true) return;
         
         // Horizontal Move
         if (dirX > 0)
@@ -126,6 +130,8 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
         if (health <= 0)
         {
             _animator.SetTrigger("Dead");
+            _moveLock = true;
+            _rb.linearVelocity = Vector2.zero;
         }
         else
         {
