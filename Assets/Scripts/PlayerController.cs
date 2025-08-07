@@ -5,6 +5,7 @@ using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -98,6 +99,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator UnlockAutoFire()
     {
         yield return new WaitForSeconds(autoFireLockTime);
-        autoFireLock = false;
+        if (SceneManager.GetActiveScene().name != "StartScene") autoFireLock = false;
     }
 }
