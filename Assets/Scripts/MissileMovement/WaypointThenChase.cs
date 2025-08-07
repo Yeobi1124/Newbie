@@ -12,7 +12,7 @@ public class WaypointThenChase : IMissileMover
     private Transform playerTransform;
     private Vector2 target;
     private float speed;
-    private float arriveThreshold = 0.1f;
+    private float arriveThreshold = 0.2f;
     private float timer = 0.0f;
 
     public bool IsArrived { get; private set; }

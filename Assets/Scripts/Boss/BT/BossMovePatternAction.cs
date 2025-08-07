@@ -31,11 +31,11 @@ public partial class BossMovePatternAction : Action
         else
             percent -= Time.deltaTime / 2;
 
-        Boss.Value.transform.position = Vector2.Lerp(bossPos, playerPos, percent);
+        Boss.Value.transform.position = Vector2.Lerp(bossPos, playerPos, percent/1.5f);
 
         if (percent <= 0.0f&&IsReturning)
             return Status.Success;
-        if (percent >= 1.0f)
+        if (percent >= 1.5f)
             IsReturning = true;
 
         return Status.Running;
