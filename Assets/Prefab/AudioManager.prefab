@@ -57,7 +57,7 @@ MonoBehaviour:
   PlayerLaser: {fileID: 8300000, guid: 1e2239cc312fb4940a7e90a9cd7e6fd0, type: 3}
   PlayerDie: {fileID: 8300000, guid: 652f78923ac0bf6439bcbf865471a389, type: 3}
   PlayerEnergyShard: {fileID: 8300000, guid: 5c90b1fe176b6df46992afda8744413e, type: 3}
-  PlayerParry: {fileID: 0}
+  PlayerParry: {fileID: 8300000, guid: 9153889ecf4e0e5438f887c2e19bf6a7, type: 3}
   PlayerParrySuccess: {fileID: 8300000, guid: c4cdf86df73209b4486afe611cc5e577, type: 3}
   PlayerHeal: {fileID: 8300000, guid: e03dc9d56e3d75a4d91ba8e8e7f590b7, type: 3}
   DroneShootA: {fileID: 8300000, guid: 53ef19580a87ad446bd9e53cf04a1791, type: 3}
