@@ -2,38 +2,55 @@ using UnityEngine;
 
 public class SpecialShoot : MonoBehaviour
 {
+    public GameObject bullet;
+    public Transform bulletPos;
+    public GameObject effectPrefab;
     
-    private float ShootCounter = 0;
     public float ShootDelay;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
 
-    }
+    private float shootCounter = 0f;
+    private float timer = 0f;
+    private bool effectSpawned = false;
+    private bool bulletShot = false;
+    private GameObject effectInstance;
 
-    // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<DroneInfo>().Shootable)
+        if (shootCounter >= ShootDelay)
         {
-            if (ShootCounter >= ShootDelay)
+            if (!effectSpawned)
             {
-                Shoot();
-                ShootCounter = 0;
+                effectInstance = Instantiate(effectPrefab, bulletPos.position, Quaternion.Euler(0, 0, 180));
+                effectSpawned = true;
             }
 
-            ShootCounter += Time.deltaTime;
+            timer += Time.deltaTime;
+
+            // Make effect follow the target
+            if (effectInstance != null && bulletPos != null)
+            {
+                effectInstance.transform.position = bulletPos.position; // + optional offset
+            }
+
+            if (timer > 0.6f && !bulletShot)
+            {
+                Instantiate(bullet, bulletPos.position, Quaternion.identity);
+                bulletShot = true;
+            }
+
+            if (timer > 1f)
+            {
+                if (effectInstance != null)
+                    Destroy(effectInstance);
+
+                // Reset state for next shoot
+                timer = 0f;
+                shootCounter = 0f;
+                effectSpawned = false;
+                bulletShot = false;
+            }
         }
+
+        shootCounter += Time.deltaTime;
     }
-
-    public void Shoot()
-    {
-        //Debug.Log("Special shooting");
-        GameObject bulletA = DroneObjectManager.Instance.PullObject("BulletEnemyBig");
-        bulletA.transform.position = transform.position;
-        gameObject.GetComponent<DroneInfo>().ShootNum++;
-    }
-
-
 }
-

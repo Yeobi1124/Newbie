@@ -2,49 +2,38 @@ using UnityEngine;
 
 public class SpecialBullet : Attack
 {
-    public GameObject muzzleEffect;
+    public GameObject player;
+    private Rigidbody2D rb;
+    private float timer;
     public float BulletSpeed;
-    public Vector3 moveDirection;
-    public bool charging;
 
     void OnEnable()
     {
-        charging = true;
-        gameObject.GetComponent<MuzzleFlashAnimation>().ChargeStart();
-    }
-    void Update()
-    {   
-        charging = gameObject.GetComponent<MuzzleFlashAnimation>().charging;
-        if (!charging)
-        {
-            gameObject.GetComponent<MuzzleFlashAnimation>().Shoot();
-            if (moveDirection == new Vector3(0, 0, 0)) moveDirection = new Vector3(-1, 0, 0);
-            transform.position += moveDirection * BulletSpeed * Time.deltaTime;
-        }
-        if (transform.position.x < -10)
-        {
-            gameObject.SetActive(false);
-        }
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        Vector3 direction = player.transform.position - transform.position;
+        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * BulletSpeed;
+        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rot + 180);
     }
 
-    protected override void OnTriggerEnter2D(Collider2D col)
+    void Upade()
     {
-        //Debug.Log("Trigger called?");
-        if (col.TryGetComponent(out IHittable hittable))
+        timer += Time.deltaTime;
+
+        if(timer > 10)
         {
-            //Debug.Log("At List HITTABLE");
-            if (hittable.IsValidTarget(isFriendlyToPlayer))
-            {
-                hittable.Hit(damage);
-                gameObject.SetActive(false);
-                moveDirection = new Vector3(0, 0, 0);
-                return;
-            }
-        }
-        if (col.gameObject.CompareTag("Border"))
-        {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
+    protected override void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<SpaceShip>().health -= damage;
+            Destroy(gameObject);
+        }
+    }
 }
