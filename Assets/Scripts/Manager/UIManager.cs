@@ -9,6 +9,7 @@ using System;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+    private float timeCount = 0f;
 
     public TMP_Text time;
 
@@ -22,6 +23,16 @@ public class UIManager : MonoBehaviour
     public Slider SE_Volume;
     public Button ResumeButton;
     public Button QuitButton;
+
+    [Header("Win")]
+    public GameObject Win;
+    public TMP_Text HighRecord;
+    public Button HomeButton;
+
+    [Header("Lose")]
+    public GameObject Lose;
+    public Button RetryButton;
+    public Button Quit2Button;
 
     private PlayerInput playerInput;
 
@@ -41,7 +52,27 @@ public class UIManager : MonoBehaviour
         inputs.FindAction("ESC").performed += ToggleMenu;
 
         ResumeButton.onClick.AddListener(ResumeGame);
+        ResumeButton.onClick.AddListener(RetryGame);
         QuitButton.onClick.AddListener(QuitGame);
+        Quit2Button.onClick.AddListener(QuitGame);
+        HomeButton.onClick.AddListener(QuitGame);
+
+        Win.SetActive(false);
+        Lose.SetActive(false);
+    }
+
+    public void WinGame()
+    {
+        Win.SetActive(true);
+        HighRecord.text = "Record: " + time.text;
+        Time.timeScale = 0;
+
+    }
+
+    public void LoseGame()
+    {
+        Lose.SetActive(true);
+        Time.timeScale = 0;
     }
 
     private void Start()
@@ -52,17 +83,24 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        time.text = DateTime.Now.ToString("HH:mm:ss");
+        timeCount += Time.deltaTime;
+        time.text = timeCount.ToString("F2") + "s";
     }
 
     public void ToggleMenu(InputAction.CallbackContext context)
     {
         Menu.SetActive(Menu.activeSelf ? false : true);
+        Time.timeScale = Menu.activeSelf ? 0 : 1;
     }
 
     public void ResumeGame()
     {
         Menu.SetActive(false);
+    }
+
+    public void RetryGame()
+    {
+        LoadingSceneManager.LoadScene("MainScene");
     }
 
     public void QuitGame()

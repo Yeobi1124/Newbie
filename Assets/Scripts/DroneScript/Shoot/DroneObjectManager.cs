@@ -11,6 +11,7 @@ public class DroneObjectManager : MonoBehaviour
     public GameObject DroneShooterAPrefab;
     public GameObject DroneShooterBPrefeb;
     public GameObject DroneChargerAPrefeb;
+    public GameObject ElliteAPrefeb;
     public GameObject ShardPrefeb;
 
     public GameObject[] BulletEnemyA;
@@ -18,8 +19,8 @@ public class DroneObjectManager : MonoBehaviour
     public GameObject[] BulletEnemyC;
     public GameObject[] DroneShooterA;
     public GameObject[] DroneShooterB;
-    
     public GameObject[] DroneChargerA;
+    public GameObject[] ElliteA;
     
     public GameObject[] shards;
 
@@ -39,8 +40,8 @@ public class DroneObjectManager : MonoBehaviour
         BulletEnemyC = new GameObject[100];
         DroneShooterA = new GameObject[20];
         DroneShooterB = new GameObject[20];
-        
         DroneChargerA = new GameObject[20];
+        ElliteA = new GameObject[20];
        
         shards = new GameObject[20];
 
@@ -79,15 +80,17 @@ public class DroneObjectManager : MonoBehaviour
             DroneShooterB[index].SetActive(false);
         }
 
-      
-
         for (int index = 0; index < DroneChargerA.Length; index++)
         {
             DroneChargerA[index] = Instantiate(DroneChargerAPrefeb);
             DroneChargerA[index].SetActive(false);
         }
-
-      
+        for (int index = 0; index < ElliteA.Length; index++)
+        {
+            ElliteA[index] = Instantiate(ElliteAPrefeb);
+            ElliteA[index].SetActive(false);
+        }
+        
 
         for (int index = 0; index < shards.Length; index++)
         {
@@ -123,6 +126,10 @@ public class DroneObjectManager : MonoBehaviour
                 break;
             case "Shard":
                 TargetPool = shards;
+                break;
+
+            case "ElliteA":
+                TargetPool = ElliteA;
                 break;
             default:
                 break;
