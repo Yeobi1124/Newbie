@@ -63,7 +63,7 @@ public class ElliteInfo : Attack, IHittable
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                hittable.Hit(chargeDamage);
+                hittable.Hit(chargeDamage,false);
                 DroneSpeed = 0;
             }
         }
@@ -79,6 +79,8 @@ public class ElliteInfo : Attack, IHittable
         Shootable = false;
         //Debug.Log($"NONE Shootable: {gameObject.GetComponent<DroneInfo>().Shootable}");
         gameObject.GetComponent<DroneAnimation>().OnDead();
+        gameObject.GetComponent<ElliteAmove>().droneSpeed = 0;
+        gameObject.GetComponent<ElliteAmove>().moveSpeed = 0;
         //GameObject shard = DroneObjectManager.Instance.PullObject("EnergyShard");
     }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ElliteAmove : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 3f;                 // 이동 속도
+    public float moveSpeed = 3f;                 // 이동 속도
     [SerializeField] private float moveDuration = 1f;              // 방향 유지 시간
     [SerializeField] private Vector2 minBounds = new Vector2(0f, -3f);  // XY 최소 범위
     [SerializeField] private Vector2 maxBounds = new Vector2(9f, 5f);   // XY 최대 범위
