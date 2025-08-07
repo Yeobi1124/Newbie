@@ -4,6 +4,11 @@ public class ChasingBullet : Attack
 {
     public float BulletSpeed;
     public Vector3 moveDirection;
+    public Vector3 Zero;
+    void Onable()
+    {
+        gameObject.transform.rotation = Quaternion.identity;
+    }
     void Update()
     {
         

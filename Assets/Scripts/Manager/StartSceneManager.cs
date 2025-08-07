@@ -7,8 +7,6 @@ using DG.Tweening;
 
 public class StartSceneManager : MonoBehaviour
 {
-    public static StartSceneManager Instance;
-
     public GameObject MainMenu;
     public GameObject SettingMenu;
 
@@ -41,13 +39,6 @@ public class StartSceneManager : MonoBehaviour
     public GameObject[] BG = new GameObject[2];
     private void Awake()
     {
-        if(null == Instance)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else Destroy(gameObject);
-
         PlayButton.onClick.AddListener(Play);
         SettingButton.onClick.AddListener(Setting);
         QuitButton.onClick.AddListener(Quit);
@@ -59,6 +50,8 @@ public class StartSceneManager : MonoBehaviour
 
         IsSetting = false;
         SettingMenu.SetActive(false);
+
+        AudioManager.Instance.PlayBGM(AudioManager.BGMType.Title);
     }
 
     private void Update()
@@ -74,10 +67,10 @@ public class StartSceneManager : MonoBehaviour
 
     public void Play()
     {
-        if (ChosenButton != PlayButton)
+        if(ChosenButton != PlayButton)
         {
+            Line.rectTransform.sizeDelta = new Vector2(35, 240);
             ChosenButton = PlayButton;
-            Line.rectTransform.sizeDelta = new Vector2(Line.rectTransform.sizeDelta.x, 240);
             return;
         }
         StartCoroutine(PlayCoroutine());
@@ -85,10 +78,10 @@ public class StartSceneManager : MonoBehaviour
 
     public void Setting()
     {
-        if (ChosenButton != SettingButton)
+        if(ChosenButton != SettingButton)
         {
+            Line.rectTransform.sizeDelta = new Vector2(35, 307);
             ChosenButton = SettingButton;
-            Line.rectTransform.sizeDelta = new Vector2(Line.rectTransform.sizeDelta.x, 307);
             return;
         }
         IsSetting = !IsSetting;
@@ -107,10 +100,10 @@ public class StartSceneManager : MonoBehaviour
 
     public void Quit()
     {
-        if (ChosenButton != QuitButton)
+        if(ChosenButton != QuitButton)
         {
+            Line.rectTransform.sizeDelta = new Vector2(35, 373);
             ChosenButton = QuitButton;
-            Line.rectTransform.sizeDelta = new Vector2(Line.rectTransform.sizeDelta.x, 373);
             return;
         }
         Application.Quit();
@@ -156,10 +149,9 @@ public class StartSceneManager : MonoBehaviour
             yield return null;
         }
     }
-
     public IEnumerator WipeButtonLeft(Button var)
     {
-        RectTransform rect = var.transform as RectTransform;
+        RectTransform rect = var.GetComponent<RectTransform>();
         float Myspeed = wipeSpeed;
         while (rect.anchoredPosition.x > -500)
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ChargerAMove : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 2f;
+    public float moveSpeed = 2f;
     [SerializeField] private float moveDuration = 1f;
     [SerializeField] private Vector2 minBounds = new Vector2(0f, -5f);
     [SerializeField] private Vector2 maxBounds = new Vector2(9f, 5f);

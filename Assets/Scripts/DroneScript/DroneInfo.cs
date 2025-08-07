@@ -7,7 +7,7 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class DroneInfo : Attack, IHittable
 {
-    public float OriginalHealth;
+    public float OriginalHealth = 50;
     public float Health;
     public float OriginalSpeed = 1;
     public float DroneSpeed;
@@ -16,6 +16,11 @@ public class DroneInfo : Attack, IHittable
     public bool isFriendly = false;
     public bool isDestroyed = false;
     public float chargeDamage = 20;
+    public bool shardGive;
+    void OnEnable()
+    {
+        ResetDrone();
+    }
     void Start()
     {
         ResetDrone();
@@ -29,11 +34,18 @@ public class DroneInfo : Attack, IHittable
             Destroyed();
         }
 
-        if (Health <= 0 && !isDestroyed)
+        if (Health <= 0 && !shardGive)
         {
-            Destroyed();
-            GameObject shard = DroneObjectManager.Instance.PullObject("Shard");
-            shard.transform.position = gameObject.transform.position;
+            Debug.Log("Dead!");
+            if (!shardGive)
+            {
+                shardGive = true;
+                Vector3 shardPoint = gameObject.transform.position;
+                Destroyed();
+                GameObject shard = DroneObjectManager.Instance.PullObject("Shard");
+                shard.transform.position = shardPoint;
+                
+            }
         }
     }
 
@@ -54,6 +66,7 @@ public class DroneInfo : Attack, IHittable
         Health = OriginalHealth;
         ShootNum = 0;
         isDestroyed = false;
+        shardGive = false;
     }
 
     protected override void OnTriggerEnter2D(Collider2D col)
@@ -64,8 +77,7 @@ public class DroneInfo : Attack, IHittable
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                Destroyed();
-                hittable.Hit(chargeDamage);
+                hittable.Hit(chargeDamage,false);
                 DroneSpeed = 0;
             }
         }
