@@ -287,6 +287,11 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &212285026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7303974074018659497, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
+  m_PrefabInstance: {fileID: 1868995436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &421346499
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +765,7 @@ GameObject:
   - component: {fileID: 1515092693}
   - component: {fileID: 1515092692}
   - component: {fileID: 1515092695}
+  - component: {fileID: 1515092696}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -865,7 +871,37 @@ MonoBehaviour:
     - enemyName: DroneShooterB
       spawnPoint: {fileID: 1982593396}
       spawnTime: 0.1
+  - spawns:
+    - enemyName: Boss
+      spawnPoint: {fileID: 496182494}
+      spawnTime: 0.1
   remainEnemies: []
+  bossSpawner: {fileID: 0}
+--- !u!114 &1515092696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515092691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a34615b905410646892410e48d1920f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossPrefab: {fileID: 8218106706227436072, guid: 0ceb65adcc830c343983571d54c7551a, type: 3}
+  player: {fileID: 212285026}
+  missileAbove: {fileID: 0}
+  missileBelow: {fileID: 0}
+  backgrounds: []
+  laser: {fileID: 977637310}
+  laserTransform: {fileID: 1623105391}
+  wayPoints:
+  - {fileID: 1281602303}
+  - {fileID: 78431051}
+  - {fileID: 1346713406}
+  - {fileID: 1885046104}
+  - {fileID: 1718996567}
 --- !u!1 &1623105390
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1623105391}
   m_Layer: 0
-  m_Name: LaserPosition
+  m_Name: LaserShootingPosition
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
