@@ -50,13 +50,12 @@ public class StartSceneManager : MonoBehaviour
 
         IsSetting = false;
         SettingMenu.SetActive(false);
+
+        AudioManager.Instance.PlayBGM(AudioManager.BGMType.Title);
     }
 
     private void Update()
     {
-        UIManager.Instance.BGM_Volume.value = BGM_Volume.value;
-        UIManager.Instance.SE_Volume.value = SE_Volume.value;
-
         time.text = DateTime.Now.ToString("HH:mm:ss");
 
         foreach(GameObject go in BG)
