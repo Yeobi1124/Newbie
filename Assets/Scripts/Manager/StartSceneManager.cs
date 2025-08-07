@@ -72,7 +72,7 @@ public class StartSceneManager : MonoBehaviour
     {
         BGM_Volume.value = StartSceneManager.Instance.BGM_Volume.value;
         SE_Volume.value = StartSceneManager.Instance.SE_Volume.value;
-        UIManager.Instance.enabled = false;
+        if(isPlayedOnce) UIManager.Instance.enabled = false;
     }
 
     private void Update()
