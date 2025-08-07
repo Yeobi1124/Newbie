@@ -43,15 +43,8 @@ public class StartSceneManager : MonoBehaviour
     public GameObject[] BG = new GameObject[2];
     private void Awake()
     {
-        if (null == Instance)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (null == Instance) Instance = this;
+        else Destroy(gameObject);
 
         PlayButton.onClick.AddListener(Play);
         SettingButton.onClick.AddListener(Setting);
@@ -70,13 +63,15 @@ public class StartSceneManager : MonoBehaviour
 
     private void OnEnable()
     {
-        BGM_Volume.value = StartSceneManager.Instance.BGM_Volume.value;
-        SE_Volume.value = StartSceneManager.Instance.SE_Volume.value;
-        if(isPlayedOnce) UIManager.Instance.enabled = false;
+        BGM_Volume.value = AudioManager.Instance.BGM_Volume;
+        SE_Volume.value = AudioManager.Instance.SE_Volume;
     }
 
     private void Update()
     {
+        AudioManager.Instance.BGM_Volume = BGM_Volume.value;
+        AudioManager.Instance.SE_Volume = SE_Volume.value;
+
         time.text = DateTime.Now.ToString("HH:mm:ss");
 
         foreach(GameObject go in BG)
