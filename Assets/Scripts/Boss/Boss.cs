@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using Unity.Behavior;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 
 public class Boss : Attack,IHittable
 {
@@ -80,5 +82,12 @@ public class Boss : Attack,IHittable
         }
 
         btInitializer.DestroyBehavior();
+        StartCoroutine(WaitAndDestroyObject());
+    }
+
+    IEnumerator WaitAndDestroyObject()
+    {
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
     }
 }
