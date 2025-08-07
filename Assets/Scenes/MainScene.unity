@@ -4145,7 +4145,7 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 748586919}
   - {fileID: 1660558827}
-  speed: 10
+  speed: 8
 --- !u!1 &1530277735
 GameObject:
   m_ObjectHideFlags: 0
