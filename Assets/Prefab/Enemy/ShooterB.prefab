@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   isFriendlyToPlayer: 0
-  OriginalHealth: 200
+  OriginalHealth: 50
   Health: 0
   OriginalSpeed: 1
   DroneSpeed: 1
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShootNum: 0
   ShootDelay: 2
+  muzzle: {fileID: 0}
 --- !u!114 &5976276577814656568
 MonoBehaviour:
   m_ObjectHideFlags: 0

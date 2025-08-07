@@ -61,17 +61,29 @@ public class StageManager : MonoBehaviour
         waveTime += Time.deltaTime;
         
         Wave wave = waves[currentWave];
-        while (wave.spawns[0].spawnTime <= waveTime)
+        Debug.Log(currentWave);
+        while (IsSpawnAble(wave))
         {
             // Spawn Drone
             GameObject enemy = DroneObjectManager.Instance.PullObject(wave.spawns[0].enemyName);
             enemy.transform.position = wave.spawns[0].spawnPoint.transform.position;
             enemy.SetActive(true);
-            
+            remainEnemies.Add(enemy);
             wave.spawns.RemoveAt(0);
         }
     }
+    private bool IsSpawnAble(Wave wave)
+    {
+        if (wave.Count <= 0)
+            return false;
+        if (wave.spawns.Count <= 0)
+            return false;
+        return wave.spawns[0].spawnTime <= waveTime;
+
+    }
+
 }
+
 
 [Serializable]
 public record SpawnData
