@@ -46,7 +46,11 @@ public class PlayerController : MonoBehaviour
         
         inputs.Enable();
 
-        spaceShip.OnDead += () => autoFireLock = true;
+        spaceShip.OnDead += () =>
+        {
+            autoFireLock = true;
+            UIManager.Instance.LoseGame();
+        };
         
         // Spaceship status
         previousHP = spaceShip.health;

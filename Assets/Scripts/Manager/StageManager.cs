@@ -53,7 +53,7 @@ public class StageManager : MonoBehaviour
 
     private void Update()
     {
-        if (waves.Count <= currentWave) return;
+        if (waves.Count <= currentWave) UIManager.Instance.WinGame();
         
         // Check Current Wave Finish Condition
         if (CheckRemainEnemies() <= 0 && waves[currentWave].Count == 0)
