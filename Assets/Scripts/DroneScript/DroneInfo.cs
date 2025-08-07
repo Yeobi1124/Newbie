@@ -16,6 +16,10 @@ public class DroneInfo : Attack, IHittable
     public bool isFriendly = false;
     public bool isDestroyed = false;
     public float chargeDamage = 20;
+    void OnEnable()
+    {
+        ResetDrone();
+    }
     void Start()
     {
         ResetDrone();
@@ -29,7 +33,7 @@ public class DroneInfo : Attack, IHittable
             Destroyed();
         }
 
-        if (Health <= 0 && !isDestroyed)
+        if (Health <= 0)
         {
             Destroyed();
             GameObject shard = DroneObjectManager.Instance.PullObject("Shard");
@@ -64,8 +68,7 @@ public class DroneInfo : Attack, IHittable
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                Destroyed();
-                hittable.Hit(chargeDamage);
+                hittable.Hit(chargeDamage,false);
                 DroneSpeed = 0;
             }
         }

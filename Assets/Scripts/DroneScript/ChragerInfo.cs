@@ -18,6 +18,10 @@ public class ChragerInfo : Attack, IHittable
         ResetCharger();
         Health = OriginalHealth;
     }
+    void OnEnable()
+    {
+        ResetCharger();
+    }
 
     void Update()
     {
@@ -31,7 +35,7 @@ public class ChragerInfo : Attack, IHittable
         // 체력이 0 이하일 때 한 번만 파괴 처리
         if (Health <= 0 && !isDestroyed)
         {
-            Debug.Log("Dead?");
+            //Debug.Log("Dead?");
             isDestroyed = true;
             check++;
             Destroyed();
@@ -45,7 +49,7 @@ public class ChragerInfo : Attack, IHittable
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
-                hittable.Hit(chargeDamage);
+                hittable.Hit(chargeDamage,false);
                 Destroyed();
                 gameObject.GetComponent<ChargerAMove>().chargeSpeed = 0;
                 gameObject.GetComponent<ChargerAMove>().droneSpeed = 0;
