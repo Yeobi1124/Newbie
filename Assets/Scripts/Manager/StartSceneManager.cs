@@ -87,7 +87,8 @@ public class StartSceneManager : MonoBehaviour
 
     public void Play()
     {
-        if(ChosenButton != PlayButton)
+        AudioManager.Instance.PlaySE(AudioManager.SEType.UIButton);
+        if (ChosenButton != PlayButton)
         {
             Line.rectTransform.sizeDelta = new Vector2(35, 240);
             ChosenButton = PlayButton;
@@ -98,7 +99,8 @@ public class StartSceneManager : MonoBehaviour
 
     public void Setting()
     {
-        if(ChosenButton != SettingButton)
+        AudioManager.Instance.PlaySE(AudioManager.SEType.UIButton);
+        if (ChosenButton != SettingButton)
         {
             Line.rectTransform.sizeDelta = new Vector2(35, 307);
             ChosenButton = SettingButton;
@@ -120,7 +122,8 @@ public class StartSceneManager : MonoBehaviour
 
     public void Quit()
     {
-        if(ChosenButton != QuitButton)
+        AudioManager.Instance.PlaySE(AudioManager.SEType.UIButton);
+        if (ChosenButton != QuitButton)
         {
             Line.rectTransform.sizeDelta = new Vector2(35, 373);
             ChosenButton = QuitButton;
