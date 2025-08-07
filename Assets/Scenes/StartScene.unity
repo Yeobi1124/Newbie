@@ -2746,7 +2746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMenu: {fileID: 469642579}
   SettingMenu: {fileID: 316954588}
-  speed: 5
+  speed: 8
   wipeSpeed: 3
   Title: {fileID: 2081768106}
   PlayButton: {fileID: 469241328}
