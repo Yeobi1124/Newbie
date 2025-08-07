@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -47,6 +48,11 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
     public bool isFriendlyToPlayer = true;
 
     private bool _moveLock = false;
+    [SerializeField] private float _knockbackTime;
+    [SerializeField] private float _knockbackForce = 3f;
+    [SerializeField] private float _knockbackResistance = 0.1f;
+    
+    private Coroutine _knockbackCoroutine;
     
     public float Energy
     {
@@ -136,6 +142,12 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
         else
         {
             _animator.SetTrigger("Hit");
+
+            if (parryable == false)
+            {
+                if(_knockbackCoroutine != null) StopCoroutine(_knockbackCoroutine);
+                _knockbackCoroutine = StartCoroutine(Knockback());
+            }
         }
     }
 
@@ -148,5 +160,25 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
             Energy += energyShard.energyFillAmount;
             other.gameObject.SetActive(false);
         }
+    }
+
+    private IEnumerator Knockback()
+    {
+        float time = 0;
+        
+        _moveLock = true;
+        _rb.linearVelocity = Vector2.zero;
+        _rb.AddForce(Vector2.left * _knockbackForce, ForceMode2D.Impulse);
+
+        while (time < _knockbackTime)
+        {
+            time += Time.fixedDeltaTime;
+            if(_rb.linearVelocityX > 0)
+                _rb.AddForce(Vector2.right * _knockbackResistance, ForceMode2D.Force);
+            yield return new WaitForEndOfFrame();
+        }
+        
+        _moveLock = false;
+        _knockbackCoroutine = null;
     }
 }
