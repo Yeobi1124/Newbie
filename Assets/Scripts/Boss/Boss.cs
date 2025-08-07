@@ -13,17 +13,8 @@ public class Boss : Attack,IHittable
     BTInitializer btInitializer;
 
     [SerializeField] private BehaviorGraphAgent behaviorTree;
-    public void BTInit(GameObject player, IMissileMover mover, Transform missileAbove, Transform missileBelow, 
+    public void BTInit(GameObject player, IMissileMover mover, 
         List<GameObject> backgrounds, GameObject laser,  List<GameObject> wayPoints,Transform laserTransform)
-    {
-        btInitializer.Init(player, mover, missileAbove, missileBelow, backgrounds, laser, originalHealth, wayPoints, laserTransform);
-    }
-    
-    
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
     {
         curHealth = 1000;
         originalHealth = 1000;
@@ -31,8 +22,9 @@ public class Boss : Attack,IHittable
         speed = 1;
         behaviorTree = GetComponent<BehaviorGraphAgent>();
         btInitializer = new BTInitializer(behaviorTree);
-        
+        btInitializer.Init(player, mover,backgrounds, laser, originalHealth, wayPoints, laserTransform);
     }
+    
 
     void Update()
     {
