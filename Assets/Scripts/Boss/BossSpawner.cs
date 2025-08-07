@@ -13,10 +13,10 @@ public class BossSpawner : MonoBehaviour
 
 
 
-    public GameObject SpawnBoss()
+    public GameObject SpawnBoss(Vector2 spawnPosition)
     {
         GameObject boss = Instantiate(bossPrefab);
-        boss.transform.position = laserTransform.position;
+        boss.transform.position = spawnPosition;
         Boss bossStarter = boss.GetComponent<Boss>();
         bossStarter.BTInit(player, mover, backgrounds, laser, wayPoints, laserTransform);
         return boss;
