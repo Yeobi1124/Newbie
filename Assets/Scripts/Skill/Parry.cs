@@ -49,6 +49,8 @@ public class Parry : Skill
         shield.gameObject.SetActive(true);
         animator.SetBool("IsActivate", true);
         
+        AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerParry);
+        
         yield return new WaitForSeconds(duration);
         
         // Deactivate Parry
@@ -75,6 +77,9 @@ public class Parry : Skill
         // Shield Visual
         animator.SetTrigger("Destroy");
         animator.SetBool("IsActivate", false);
+        
+        // SFX
+        AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerParrySuccess);
         
         // Stop Coroutine, Unlock Skill
         isLocked = false;

@@ -67,6 +67,8 @@ public class SpecialAttackLaser : MonoBehaviour
         _collider.enabled = true;
         
         _active = true;
+        
+        AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerLaser);
     }
 
     public void Stop() => StartCoroutine(Disappear());
