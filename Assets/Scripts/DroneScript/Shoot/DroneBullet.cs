@@ -6,6 +6,7 @@ public class DroneBullet : Attack
     public float BulletSpeed;
     public Vector3 moveDirection;
     public Quaternion originalRotation;
+    public GameObject particle;
     void Start()
     {
         originalRotation = Quaternion.Euler(0, 0, 0);
@@ -18,7 +19,7 @@ public class DroneBullet : Attack
     }
     void Update()
     {
-        if (moveDirection == new Vector3(0,0,0)) moveDirection = new Vector3(-1, 0, 0);
+        if (moveDirection == new Vector3(0, 0, 0)) moveDirection = new Vector3(-1, 0, 0);
         transform.position += moveDirection * BulletSpeed * Time.deltaTime;
 
         if (transform.position.x < -10)
@@ -35,6 +36,7 @@ public class DroneBullet : Attack
             //Debug.Log("At List HITTABLE");
             if (hittable.IsValidTarget(isFriendlyToPlayer))
             {
+                // particle = Instantiate(particle, gameObject.transform.position, Quaternion.identity);
                 hittable.Hit(damage);
                 gameObject.SetActive(false);
                 moveDirection = new Vector3(0, 0, 0);
@@ -45,5 +47,9 @@ public class DroneBullet : Attack
         {
             gameObject.SetActive(false);
         }
+
     }
+
+
 }
+
