@@ -137,7 +137,7 @@ public class StartSceneManager : MonoBehaviour
         Debug.Log(Time.timeScale);
 
         StartCoroutine(WipeUp(Line));
-        yield return new WaitForSeconds(0.3F); // Timescale에 구애받지 않는 시간 측정
+        yield return new WaitForSeconds(0.3F);
         StartCoroutine(WipeLeft(Title.rectTransform));
         yield return new WaitForSeconds(0.1f);
 
