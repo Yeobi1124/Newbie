@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using AllIn1SpriteShader;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,7 +19,16 @@ public class Parry : Skill
     private bool isLocked = false;
     
     private Coroutine coroutine;
-    
+    private Material material;
+    [SerializeField]
+    private Animator animator;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        material = GetComponent<Renderer>().material;
+    }
+
     public override bool Use()
     {
         if (isLocked == false && _energy.Energy >= _energyConsumption)
@@ -36,11 +46,17 @@ public class Parry : Skill
         isLocked = true;
         shield.gameObject.SetActive(true);
         
+        material.EnableKeyword("HOLOGRAM_ON");
+        material.EnableKeyword("OUTBASE_ON");
+        
         yield return new WaitForSeconds(duration);
         
         // Deactivate Parry
         isLocked = false;
         shield.gameObject.SetActive(false);
+        
+        material.DisableKeyword("HOLOGRAM_ON");
+        material.DisableKeyword("OUTBASE_ON");
     }
 
     public void ParrySuccess(float damage)
@@ -59,8 +75,10 @@ public class Parry : Skill
         }
         
         // Shield Visual
-        Animator shieldAnimator = shield.gameObject.GetComponent<Animator>();
-        shieldAnimator.SetTrigger("Destroy");
+        animator.SetTrigger("Destroy");
+        
+        material.DisableKeyword("HOLOGRAM_ON");
+        material.DisableKeyword("OUTBASE_ON");
         
         // Stop Coroutine, Unlock Skill
         isLocked = false;
