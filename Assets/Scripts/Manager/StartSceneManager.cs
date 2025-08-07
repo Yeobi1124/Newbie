@@ -65,7 +65,7 @@ public class StartSceneManager : MonoBehaviour
 
     private void OnEnable()
     {
-        AudioManager.Instance.PlayBGM(AudioManager.BGMType.Title);
+        //AudioManager.Instance.PlayBGM(AudioManager.BGMType.Title);
 
         BGM_Volume.value = AudioManager.Instance.BGM_Volume;
         SE_Volume.value = AudioManager.Instance.SE_Volume;
@@ -134,8 +134,10 @@ public class StartSceneManager : MonoBehaviour
 
     public IEnumerator PlayCoroutine()
     {
+        Debug.Log(Time.timeScale);
+
         StartCoroutine(WipeUp(Line));
-        yield return new WaitForSeconds(0.3F);
+        yield return new WaitForSeconds(0.3F); // Timescale에 구애받지 않는 시간 측정
         StartCoroutine(WipeLeft(Title.rectTransform));
         yield return new WaitForSeconds(0.1f);
 
