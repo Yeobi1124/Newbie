@@ -23,8 +23,8 @@ public class ChargerAMove : MonoBehaviour
     void OnEnable()
     {
         droneSpeed = 1f;
-        moveSpeed = 2f;
-        chargeSpeed = 5f;
+        moveSpeed = 3f;
+        chargeSpeed = 10f;
     }
     void Start()
     {
