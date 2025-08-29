@@ -175,5 +175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54a34d188e9479580b8fe3edcb3a0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 30
   isFriendlyToPlayer: 0
+  isPlaySFX: 0
+  sfx: 0
+  isPlayVFX: 0
+  vfx: {fileID: 0}

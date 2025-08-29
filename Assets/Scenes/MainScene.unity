@@ -2232,6 +2232,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699028394}
   m_CullTransparentMesh: 1
+--- !u!4 &719132001 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6227856872397736040, guid: a535b3e6d3321024cac7e4a5f15001b3, type: 3}
+  m_PrefabInstance: {fileID: 916707572}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &748586919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,7 +2835,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6227856872397736040, guid: a535b3e6d3321024cac7e4a5f15001b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1259731808}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a535b3e6d3321024cac7e4a5f15001b3, type: 3}
 --- !u!1 &920011031
@@ -3642,6 +3650,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165171541}
   m_CullTransparentMesh: 1
+--- !u!1 &1259731807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1259731808}
+  - component: {fileID: 1259731809}
+  m_Layer: 3
+  m_Name: PlayerBorder (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1259731808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259731807}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7489266, y: 0.8409, z: 0.8409}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 719132001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1259731809
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259731807}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -14.951251, y: 6.006953}
+      - {x: -14.983666, y: -5.868445}
+      - {x: -13.600865, y: -6.9688816}
+      - {x: -11.960195, y: -8.18031}
+      - {x: -11.878999, y: 7.7543697}
+    - - {x: 13, y: 7.911931}
+      - {x: 13, y: -7.9536715}
+      - {x: 11.915866, y: -7.8726373}
+      - {x: 11.860623, y: 7.890298}
+    - - {x: -14.99771, y: 7.868918}
+      - {x: -14.951251, y: 5.9965677}
+      - {x: 13, y: 6}
+      - {x: 12.863342, y: 7.939331}
+    - - {x: 12.939499, y: -7.916022}
+      - {x: 13, y: -6}
+      - {x: -15.110424, y: -5.908429}
+      - {x: -15.0441675, y: -8.172933}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1265465967
 GameObject:
   m_ObjectHideFlags: 0
@@ -4087,7 +4191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletPlayerPrefab: {fileID: 8448464791600821242, guid: 6d4ce8da327abdb498c429d37cf2473f, type: 3}
-  BulletEnemyPrefab: {fileID: 8448464791600821242, guid: 6d4ce8da327abdb498c429d37cf2473f, type: 3}
+  BulletEnemyPrefab: {fileID: 8448464791600821242, guid: fc7788f304fdaa44bbcb21daf0138cc0, type: 3}
   DroneShooterPrefab: {fileID: 3418525428437749199, guid: 219414169c486a4469052834de44b05b, type: 3}
   DroneChargerPrefab: {fileID: 8448464791600821242, guid: 6d4ce8da327abdb498c429d37cf2473f, type: 3}
 --- !u!4 &1515092694

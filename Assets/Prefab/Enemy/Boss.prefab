@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875ba67eb4eb36d469a1ecf2d4d0f7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 30
   isFriendlyToPlayer: 0
   originalHealth: 1000
   curHealth: 1000
