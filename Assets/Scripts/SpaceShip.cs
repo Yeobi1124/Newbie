@@ -133,7 +133,7 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
 
     public void Hit(float damage, bool parryable = true)
     {
-        if (damage > 100)
+        if (damage > 100 && health > 1)
             health = 1;
         else
             health -= damage;
