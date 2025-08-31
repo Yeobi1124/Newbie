@@ -98,14 +98,11 @@ public class PlayerController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "StartScene") return;
         
-        float hpDiff = 100 * (spaceShip.health - previousHP) / spaceShip.maxHealth;
-        float spDiff = 100 * (spaceShip.Energy - previousSP) / spaceShip.MaxEnergy;
+        float hp = spaceShip.health / spaceShip.maxHealth;
+        float sp = spaceShip.Energy  / spaceShip.MaxEnergy;
         
-        UIManager.Instance.ChangeStatusValue("HP", hpDiff);
-        UIManager.Instance.ChangeStatusValue("SP", spDiff);
-        
-        previousHP = spaceShip.health;
-        previousSP = spaceShip.Energy;
+        UIManager.Instance.ChangeStatusValue("HP", hp);
+        UIManager.Instance.ChangeStatusValue("SP", sp);
     }
 
     private void Move(InputAction.CallbackContext context) => spaceShip.Move(context.ReadValue<Vector2>());
