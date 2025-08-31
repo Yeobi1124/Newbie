@@ -15,6 +15,7 @@ public class DefaultAttack : Attack
         if (hittable.IsValidTarget(isFriendlyToPlayer) == false) return;
         
         hittable.Hit(damage);
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         gameObject.SetActive(false);
 
         if (isPlaySFX == true)

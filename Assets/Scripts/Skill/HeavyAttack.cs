@@ -30,7 +30,7 @@ public class HeavyAttack : Skill
         attack.isFriendlyToPlayer = true;
         
         bullet.transform.position = createPoint.transform.position;
-        bullet.transform.rotation = Quaternion.identity;
+        bullet.transform.rotation = Quaternion.Euler(0,0,0);
         bullet.GetComponent<Rigidbody2D>().linearVelocityX = _bulletSpeed;
         
         AudioManager.Instance.PlaySE(AudioManager.SEType.PlayerMissile);

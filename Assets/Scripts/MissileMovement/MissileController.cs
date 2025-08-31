@@ -14,4 +14,9 @@ public class MissileController : MonoBehaviour
     {
         mover?.Move(Time.deltaTime);
     }
+
+    private void OnDisable()
+    {
+        Destroy(this);
+    }
 }
