@@ -296,8 +296,8 @@ GameObject:
   - component: {fileID: 3875963775943461967}
   - component: {fileID: 6967398313343708251}
   - component: {fileID: 552727515151764529}
-  - component: {fileID: 8589072356297493060}
   - component: {fileID: 4700000761543035096}
+  - component: {fileID: 6892380642971755891}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -467,8 +467,24 @@ MonoBehaviour:
   - {fileID: 4884694127462849004}
   - {fileID: 2292304226638581622}
   behaviorTree: {fileID: 0}
---- !u!61 &8589072356297493060
-BoxCollider2D:
+--- !u!114 &4700000761543035096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8218106706227436072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentShaderType: 0
+  normalStrength: 5
+  normalSmoothing: 1
+  computingNormal: 0
+--- !u!70 &6892380642971755891
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -497,38 +513,13 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 3.362832, y: -0.8495581}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 21.849998, y: 12.173266}
-    newSize: {x: 21.849998, y: 12.173266}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 14.557962, y: 10.474152}
-  m_EdgeRadius: 0
---- !u!114 &4700000761543035096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8218106706227436072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentShaderType: 0
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
+  m_Offset: {x: 3.7690575, y: -1.0112334}
+  m_Size: {x: 14.312004, y: 8.723978}
+  m_Direction: 1
 --- !u!1 &8876525996431270415
 GameObject:
   m_ObjectHideFlags: 0
