@@ -5224,6 +5224,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1838745136920908279, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
+      propertyPath: _bulletSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940638786468078967, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
+      propertyPath: fillEnergyPerSecond
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7303974074018659497, guid: 9ed499326d1209e4285fe1fe7bb1d9f2, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5429,7 +5437,7 @@ MonoBehaviour:
       spawnPoint: {fileID: 886737768}
       spawnTime: 0.3
     - enemyName: DroneShooterB
-      spawnPoint: {fileID: 1982593396}
+      spawnPoint: {fileID: 1154571285}
       spawnTime: 0.1
     - enemyName: DroneShooterA
       spawnPoint: {fileID: 1967511093}
