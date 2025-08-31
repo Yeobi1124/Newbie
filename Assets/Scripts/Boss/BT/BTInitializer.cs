@@ -30,7 +30,7 @@ public class BTInitializer
 
     public void DestroyBehavior()
     {
-        behaviorTree.SetVariableValue("curHP", 0);
+        behaviorTree.SetVariableValue("curHP", 0.0);
     }
 
     public void BTDisable()
