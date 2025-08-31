@@ -51,6 +51,8 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
     [SerializeField] private float _knockbackTime;
     [SerializeField] private float _knockbackForce = 3f;
     [SerializeField] private float _knockbackResistance = 0.1f;
+
+    [SerializeField] private float laserDeathHPCut = 1f;
     
     private Coroutine _knockbackCoroutine;
 
@@ -133,7 +135,7 @@ public class SpaceShip : MonoBehaviour, IHittable, IEnergy
 
     public void Hit(float damage, bool parryable = true)
     {
-        if (damage > 100)
+        if (damage > 100 && health > laserDeathHPCut)
             health = 1;
         else
             health -= damage;
