@@ -20,8 +20,7 @@ public class Boss : Attack,IHittable
     public void BTInit(GameObject player, IMissileMover mover, 
         List<GameObject> backgrounds, GameObject laser,  List<GameObject> wayPoints,Transform laserTransform,Transform deathPos)
     {
-        curHealth = 1000;
-        originalHealth = 1000;
+        curHealth = originalHealth;
         originalSpeed = 1;
         speed = 1;
         behaviorTree = GetComponent<BehaviorGraphAgent>();
