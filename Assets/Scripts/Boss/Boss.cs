@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using Unity.Behavior;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 
 public class Boss : Attack,IHittable
 {
@@ -10,21 +12,29 @@ public class Boss : Attack,IHittable
     public float speed;
     public bool isDestroyed = false;
     private bool isFriendly = false;
+    [SerializeField]private List<GameObject> explosionEffectObjects;
     BTInitializer btInitializer;
+    
 
     [SerializeField] private BehaviorGraphAgent behaviorTree;
     public void BTInit(GameObject player, IMissileMover mover, 
-        List<GameObject> backgrounds, GameObject laser,  List<GameObject> wayPoints,Transform laserTransform)
+        List<GameObject> backgrounds, GameObject laser,  List<GameObject> wayPoints,Transform laserTransform,Transform deathPos)
     {
-        curHealth = 1000;
-        originalHealth = 1000;
+        curHealth = originalHealth;
         originalSpeed = 1;
         speed = 1;
         behaviorTree = GetComponent<BehaviorGraphAgent>();
         btInitializer = new BTInitializer(behaviorTree);
-        btInitializer.Init(player, mover,backgrounds, laser, originalHealth, wayPoints, laserTransform);
+        btInitializer.Init(player, mover,backgrounds, laser, originalHealth, wayPoints, laserTransform,deathPos);
     }
     
+    void Awake()
+    {
+        foreach (var obj in explosionEffectObjects)
+        {
+            obj.SetActive(false);
+        }
+    }
 
     void Update()
     {
@@ -34,6 +44,9 @@ public class Boss : Attack,IHittable
     public void Hit(float damage, bool parryable = true)
     {
         curHealth -= damage;
+        if (curHealth <= 0)
+            Destroyed();
+
     }
 
     public bool IsValidTarget(bool isFriendlyToAttacker)
@@ -61,6 +74,19 @@ public class Boss : Attack,IHittable
     public void Destroyed()
     {
         isDestroyed = true;
-        //gameObject.GetComponent<BossAnimation>().OnDead();
+        
+        foreach(var obj in explosionEffectObjects)
+        {
+            obj.SetActive(true);
+        }
+
+        btInitializer.DestroyBehavior();
+        StartCoroutine(WaitAndDestroyObject());
+    }
+
+    IEnumerator WaitAndDestroyObject()
+    {
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
     }
 }

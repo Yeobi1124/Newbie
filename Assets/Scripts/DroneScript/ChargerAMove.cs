@@ -19,8 +19,13 @@ public class ChargerAMove : MonoBehaviour
     private bool isWaiting = false;
 
     public float waitTimer;
-    public float waitDuration = 1.5f;   
-
+    public float waitDuration = 1.5f;
+    void OnEnable()
+    {
+        droneSpeed = 1f;
+        moveSpeed = 3f;
+        chargeSpeed = 10f;
+    }
     void Start()
     {
         summon = true;

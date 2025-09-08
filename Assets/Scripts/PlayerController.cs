@@ -5,6 +5,7 @@ using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -45,7 +46,15 @@ public class PlayerController : MonoBehaviour
         
         inputs.Enable();
 
-        spaceShip.OnDead += () => autoFireLock = true;
+        spaceShip.OnDead += () =>
+        {
+            autoFireLock = true;
+            UIManager.Instance.LoseGame();
+        };
+        
+        // Spaceship status
+        previousHP = spaceShip.health;
+        previousSP = spaceShip.Energy;
     }
 
     private void OnDestroy()
@@ -83,6 +92,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private float previousHP;
+    private float previousSP;
+    private void LateUpdate()
+    {
+        if (SceneManager.GetActiveScene().name == "StartScene") return;
+        
+        float hp = spaceShip.health / spaceShip.maxHealth;
+        float sp = spaceShip.Energy  / spaceShip.MaxEnergy;
+        
+        UIManager.Instance.ChangeStatusValue("HP", hp);
+        UIManager.Instance.ChangeStatusValue("SP", sp);
+    }
+
     private void Move(InputAction.CallbackContext context) => spaceShip.Move(context.ReadValue<Vector2>());
     private void Parry(InputAction.CallbackContext context) => parrying.Use();
     private void Heal(InputAction.CallbackContext context) => heal.Use();
@@ -98,6 +120,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator UnlockAutoFire()
     {
         yield return new WaitForSeconds(autoFireLockTime);
-        autoFireLock = false;
+        if (SceneManager.GetActiveScene().name != "StartScene") autoFireLock = false;
     }
 }
